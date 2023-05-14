@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recipe_Book
+namespace recipe_book
 {
 	internal static class Utils
 	{
