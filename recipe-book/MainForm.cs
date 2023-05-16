@@ -162,5 +162,10 @@ namespace recipe_book
             if (authForm.ShowDialog() != DialogResult.OK)
                 this.Close();
         }
+
+        private void BuyListLabel_Click(object sender, EventArgs e)
+        {
+            new ShoppingListForm();
+        }
     }
 }

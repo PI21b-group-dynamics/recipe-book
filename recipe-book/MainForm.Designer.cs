@@ -243,6 +243,7 @@
             BuyListLabel.TabIndex = 0;
             BuyListLabel.Text = "Список покупок";
             BuyListLabel.TextAlign = ContentAlignment.MiddleLeft;
+            BuyListLabel.Click += BuyListLabel_Click;
             // 
             // ContentTagPanel
             // 
