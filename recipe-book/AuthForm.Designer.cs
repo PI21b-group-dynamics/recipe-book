@@ -140,6 +140,7 @@ namespace recipe_book
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "AuthForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Авторизация";
             Load += AuthForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
