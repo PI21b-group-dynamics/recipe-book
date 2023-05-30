@@ -156,16 +156,20 @@ namespace recipe_book
                 HideUserPanel();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            AuthForm authForm = new();
-            if (authForm.ShowDialog() != DialogResult.OK)
-                this.Close();
-        }
-
         private void BuyListLabel_Click(object sender, EventArgs e)
         {
-            new ShoppingListForm();
+            ShoppingListForm ShoppingList = new ShoppingListForm();
+            ShoppingList.Show();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void UserNameChanger(string UserName)
+        {
+            UserLabel.Text = UserName;
         }
     }
 }
