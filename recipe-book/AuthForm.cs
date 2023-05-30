@@ -1,4 +1,6 @@
-﻿namespace recipe_book
+﻿using System.Data.SQLite;
+
+namespace recipe_book
 {
     public partial class AuthForm : Form
     {

@@ -455,7 +455,6 @@
             MinimumSize = new Size(600, 400);
             Name = "MainForm";
             Text = "Главная форма";
-            Load += MainForm_Load;
             MouseLeave += MainForm_MouseLeave;
             ContentHeaderPanel.ResumeLayout(false);
             ContentHeaderSearchPanel.ResumeLayout(false);
