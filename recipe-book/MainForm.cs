@@ -1,9 +1,14 @@
-﻿using System.Runtime.InteropServices;
+﻿using Microsoft.VisualBasic.Logging;
+using System.Data.SQLite;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace recipe_book
 {
     public partial class MainForm : Form
     {
+
         private Color UserLayoutPanelOriginalBackColor;
         private List<TableLayoutPanel> receipts = new List<TableLayoutPanel>();
 
@@ -159,6 +164,22 @@ namespace recipe_book
         private void BuyListLabel_Click(object sender, EventArgs e)
         {
             ShoppingListForm ShoppingList = new ShoppingListForm();
+
+            using (SQLiteConnection Connection = new SQLiteConnection("Data Source = Database.db"))
+            {
+                Connection.Open();
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = Connection;
+
+                Command.CommandText = $"SELECT Id FROM USERS WHERE Login = '{UserLabel.Text}'";
+
+                using (SQLiteDataReader Reader = Command.ExecuteReader())
+                {
+                    Reader.Read();
+                    ShoppingList.UserID = Reader.GetInt32(0);
+                }
+            }
+
             ShoppingList.Show();
         }
 

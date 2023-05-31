@@ -57,7 +57,7 @@ namespace recipe_book
         {
             ActiveControl = signInBtn;
         }
-        
+
         private void DB_Initialization()
         {
             // Если файла БД нет, то создаем его и инициализируем БД
@@ -69,7 +69,9 @@ namespace recipe_book
                     SQLiteCommand Command = new SQLiteCommand();
                     Command.Connection = Connection;
                     Command.CommandText = "CREATE TABLE USERS (Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, Login TEXT NOT NULL UNIQUE, " +
-                                          "Email TEXT NOT NULL UNIQUE, Password TEXT NOT NULL)";
+                                          "Email TEXT NOT NULL UNIQUE, Password TEXT NOT NULL) ";
+                    Command.ExecuteNonQuery();
+                    Command.CommandText = "CREATE TABLE GROCERY_LIST (Id INTEGER NOT NULL, Products TEXT, FOREIGN KEY (Id) REFERENCES USERS(Id) ON DELETE CASCADE)";
                     Command.ExecuteNonQuery();
                 }
             }
