@@ -122,14 +122,14 @@
             UserLayoutPanel.MouseEnter += UserLayoutPanel_MouseEnter;
             UserLayoutPanel.MouseLeave += UserLayoutPanel_MouseLeave;
             // 
-            // UserPictureBox
+            // picUser
             // 
             picUser.Dock = DockStyle.Fill;
             picUser.Image = Properties.Resources.user_icon;
-            picUser.InitialImage = (Image)resources.GetObject("UserPictureBox.InitialImage");
+            picUser.InitialImage = (Image)resources.GetObject("picUser.InitialImage");
             picUser.Location = new Point(4, 4);
             picUser.Margin = new Padding(4);
-            picUser.Name = "UserPictureBox";
+            picUser.Name = "picUser";
             UserLayoutPanel.SetRowSpan(picUser, 2);
             picUser.Size = new Size(40, 40);
             picUser.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -196,14 +196,14 @@
             lblExit.TextAlign = ContentAlignment.MiddleCenter;
             lblExit.Click += lblExit_Click;
             // 
-            // UserLabel
+            // lblUser
             // 
             lblUser.AutoSize = true;
             lblUser.Dock = DockStyle.Left;
             lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser.Location = new Point(52, 8);
             lblUser.Margin = new Padding(4, 8, 4, 0);
-            lblUser.Name = "UserLabel";
+            lblUser.Name = "lblUser";
             lblUser.Size = new Size(123, 16);
             lblUser.TabIndex = 0;
             lblUser.Text = "ИМЯ ПОЛЬЗОВАТЕЛЯ";
@@ -232,18 +232,17 @@
             ContentTagPanel.Location = new Point(2, 52);
             ContentTagPanel.Margin = new Padding(0);
             ContentTagPanel.Name = "ContentTagPanel";
-            ContentTagPanel.Size = new Size(837, 48);
+            ContentTagPanel.Size = new Size(837, 54);
             ContentTagPanel.TabIndex = 1;
             // 
             // ContentTagFlowPanel
             // 
             ContentTagFlowPanel.AutoScroll = true;
-            ContentTagFlowPanel.AutoSize = true;
             ContentTagFlowPanel.Dock = DockStyle.Fill;
             ContentTagFlowPanel.Location = new Point(0, 0);
             ContentTagFlowPanel.Margin = new Padding(0);
             ContentTagFlowPanel.Name = "ContentTagFlowPanel";
-            ContentTagFlowPanel.Size = new Size(837, 48);
+            ContentTagFlowPanel.Size = new Size(837, 54);
             ContentTagFlowPanel.TabIndex = 3;
             ContentTagFlowPanel.WrapContents = false;
             // 
@@ -262,7 +261,7 @@
             ContentLayoutPanel.Name = "ContentLayoutPanel";
             ContentLayoutPanel.RowCount = 5;
             ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 54F));
             ContentLayoutPanel.RowStyles.Add(new RowStyle());
             ContentLayoutPanel.RowStyles.Add(new RowStyle());
             ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
@@ -274,10 +273,10 @@
             ContentRecContainer.Controls.Add(btnAddRecipe);
             ContentRecContainer.Controls.Add(ContentRecPanel);
             ContentRecContainer.Dock = DockStyle.Fill;
-            ContentRecContainer.Location = new Point(2, 140);
+            ContentRecContainer.Location = new Point(2, 146);
             ContentRecContainer.Margin = new Padding(0);
             ContentRecContainer.Name = "ContentRecContainer";
-            ContentRecContainer.Size = new Size(837, 323);
+            ContentRecContainer.Size = new Size(837, 317);
             ContentRecContainer.TabIndex = 13;
             // 
             // btnAddRecipe
@@ -287,7 +286,7 @@
             btnAddRecipe.Cursor = Cursors.Hand;
             btnAddRecipe.FlatAppearance.BorderSize = 0;
             btnAddRecipe.FlatStyle = FlatStyle.Flat;
-            btnAddRecipe.Location = new Point(751, 247);
+            btnAddRecipe.Location = new Point(751, 241);
             btnAddRecipe.Margin = new Padding(12);
             btnAddRecipe.Name = "btnAddRecipe";
             btnAddRecipe.Size = new Size(64, 64);
@@ -315,7 +314,7 @@
             ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
             ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
             ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
-            ContentRecPanel.Size = new Size(837, 323);
+            ContentRecPanel.Size = new Size(837, 317);
             ContentRecPanel.TabIndex = 3;
             // 
             // ContentSortPanel
@@ -325,18 +324,18 @@
             ContentSortPanel.Controls.Add(cboContentSort);
             ContentSortPanel.Controls.Add(ContentSortLabel);
             ContentSortPanel.Dock = DockStyle.Right;
-            ContentSortPanel.Location = new Point(565, 102);
+            ContentSortPanel.Location = new Point(565, 108);
             ContentSortPanel.Margin = new Padding(0);
             ContentSortPanel.Name = "ContentSortPanel";
             ContentSortPanel.Size = new Size(274, 34);
             ContentSortPanel.TabIndex = 2;
             // 
-            // ContentSortComboBox
+            // cboContentSort
             // 
             cboContentSort.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
             cboContentSort.Location = new Point(125, 3);
-            cboContentSort.Name = "ContentSortComboBox";
+            cboContentSort.Name = "cboContentSort";
             cboContentSort.Size = new Size(146, 28);
             cboContentSort.TabIndex = 1;
             // 
@@ -445,7 +444,6 @@
             ((System.ComponentModel.ISupportInitialize)picUser).EndInit();
             UserSlideLayoutPanel.ResumeLayout(false);
             ContentTagPanel.ResumeLayout(false);
-            ContentTagPanel.PerformLayout();
             ContentLayoutPanel.ResumeLayout(false);
             ContentLayoutPanel.PerformLayout();
             ContentRecContainer.ResumeLayout(false);

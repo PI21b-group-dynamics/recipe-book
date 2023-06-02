@@ -49,7 +49,7 @@ namespace recipe_book
             // Заполнение списка тегов
             for (int i = 0; i < 32; i += 1)
             {
-                Button button = new() { Text = $"Тег {i + 1}" };
+                Button button = new() { Text = $"Тег {i + 1}", AutoSize = true };
                 ContentTagFlowPanel.Controls.Add(button);
             }
 
@@ -66,7 +66,7 @@ namespace recipe_book
         {
             AuthForm authForm = new();
             if (authForm.ShowDialog() != DialogResult.OK)
-                return;
+                Close();
             lblUser.Text = authForm.Login;
         }
 
@@ -187,7 +187,8 @@ namespace recipe_book
         {
             Hide();
             MainForm_Load(sender, e);
-            Show();
+            if (!IsDisposed)
+                Show();
         }
     }
 }
