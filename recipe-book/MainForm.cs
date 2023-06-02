@@ -1,65 +1,62 @@
 ﻿using System.Data.SQLite;
-using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
 
 namespace recipe_book
 {
     public partial class MainForm : Form
     {
-
         private Color UserLayoutPanelOriginalBackColor;
         private readonly List<TableLayoutPanel> recipes = new();
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
         public MainForm()
         {
             InitializeComponent();
-            UserLayoutPanelOriginalBackColor = UserLayoutPanel.BackColor;
+            UserLayoutPanelOriginalBackColor = pnlUser.BackColor;
 
-            ContentRecPanel.AutoScroll = true;
-            ContentRecPanel.HorizontalScroll.Visible = false;
-            ContentRecPanel.VerticalScroll.Visible = true;
+            pnlRecipes.AutoScroll = true;
+            pnlRecipes.HorizontalScroll.Visible = false;
+            pnlRecipes.VerticalScroll.Visible = true;
 
             // Заполнение таблицы рецептов
-            int rows = 8;
-            int offset = ContentRecPanel.Controls.Count;
-            for (int i = 0; i < rows * ContentRecPanel.ColumnCount; i += 1)
+            int rows = 6;
+            int offset = pnlRecipes.Controls.Count;
+            for (int i = 0; i < rows * pnlRecipes.ColumnCount; ++i)
             {
                 // Позиция рецепта в таблице
                 int index = (offset + i);
-                int x = index % ContentRecPanel.ColumnCount;
-                int y = index / ContentRecPanel.ColumnCount;
+                int x = index % pnlRecipes.ColumnCount;
+                int y = index / pnlRecipes.ColumnCount;
 
                 // Генерация рецепта
-                (TableLayoutPanel panel, Label label, Button btn, PictureBox pb) = BuildRecipeControls($"Рецепт {ContentRecPanel.Controls.Count + 1}");
+                (TableLayoutPanel panel, Label label, Button btn, PictureBox pb) = BuildRecipeControls($"Рецепт {pnlRecipes.Controls.Count + 1}");
                 recipes.Add(panel);
 
                 // Добавление рецепта на форму
-                ContentRecPanel.Controls.Add(panel);
-                ContentRecPanel.SetColumn(panel, x);
-                ContentRecPanel.SetRow(panel, y);
+                pnlRecipes.Controls.Add(panel);
+                pnlRecipes.SetColumn(panel, x);
+                pnlRecipes.SetRow(panel, y);
             }
 
             // Установка одинаковой высоты строк
-            ContentRecPanel.RowStyles.Clear();
-            for (int i = 0; i < rows; i += 1)
-                ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 180));
+            pnlRecipes.RowStyles.Clear();
+            for (int i = 0; i < rows; ++i)
+                pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 180));
 
             // Заполнение списка тегов
-            for (int i = 0; i < 32; i += 1)
+            for (int i = 0; i < 24; ++i)
             {
                 Button button = new() { Text = $"Тег {i + 1}", AutoSize = true };
-                ContentTagFlowPanel.Controls.Add(button);
+                pnlTags.Controls.Add(button);
             }
 
             // Заполнение методов сортировки
             cboContentSort.Items.AddRange(new string[] { "Дате создания", "Дате изменения", "Рейтингу" });
-            cboContentSort.Text = "Дате создания";
+            cboContentSort.SelectedIndex = 0;
 
-            // Скругление краев у изображения пользователя, а также кнопки создания рецепта
-            picUser.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, picUser.Width, picUser.Height, picUser.Width, picUser.Height));
-            btnAddRecipe.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAddRecipe.Width, btnAddRecipe.Height, btnAddRecipe.Width, btnAddRecipe.Height));
+            // Скругление краев у изображения пользователя
+            using GraphicsPath graphicsPath = new();
+            graphicsPath.AddEllipse(0, 0, picUser.Width, picUser.Height);
+            picUser.Region = new Region(graphicsPath);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -137,50 +134,33 @@ namespace recipe_book
             return (panel, label, btn, pb);
         }
 
-        /// <summary>
-        /// Показывает всплывающую панель
-        /// </summary>
-        private void ShowUserPanel()
+        private void ChangeUserPanelVisibility(bool visibility)
         {
-            UserLayoutPanel.BackColor = UserSlideLayoutPanel.BackColor;
-            UserSlideLayoutPanel.Visible = true;
+            pnlUser.BackColor = visibility ? pnlSlideMenu.BackColor : UserLayoutPanelOriginalBackColor;
+            pnlSlideMenu.Visible = visibility;
         }
 
-        /// <summary>
-        /// Скрывает всплывающую панель
-        /// </summary>
-        private void HideUserPanel()
+        private void pnlUser_MouseEnter(object sender, EventArgs e)
         {
-            UserLayoutPanel.BackColor = UserLayoutPanelOriginalBackColor;
-            UserSlideLayoutPanel.Visible = false;
+            ChangeUserPanelVisibility(true);
         }
 
-        private void UserLayoutPanel_MouseEnter(object sender, EventArgs e)
+        private void pnlUser_MouseLeave(object sender, EventArgs e)
         {
-            ShowUserPanel();
+            if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
+                ChangeUserPanelVisibility(false);
         }
 
-        private void UserLayoutPanel_MouseLeave(object sender, EventArgs e)
+        private void pnlSlideMenu_MouseLeave(object sender, EventArgs e)
         {
-            if (!UserLayoutPanel.ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                HideUserPanel();
-        }
-
-        private void UserSlideLayoutPanel_MouseLeave(object sender, EventArgs e)
-        {
-            if (!UserLayoutPanel.ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                HideUserPanel();
+            if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
+                ChangeUserPanelVisibility(false);
         }
 
         private void MainForm_MouseLeave(object sender, EventArgs e)
         {
-            if (!UserLayoutPanel.ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                HideUserPanel();
-        }
-
-        private void lblShoppingList_Click(object sender, EventArgs e)
-        {
-
+            if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
+                ChangeUserPanelVisibility(false);
         }
 
         private void lblExit_Click(object sender, EventArgs e)

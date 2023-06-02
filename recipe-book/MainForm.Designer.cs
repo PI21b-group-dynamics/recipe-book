@@ -32,23 +32,23 @@
             ContentHeaderPanel = new Panel();
             panel1 = new Panel();
             textBox1 = new TextBox();
-            UserLayoutPanel = new TableLayoutPanel();
+            pnlUser = new TableLayoutPanel();
             picUser = new PictureBox();
-            UserSlideLayoutPanel = new TableLayoutPanel();
+            pnlSlideMenu = new TableLayoutPanel();
             lblChangeProfile = new Label();
             lblHelp = new Label();
             lblExit = new Label();
             lblUser = new Label();
-            lblShoppingList = new Label();
             ContentTagPanel = new Panel();
-            ContentTagFlowPanel = new FlowLayoutPanel();
-            ContentLayoutPanel = new TableLayoutPanel();
+            pnlTags = new FlowLayoutPanel();
+            pnlFormContent = new TableLayoutPanel();
             ContentRecContainer = new Panel();
-            btnAddRecipe = new Button();
-            ContentRecPanel = new TableLayoutPanel();
-            ContentSortPanel = new Panel();
+            roundButton1 = new RoundButton();
+            pnlRecipes = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
             cboContentSort = new ComboBox();
-            ContentSortLabel = new Label();
+            label1 = new Label();
+            btnShoppingList = new Button();
             tableLayoutPanel4 = new TableLayoutPanel();
             pictureBox4 = new PictureBox();
             label5 = new Label();
@@ -57,13 +57,13 @@
             label7 = new Label();
             ContentHeaderPanel.SuspendLayout();
             panel1.SuspendLayout();
-            UserLayoutPanel.SuspendLayout();
+            pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picUser).BeginInit();
-            UserSlideLayoutPanel.SuspendLayout();
+            pnlSlideMenu.SuspendLayout();
             ContentTagPanel.SuspendLayout();
-            ContentLayoutPanel.SuspendLayout();
+            pnlFormContent.SuspendLayout();
             ContentRecContainer.SuspendLayout();
-            ContentSortPanel.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             tableLayoutPanel7.SuspendLayout();
@@ -78,7 +78,7 @@
             ContentHeaderPanel.Location = new Point(2, 2);
             ContentHeaderPanel.Margin = new Padding(0);
             ContentHeaderPanel.Name = "ContentHeaderPanel";
-            ContentHeaderPanel.Size = new Size(837, 48);
+            ContentHeaderPanel.Size = new Size(837, 56);
             ContentHeaderPanel.TabIndex = 0;
             // 
             // panel1
@@ -88,39 +88,37 @@
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(563, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(274, 48);
+            panel1.Size = new Size(274, 56);
             panel1.TabIndex = 1;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(3, 9);
+            textBox1.Location = new Point(3, 12);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "🔍 Найти...";
             textBox1.Size = new Size(268, 32);
             textBox1.TabIndex = 0;
             // 
-            // UserLayoutPanel
+            // pnlUser
             // 
-            UserLayoutPanel.AutoSize = true;
-            UserLayoutPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            UserLayoutPanel.ColumnCount = 2;
-            UserLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 48F));
-            UserLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 156F));
-            UserLayoutPanel.Controls.Add(picUser, 0, 0);
-            UserLayoutPanel.Controls.Add(UserSlideLayoutPanel, 0, 2);
-            UserLayoutPanel.Controls.Add(lblUser, 1, 0);
-            UserLayoutPanel.Controls.Add(lblShoppingList, 0, 1);
-            UserLayoutPanel.Location = new Point(3, 3);
-            UserLayoutPanel.Name = "UserLayoutPanel";
-            UserLayoutPanel.RowCount = 3;
-            UserLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            UserLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            UserLayoutPanel.RowStyles.Add(new RowStyle());
-            UserLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            UserLayoutPanel.Size = new Size(204, 144);
-            UserLayoutPanel.TabIndex = 2;
-            UserLayoutPanel.MouseEnter += UserLayoutPanel_MouseEnter;
-            UserLayoutPanel.MouseLeave += UserLayoutPanel_MouseLeave;
+            pnlUser.AutoSize = true;
+            pnlUser.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            pnlUser.ColumnCount = 2;
+            pnlUser.ColumnStyles.Add(new ColumnStyle());
+            pnlUser.ColumnStyles.Add(new ColumnStyle());
+            pnlUser.Controls.Add(picUser, 0, 0);
+            pnlUser.Controls.Add(pnlSlideMenu, 0, 1);
+            pnlUser.Controls.Add(lblUser, 1, 0);
+            pnlUser.Location = new Point(3, 3);
+            pnlUser.Name = "pnlUser";
+            pnlUser.RowCount = 2;
+            pnlUser.RowStyles.Add(new RowStyle());
+            pnlUser.RowStyles.Add(new RowStyle());
+            pnlUser.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            pnlUser.Size = new Size(204, 163);
+            pnlUser.TabIndex = 2;
+            pnlUser.MouseEnter += pnlUser_MouseEnter;
+            pnlUser.MouseLeave += pnlUser_MouseLeave;
             // 
             // picUser
             // 
@@ -130,224 +128,217 @@
             picUser.Location = new Point(4, 4);
             picUser.Margin = new Padding(4);
             picUser.Name = "picUser";
-            UserLayoutPanel.SetRowSpan(picUser, 2);
-            picUser.Size = new Size(40, 40);
+            picUser.Size = new Size(48, 48);
             picUser.SizeMode = PictureBoxSizeMode.StretchImage;
             picUser.TabIndex = 1;
             picUser.TabStop = false;
             // 
-            // UserSlideLayoutPanel
+            // pnlSlideMenu
             // 
-            UserSlideLayoutPanel.BackColor = SystemColors.ControlDark;
-            UserSlideLayoutPanel.ColumnCount = 1;
-            UserLayoutPanel.SetColumnSpan(UserSlideLayoutPanel, 2);
-            UserSlideLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            UserSlideLayoutPanel.Controls.Add(lblChangeProfile, 0, 0);
-            UserSlideLayoutPanel.Controls.Add(lblHelp, 0, 1);
-            UserSlideLayoutPanel.Controls.Add(lblExit, 0, 2);
-            UserSlideLayoutPanel.Location = new Point(0, 48);
-            UserSlideLayoutPanel.Margin = new Padding(0);
-            UserSlideLayoutPanel.Name = "UserSlideLayoutPanel";
-            UserSlideLayoutPanel.Padding = new Padding(24, 0, 24, 0);
-            UserSlideLayoutPanel.RowCount = 3;
-            UserSlideLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            UserSlideLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            UserSlideLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            UserSlideLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            UserSlideLayoutPanel.Size = new Size(204, 96);
-            UserSlideLayoutPanel.TabIndex = 6;
-            UserSlideLayoutPanel.Visible = false;
-            UserSlideLayoutPanel.MouseLeave += UserSlideLayoutPanel_MouseLeave;
+            pnlSlideMenu.BackColor = SystemColors.ControlDark;
+            pnlSlideMenu.ColumnCount = 1;
+            pnlUser.SetColumnSpan(pnlSlideMenu, 2);
+            pnlSlideMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            pnlSlideMenu.Controls.Add(lblChangeProfile, 0, 0);
+            pnlSlideMenu.Controls.Add(lblHelp, 0, 1);
+            pnlSlideMenu.Controls.Add(lblExit, 0, 2);
+            pnlSlideMenu.Location = new Point(0, 56);
+            pnlSlideMenu.Margin = new Padding(0);
+            pnlSlideMenu.Name = "pnlSlideMenu";
+            pnlSlideMenu.Padding = new Padding(52, 0, 0, 0);
+            pnlSlideMenu.RowCount = 3;
+            pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            pnlSlideMenu.Size = new Size(204, 107);
+            pnlSlideMenu.TabIndex = 6;
+            pnlSlideMenu.Visible = false;
+            pnlSlideMenu.MouseLeave += pnlSlideMenu_MouseLeave;
             // 
             // lblChangeProfile
             // 
             lblChangeProfile.Cursor = Cursors.Hand;
             lblChangeProfile.Dock = DockStyle.Fill;
-            lblChangeProfile.Location = new Point(32, 4);
+            lblChangeProfile.Location = new Point(60, 4);
             lblChangeProfile.Margin = new Padding(8, 4, 8, 4);
             lblChangeProfile.Name = "lblChangeProfile";
-            lblChangeProfile.Size = new Size(140, 24);
+            lblChangeProfile.Size = new Size(136, 27);
             lblChangeProfile.TabIndex = 4;
             lblChangeProfile.Text = "Редактировать профиль";
-            lblChangeProfile.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblHelp
             // 
             lblHelp.Cursor = Cursors.Hand;
             lblHelp.Dock = DockStyle.Fill;
-            lblHelp.Location = new Point(32, 36);
+            lblHelp.Location = new Point(60, 39);
             lblHelp.Margin = new Padding(8, 4, 8, 4);
             lblHelp.Name = "lblHelp";
-            lblHelp.Size = new Size(140, 24);
+            lblHelp.Size = new Size(136, 27);
             lblHelp.TabIndex = 5;
             lblHelp.Text = "Справка";
-            lblHelp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblExit
             // 
             lblExit.Cursor = Cursors.Hand;
             lblExit.Dock = DockStyle.Fill;
-            lblExit.Location = new Point(32, 68);
+            lblExit.Location = new Point(60, 74);
             lblExit.Margin = new Padding(8, 4, 8, 4);
             lblExit.Name = "lblExit";
-            lblExit.Size = new Size(140, 24);
+            lblExit.Size = new Size(136, 29);
             lblExit.TabIndex = 6;
             lblExit.Text = "Выйти";
-            lblExit.TextAlign = ContentAlignment.MiddleCenter;
             lblExit.Click += lblExit_Click;
             // 
             // lblUser
             // 
             lblUser.AutoSize = true;
             lblUser.Dock = DockStyle.Left;
-            lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUser.Location = new Point(52, 8);
-            lblUser.Margin = new Padding(4, 8, 4, 0);
+            lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblUser.Location = new Point(60, 0);
+            lblUser.Margin = new Padding(4, 0, 0, 0);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(123, 16);
+            lblUser.Size = new Size(111, 56);
             lblUser.TabIndex = 0;
-            lblUser.Text = "ИМЯ ПОЛЬЗОВАТЕЛЯ";
+            lblUser.Text = "Пользователь";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // lblShoppingList
-            // 
-            lblShoppingList.AutoSize = true;
-            lblShoppingList.Cursor = Cursors.Hand;
-            lblShoppingList.Dock = DockStyle.Left;
-            lblShoppingList.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            lblShoppingList.Location = new Point(52, 24);
-            lblShoppingList.Margin = new Padding(4, 0, 4, 8);
-            lblShoppingList.Name = "lblShoppingList";
-            lblShoppingList.Size = new Size(120, 16);
-            lblShoppingList.TabIndex = 0;
-            lblShoppingList.Text = "Список покупок";
-            lblShoppingList.TextAlign = ContentAlignment.MiddleLeft;
-            lblShoppingList.Click += lblShoppingList_Click;
             // 
             // ContentTagPanel
             // 
             ContentTagPanel.AutoSize = true;
-            ContentTagPanel.Controls.Add(ContentTagFlowPanel);
+            ContentTagPanel.Controls.Add(pnlTags);
             ContentTagPanel.Dock = DockStyle.Fill;
-            ContentTagPanel.Location = new Point(2, 52);
+            ContentTagPanel.Location = new Point(2, 60);
             ContentTagPanel.Margin = new Padding(0);
             ContentTagPanel.Name = "ContentTagPanel";
-            ContentTagPanel.Size = new Size(837, 54);
+            ContentTagPanel.Size = new Size(837, 58);
             ContentTagPanel.TabIndex = 1;
             // 
-            // ContentTagFlowPanel
+            // pnlTags
             // 
-            ContentTagFlowPanel.AutoScroll = true;
-            ContentTagFlowPanel.Dock = DockStyle.Fill;
-            ContentTagFlowPanel.Location = new Point(0, 0);
-            ContentTagFlowPanel.Margin = new Padding(0);
-            ContentTagFlowPanel.Name = "ContentTagFlowPanel";
-            ContentTagFlowPanel.Size = new Size(837, 54);
-            ContentTagFlowPanel.TabIndex = 3;
-            ContentTagFlowPanel.WrapContents = false;
+            pnlTags.AutoScroll = true;
+            pnlTags.Dock = DockStyle.Fill;
+            pnlTags.Location = new Point(0, 0);
+            pnlTags.Margin = new Padding(0);
+            pnlTags.Name = "pnlTags";
+            pnlTags.Size = new Size(837, 58);
+            pnlTags.TabIndex = 3;
+            pnlTags.WrapContents = false;
             // 
-            // ContentLayoutPanel
+            // pnlFormContent
             // 
-            ContentLayoutPanel.AutoSize = true;
-            ContentLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
-            ContentLayoutPanel.ColumnCount = 1;
-            ContentLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            ContentLayoutPanel.Controls.Add(ContentHeaderPanel, 0, 0);
-            ContentLayoutPanel.Controls.Add(ContentTagPanel, 0, 1);
-            ContentLayoutPanel.Controls.Add(ContentRecContainer, 0, 4);
-            ContentLayoutPanel.Controls.Add(ContentSortPanel, 0, 2);
-            ContentLayoutPanel.Dock = DockStyle.Fill;
-            ContentLayoutPanel.Location = new Point(0, 0);
-            ContentLayoutPanel.Name = "ContentLayoutPanel";
-            ContentLayoutPanel.RowCount = 5;
-            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 54F));
-            ContentLayoutPanel.RowStyles.Add(new RowStyle());
-            ContentLayoutPanel.RowStyles.Add(new RowStyle());
-            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            ContentLayoutPanel.Size = new Size(841, 465);
-            ContentLayoutPanel.TabIndex = 2;
+            pnlFormContent.AutoSize = true;
+            pnlFormContent.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            pnlFormContent.ColumnCount = 1;
+            pnlFormContent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            pnlFormContent.Controls.Add(ContentHeaderPanel, 0, 0);
+            pnlFormContent.Controls.Add(ContentTagPanel, 0, 1);
+            pnlFormContent.Controls.Add(ContentRecContainer, 0, 4);
+            pnlFormContent.Controls.Add(tableLayoutPanel1, 0, 2);
+            pnlFormContent.Dock = DockStyle.Fill;
+            pnlFormContent.Location = new Point(0, 0);
+            pnlFormContent.Name = "pnlFormContent";
+            pnlFormContent.RowCount = 5;
+            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
+            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
+            pnlFormContent.RowStyles.Add(new RowStyle());
+            pnlFormContent.RowStyles.Add(new RowStyle());
+            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            pnlFormContent.Size = new Size(841, 465);
+            pnlFormContent.TabIndex = 2;
             // 
             // ContentRecContainer
             // 
-            ContentRecContainer.Controls.Add(btnAddRecipe);
-            ContentRecContainer.Controls.Add(ContentRecPanel);
+            ContentRecContainer.Controls.Add(roundButton1);
+            ContentRecContainer.Controls.Add(pnlRecipes);
             ContentRecContainer.Dock = DockStyle.Fill;
-            ContentRecContainer.Location = new Point(2, 146);
+            ContentRecContainer.Location = new Point(2, 166);
             ContentRecContainer.Margin = new Padding(0);
             ContentRecContainer.Name = "ContentRecContainer";
-            ContentRecContainer.Size = new Size(837, 317);
+            ContentRecContainer.Size = new Size(837, 297);
             ContentRecContainer.TabIndex = 13;
             // 
-            // btnAddRecipe
+            // roundButton1
             // 
-            btnAddRecipe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddRecipe.BackColor = Color.LightGray;
-            btnAddRecipe.Cursor = Cursors.Hand;
-            btnAddRecipe.FlatAppearance.BorderSize = 0;
-            btnAddRecipe.FlatStyle = FlatStyle.Flat;
-            btnAddRecipe.Location = new Point(751, 241);
-            btnAddRecipe.Margin = new Padding(12);
-            btnAddRecipe.Name = "btnAddRecipe";
-            btnAddRecipe.Size = new Size(64, 64);
-            btnAddRecipe.TabIndex = 0;
-            btnAddRecipe.Text = "➕";
-            btnAddRecipe.UseVisualStyleBackColor = false;
+            roundButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            roundButton1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            roundButton1.Location = new Point(742, 207);
+            roundButton1.Name = "roundButton1";
+            roundButton1.Size = new Size(70, 70);
+            roundButton1.TabIndex = 0;
+            roundButton1.Text = "➕";
             // 
-            // ContentRecPanel
+            // pnlRecipes
             // 
-            ContentRecPanel.AutoScroll = true;
-            ContentRecPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ContentRecPanel.ColumnCount = 4;
-            ContentRecPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            ContentRecPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            ContentRecPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            ContentRecPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            ContentRecPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            ContentRecPanel.Dock = DockStyle.Fill;
-            ContentRecPanel.Location = new Point(0, 0);
-            ContentRecPanel.Margin = new Padding(0);
-            ContentRecPanel.Name = "ContentRecPanel";
-            ContentRecPanel.RowCount = 5;
-            ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 180F));
-            ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
-            ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
-            ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
-            ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
-            ContentRecPanel.Size = new Size(837, 317);
-            ContentRecPanel.TabIndex = 3;
+            pnlRecipes.AutoScroll = true;
+            pnlRecipes.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            pnlRecipes.ColumnCount = 4;
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            pnlRecipes.Dock = DockStyle.Fill;
+            pnlRecipes.Location = new Point(0, 0);
+            pnlRecipes.Margin = new Padding(0);
+            pnlRecipes.Name = "pnlRecipes";
+            pnlRecipes.RowCount = 5;
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 180F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            pnlRecipes.Size = new Size(837, 297);
+            pnlRecipes.TabIndex = 4;
             // 
-            // ContentSortPanel
+            // tableLayoutPanel1
             // 
-            ContentSortPanel.AutoSize = true;
-            ContentSortPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ContentSortPanel.Controls.Add(cboContentSort);
-            ContentSortPanel.Controls.Add(ContentSortLabel);
-            ContentSortPanel.Dock = DockStyle.Right;
-            ContentSortPanel.Location = new Point(565, 108);
-            ContentSortPanel.Margin = new Padding(0);
-            ContentSortPanel.Name = "ContentSortPanel";
-            ContentSortPanel.Size = new Size(274, 34);
-            ContentSortPanel.TabIndex = 2;
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 147F));
+            tableLayoutPanel1.Controls.Add(cboContentSort, 3, 0);
+            tableLayoutPanel1.Controls.Add(label1, 2, 0);
+            tableLayoutPanel1.Controls.Add(btnShoppingList, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            tableLayoutPanel1.Location = new Point(10, 123);
+            tableLayoutPanel1.Margin = new Padding(8, 3, 29, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(800, 36);
+            tableLayoutPanel1.TabIndex = 14;
             // 
             // cboContentSort
             // 
-            cboContentSort.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cboContentSort.Dock = DockStyle.Fill;
             cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboContentSort.Location = new Point(125, 3);
+            cboContentSort.Location = new Point(656, 3);
             cboContentSort.Name = "cboContentSort";
-            cboContentSort.Size = new Size(146, 28);
+            cboContentSort.Size = new Size(141, 28);
             cboContentSort.TabIndex = 1;
             // 
-            // ContentSortLabel
+            // label1
             // 
-            ContentSortLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ContentSortLabel.AutoSize = true;
-            ContentSortLabel.Location = new Point(3, 6);
-            ContentSortLabel.Name = "ContentSortLabel";
-            ContentSortLabel.Size = new Size(124, 20);
-            ContentSortLabel.TabIndex = 0;
-            ContentSortLabel.Text = "Сортировать по:";
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Location = new Point(526, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(124, 36);
+            label1.TabIndex = 2;
+            label1.Text = "Сортировать по:";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // btnShoppingList
+            // 
+            btnShoppingList.AutoSize = true;
+            btnShoppingList.Location = new Point(3, 3);
+            btnShoppingList.Name = "btnShoppingList";
+            btnShoppingList.Size = new Size(140, 30);
+            btnShoppingList.TabIndex = 3;
+            btnShoppingList.Text = "Список покупок";
+            btnShoppingList.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel4
             // 
@@ -428,8 +419,8 @@
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
             ClientSize = new Size(841, 465);
-            Controls.Add(UserLayoutPanel);
-            Controls.Add(ContentLayoutPanel);
+            Controls.Add(pnlUser);
+            Controls.Add(pnlFormContent);
             MinimumSize = new Size(600, 400);
             Name = "MainForm";
             Text = "Главная форма";
@@ -439,16 +430,16 @@
             ContentHeaderPanel.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            UserLayoutPanel.ResumeLayout(false);
-            UserLayoutPanel.PerformLayout();
+            pnlUser.ResumeLayout(false);
+            pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picUser).EndInit();
-            UserSlideLayoutPanel.ResumeLayout(false);
+            pnlSlideMenu.ResumeLayout(false);
             ContentTagPanel.ResumeLayout(false);
-            ContentLayoutPanel.ResumeLayout(false);
-            ContentLayoutPanel.PerformLayout();
+            pnlFormContent.ResumeLayout(false);
+            pnlFormContent.PerformLayout();
             ContentRecContainer.ResumeLayout(false);
-            ContentSortPanel.ResumeLayout(false);
-            ContentSortPanel.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             tableLayoutPanel7.ResumeLayout(false);
@@ -462,28 +453,28 @@
         private Panel ContentHeaderPanel;
         private PictureBox picUser;
         private Label lblUser;
-        private TableLayoutPanel UserLayoutPanel;
-        private Label lblShoppingList;
+        private TableLayoutPanel pnlUser;
         private Panel ContentTagPanel;
-        private TableLayoutPanel ContentLayoutPanel;
-        private FlowLayoutPanel ContentTagFlowPanel;
-        private Panel ContentSortPanel;
+        private TableLayoutPanel pnlFormContent;
+        private FlowLayoutPanel pnlTags;
         private ComboBox cboContentSort;
-        private Label ContentSortLabel;
         private TableLayoutPanel tableLayoutPanel4;
         private PictureBox pictureBox4;
         private Label label5;
         private TableLayoutPanel tableLayoutPanel7;
         private PictureBox pictureBox6;
         private Label label7;
-        private TableLayoutPanel UserSlideLayoutPanel;
+        private TableLayoutPanel pnlSlideMenu;
         private Label lblExit;
         private Label lblHelp;
         private Label lblChangeProfile;
-        private TableLayoutPanel ContentRecPanel;
-        private Button btnAddRecipe;
         private Panel ContentRecContainer;
         private TextBox textBox1;
         private Panel panel1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label1;
+        private Button btnShoppingList;
+        private RoundButton roundButton1;
+        private TableLayoutPanel pnlRecipes;
     }
 }
