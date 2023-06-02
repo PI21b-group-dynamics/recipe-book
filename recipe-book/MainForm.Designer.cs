@@ -30,26 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             ContentHeaderPanel = new Panel();
-            ContentHeaderSearchPanel = new Panel();
-            ContentHeaderSearchPB = new PictureBox();
-            ContentHeaderSearchTB = new TextBox();
+            panel1 = new Panel();
+            textBox1 = new TextBox();
             UserLayoutPanel = new TableLayoutPanel();
-            UserPictureBox = new PictureBox();
+            picUser = new PictureBox();
             UserSlideLayoutPanel = new TableLayoutPanel();
-            LabelChangeProfile = new Label();
-            LabelHelp = new Label();
-            LabelExit = new Label();
-            UserLabel = new Label();
-            BuyListLabel = new Label();
+            lblChangeProfile = new Label();
+            lblHelp = new Label();
+            lblExit = new Label();
+            lblUser = new Label();
+            lblShoppingList = new Label();
             ContentTagPanel = new Panel();
             ContentTagFlowPanel = new FlowLayoutPanel();
             ContentLayoutPanel = new TableLayoutPanel();
-            ContentSortPanel = new Panel();
-            ContentSortComboBox = new ComboBox();
-            ContentSortLabel = new Label();
             ContentRecContainer = new Panel();
-            AddRecipeButton = new Button();
+            btnAddRecipe = new Button();
             ContentRecPanel = new TableLayoutPanel();
+            ContentSortPanel = new Panel();
+            cboContentSort = new ComboBox();
+            ContentSortLabel = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             pictureBox4 = new PictureBox();
             label5 = new Label();
@@ -57,15 +56,14 @@
             pictureBox6 = new PictureBox();
             label7 = new Label();
             ContentHeaderPanel.SuspendLayout();
-            ContentHeaderSearchPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)ContentHeaderSearchPB).BeginInit();
+            panel1.SuspendLayout();
             UserLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)UserPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picUser).BeginInit();
             UserSlideLayoutPanel.SuspendLayout();
             ContentTagPanel.SuspendLayout();
             ContentLayoutPanel.SuspendLayout();
-            ContentSortPanel.SuspendLayout();
             ContentRecContainer.SuspendLayout();
+            ContentSortPanel.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             tableLayoutPanel7.SuspendLayout();
@@ -74,52 +72,32 @@
             // 
             // ContentHeaderPanel
             // 
-            ContentHeaderPanel.Controls.Add(ContentHeaderSearchPanel);
+            ContentHeaderPanel.Controls.Add(panel1);
             ContentHeaderPanel.Dock = DockStyle.Fill;
             ContentHeaderPanel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ContentHeaderPanel.Location = new Point(2, 2);
             ContentHeaderPanel.Margin = new Padding(0);
             ContentHeaderPanel.Name = "ContentHeaderPanel";
-            ContentHeaderPanel.Size = new Size(580, 48);
+            ContentHeaderPanel.Size = new Size(837, 48);
             ContentHeaderPanel.TabIndex = 0;
             // 
-            // ContentHeaderSearchPanel
+            // panel1
             // 
-            ContentHeaderSearchPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ContentHeaderSearchPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ContentHeaderSearchPanel.BackColor = SystemColors.Window;
-            ContentHeaderSearchPanel.BorderStyle = BorderStyle.FixedSingle;
-            ContentHeaderSearchPanel.Controls.Add(ContentHeaderSearchPB);
-            ContentHeaderSearchPanel.Controls.Add(ContentHeaderSearchTB);
-            ContentHeaderSearchPanel.Location = new Point(390, 14);
-            ContentHeaderSearchPanel.Margin = new Padding(3, 14, 3, 14);
-            ContentHeaderSearchPanel.Name = "ContentHeaderSearchPanel";
-            ContentHeaderSearchPanel.Size = new Size(180, 22);
-            ContentHeaderSearchPanel.TabIndex = 5;
+            panel1.AutoSize = true;
+            panel1.Controls.Add(textBox1);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(563, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(274, 48);
+            panel1.TabIndex = 1;
             // 
-            // ContentHeaderSearchPB
+            // textBox1
             // 
-            ContentHeaderSearchPB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            ContentHeaderSearchPB.Image = Properties.Resources.search_icon;
-            ContentHeaderSearchPB.InitialImage = (Image)resources.GetObject("ContentHeaderSearchPB.InitialImage");
-            ContentHeaderSearchPB.Location = new Point(2, 2);
-            ContentHeaderSearchPB.Margin = new Padding(2);
-            ContentHeaderSearchPB.Name = "ContentHeaderSearchPB";
-            ContentHeaderSearchPB.Size = new Size(16, 16);
-            ContentHeaderSearchPB.SizeMode = PictureBoxSizeMode.StretchImage;
-            ContentHeaderSearchPB.TabIndex = 4;
-            ContentHeaderSearchPB.TabStop = false;
-            // 
-            // ContentHeaderSearchTB
-            // 
-            ContentHeaderSearchTB.BorderStyle = BorderStyle.None;
-            ContentHeaderSearchTB.Dock = DockStyle.Right;
-            ContentHeaderSearchTB.Location = new Point(25, 0);
-            ContentHeaderSearchTB.Margin = new Padding(0);
-            ContentHeaderSearchTB.Name = "ContentHeaderSearchTB";
-            ContentHeaderSearchTB.PlaceholderText = "Найти...";
-            ContentHeaderSearchTB.Size = new Size(153, 25);
-            ContentHeaderSearchTB.TabIndex = 3;
+            textBox1.Location = new Point(3, 9);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "🔍 Найти...";
+            textBox1.Size = new Size(268, 32);
+            textBox1.TabIndex = 0;
             // 
             // UserLayoutPanel
             // 
@@ -128,10 +106,10 @@
             UserLayoutPanel.ColumnCount = 2;
             UserLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 48F));
             UserLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 156F));
-            UserLayoutPanel.Controls.Add(UserPictureBox, 0, 0);
+            UserLayoutPanel.Controls.Add(picUser, 0, 0);
             UserLayoutPanel.Controls.Add(UserSlideLayoutPanel, 0, 2);
-            UserLayoutPanel.Controls.Add(UserLabel, 1, 0);
-            UserLayoutPanel.Controls.Add(BuyListLabel, 0, 1);
+            UserLayoutPanel.Controls.Add(lblUser, 1, 0);
+            UserLayoutPanel.Controls.Add(lblShoppingList, 0, 1);
             UserLayoutPanel.Location = new Point(3, 3);
             UserLayoutPanel.Name = "UserLayoutPanel";
             UserLayoutPanel.RowCount = 3;
@@ -146,17 +124,17 @@
             // 
             // UserPictureBox
             // 
-            UserPictureBox.Dock = DockStyle.Fill;
-            UserPictureBox.Image = Properties.Resources.user_icon;
-            UserPictureBox.InitialImage = (Image)resources.GetObject("UserPictureBox.InitialImage");
-            UserPictureBox.Location = new Point(4, 4);
-            UserPictureBox.Margin = new Padding(4);
-            UserPictureBox.Name = "UserPictureBox";
-            UserLayoutPanel.SetRowSpan(UserPictureBox, 2);
-            UserPictureBox.Size = new Size(40, 40);
-            UserPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            UserPictureBox.TabIndex = 1;
-            UserPictureBox.TabStop = false;
+            picUser.Dock = DockStyle.Fill;
+            picUser.Image = Properties.Resources.user_icon;
+            picUser.InitialImage = (Image)resources.GetObject("UserPictureBox.InitialImage");
+            picUser.Location = new Point(4, 4);
+            picUser.Margin = new Padding(4);
+            picUser.Name = "UserPictureBox";
+            UserLayoutPanel.SetRowSpan(picUser, 2);
+            picUser.Size = new Size(40, 40);
+            picUser.SizeMode = PictureBoxSizeMode.StretchImage;
+            picUser.TabIndex = 1;
+            picUser.TabStop = false;
             // 
             // UserSlideLayoutPanel
             // 
@@ -164,9 +142,9 @@
             UserSlideLayoutPanel.ColumnCount = 1;
             UserLayoutPanel.SetColumnSpan(UserSlideLayoutPanel, 2);
             UserSlideLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            UserSlideLayoutPanel.Controls.Add(LabelChangeProfile, 0, 0);
-            UserSlideLayoutPanel.Controls.Add(LabelHelp, 0, 1);
-            UserSlideLayoutPanel.Controls.Add(LabelExit, 0, 2);
+            UserSlideLayoutPanel.Controls.Add(lblChangeProfile, 0, 0);
+            UserSlideLayoutPanel.Controls.Add(lblHelp, 0, 1);
+            UserSlideLayoutPanel.Controls.Add(lblExit, 0, 2);
             UserSlideLayoutPanel.Location = new Point(0, 48);
             UserSlideLayoutPanel.Margin = new Padding(0);
             UserSlideLayoutPanel.Name = "UserSlideLayoutPanel";
@@ -181,69 +159,70 @@
             UserSlideLayoutPanel.Visible = false;
             UserSlideLayoutPanel.MouseLeave += UserSlideLayoutPanel_MouseLeave;
             // 
-            // LabelChangeProfile
+            // lblChangeProfile
             // 
-            LabelChangeProfile.Cursor = Cursors.Hand;
-            LabelChangeProfile.Dock = DockStyle.Fill;
-            LabelChangeProfile.Location = new Point(32, 4);
-            LabelChangeProfile.Margin = new Padding(8, 4, 8, 4);
-            LabelChangeProfile.Name = "LabelChangeProfile";
-            LabelChangeProfile.Size = new Size(140, 24);
-            LabelChangeProfile.TabIndex = 4;
-            LabelChangeProfile.Text = "Редактировать профиль";
-            LabelChangeProfile.TextAlign = ContentAlignment.MiddleCenter;
+            lblChangeProfile.Cursor = Cursors.Hand;
+            lblChangeProfile.Dock = DockStyle.Fill;
+            lblChangeProfile.Location = new Point(32, 4);
+            lblChangeProfile.Margin = new Padding(8, 4, 8, 4);
+            lblChangeProfile.Name = "lblChangeProfile";
+            lblChangeProfile.Size = new Size(140, 24);
+            lblChangeProfile.TabIndex = 4;
+            lblChangeProfile.Text = "Редактировать профиль";
+            lblChangeProfile.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // LabelHelp
+            // lblHelp
             // 
-            LabelHelp.Cursor = Cursors.Hand;
-            LabelHelp.Dock = DockStyle.Fill;
-            LabelHelp.Location = new Point(32, 36);
-            LabelHelp.Margin = new Padding(8, 4, 8, 4);
-            LabelHelp.Name = "LabelHelp";
-            LabelHelp.Size = new Size(140, 24);
-            LabelHelp.TabIndex = 5;
-            LabelHelp.Text = "Справка";
-            LabelHelp.TextAlign = ContentAlignment.MiddleCenter;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Dock = DockStyle.Fill;
+            lblHelp.Location = new Point(32, 36);
+            lblHelp.Margin = new Padding(8, 4, 8, 4);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(140, 24);
+            lblHelp.TabIndex = 5;
+            lblHelp.Text = "Справка";
+            lblHelp.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // LabelExit
+            // lblExit
             // 
-            LabelExit.Cursor = Cursors.Hand;
-            LabelExit.Dock = DockStyle.Fill;
-            LabelExit.Location = new Point(32, 68);
-            LabelExit.Margin = new Padding(8, 4, 8, 4);
-            LabelExit.Name = "LabelExit";
-            LabelExit.Size = new Size(140, 24);
-            LabelExit.TabIndex = 6;
-            LabelExit.Text = "Выйти";
-            LabelExit.TextAlign = ContentAlignment.MiddleCenter;
+            lblExit.Cursor = Cursors.Hand;
+            lblExit.Dock = DockStyle.Fill;
+            lblExit.Location = new Point(32, 68);
+            lblExit.Margin = new Padding(8, 4, 8, 4);
+            lblExit.Name = "lblExit";
+            lblExit.Size = new Size(140, 24);
+            lblExit.TabIndex = 6;
+            lblExit.Text = "Выйти";
+            lblExit.TextAlign = ContentAlignment.MiddleCenter;
+            lblExit.Click += lblExit_Click;
             // 
             // UserLabel
             // 
-            UserLabel.AutoSize = true;
-            UserLabel.Dock = DockStyle.Left;
-            UserLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            UserLabel.Location = new Point(52, 8);
-            UserLabel.Margin = new Padding(4, 8, 4, 0);
-            UserLabel.Name = "UserLabel";
-            UserLabel.Size = new Size(123, 16);
-            UserLabel.TabIndex = 0;
-            UserLabel.Text = "ИМЯ ПОЛЬЗОВАТЕЛЯ";
-            UserLabel.TextAlign = ContentAlignment.MiddleLeft;
+            lblUser.AutoSize = true;
+            lblUser.Dock = DockStyle.Left;
+            lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUser.Location = new Point(52, 8);
+            lblUser.Margin = new Padding(4, 8, 4, 0);
+            lblUser.Name = "UserLabel";
+            lblUser.Size = new Size(123, 16);
+            lblUser.TabIndex = 0;
+            lblUser.Text = "ИМЯ ПОЛЬЗОВАТЕЛЯ";
+            lblUser.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // BuyListLabel
+            // lblShoppingList
             // 
-            BuyListLabel.AutoSize = true;
-            BuyListLabel.Cursor = Cursors.Hand;
-            BuyListLabel.Dock = DockStyle.Left;
-            BuyListLabel.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            BuyListLabel.Location = new Point(52, 24);
-            BuyListLabel.Margin = new Padding(4, 0, 4, 8);
-            BuyListLabel.Name = "BuyListLabel";
-            BuyListLabel.Size = new Size(120, 16);
-            BuyListLabel.TabIndex = 0;
-            BuyListLabel.Text = "Список покупок";
-            BuyListLabel.TextAlign = ContentAlignment.MiddleLeft;
-            BuyListLabel.Click += BuyListLabel_Click;
+            lblShoppingList.AutoSize = true;
+            lblShoppingList.Cursor = Cursors.Hand;
+            lblShoppingList.Dock = DockStyle.Left;
+            lblShoppingList.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            lblShoppingList.Location = new Point(52, 24);
+            lblShoppingList.Margin = new Padding(4, 0, 4, 8);
+            lblShoppingList.Name = "lblShoppingList";
+            lblShoppingList.Size = new Size(120, 16);
+            lblShoppingList.TabIndex = 0;
+            lblShoppingList.Text = "Список покупок";
+            lblShoppingList.TextAlign = ContentAlignment.MiddleLeft;
+            lblShoppingList.Click += lblShoppingList_Click;
             // 
             // ContentTagPanel
             // 
@@ -253,7 +232,7 @@
             ContentTagPanel.Location = new Point(2, 52);
             ContentTagPanel.Margin = new Padding(0);
             ContentTagPanel.Name = "ContentTagPanel";
-            ContentTagPanel.Size = new Size(580, 48);
+            ContentTagPanel.Size = new Size(837, 48);
             ContentTagPanel.TabIndex = 1;
             // 
             // ContentTagFlowPanel
@@ -264,7 +243,7 @@
             ContentTagFlowPanel.Location = new Point(0, 0);
             ContentTagFlowPanel.Margin = new Padding(0);
             ContentTagFlowPanel.Name = "ContentTagFlowPanel";
-            ContentTagFlowPanel.Size = new Size(580, 48);
+            ContentTagFlowPanel.Size = new Size(837, 48);
             ContentTagFlowPanel.TabIndex = 3;
             ContentTagFlowPanel.WrapContents = false;
             // 
@@ -276,77 +255,45 @@
             ContentLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             ContentLayoutPanel.Controls.Add(ContentHeaderPanel, 0, 0);
             ContentLayoutPanel.Controls.Add(ContentTagPanel, 0, 1);
-            ContentLayoutPanel.Controls.Add(ContentSortPanel, 0, 2);
             ContentLayoutPanel.Controls.Add(ContentRecContainer, 0, 4);
+            ContentLayoutPanel.Controls.Add(ContentSortPanel, 0, 2);
             ContentLayoutPanel.Dock = DockStyle.Fill;
             ContentLayoutPanel.Location = new Point(0, 0);
             ContentLayoutPanel.Name = "ContentLayoutPanel";
             ContentLayoutPanel.RowCount = 5;
             ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
             ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+            ContentLayoutPanel.RowStyles.Add(new RowStyle());
             ContentLayoutPanel.RowStyles.Add(new RowStyle());
             ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            ContentLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            ContentLayoutPanel.Size = new Size(584, 361);
+            ContentLayoutPanel.Size = new Size(841, 465);
             ContentLayoutPanel.TabIndex = 2;
-            // 
-            // ContentSortPanel
-            // 
-            ContentSortPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ContentSortPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ContentSortPanel.Controls.Add(ContentSortComboBox);
-            ContentSortPanel.Controls.Add(ContentSortLabel);
-            ContentSortPanel.Location = new Point(345, 102);
-            ContentSortPanel.Margin = new Padding(0);
-            ContentSortPanel.Name = "ContentSortPanel";
-            ContentSortPanel.Size = new Size(237, 29);
-            ContentSortPanel.TabIndex = 2;
-            // 
-            // ContentSortComboBox
-            // 
-            ContentSortComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ContentSortComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            ContentSortComboBox.Location = new Point(113, 3);
-            ContentSortComboBox.Name = "ContentSortComboBox";
-            ContentSortComboBox.Size = new Size(121, 28);
-            ContentSortComboBox.TabIndex = 1;
-            // 
-            // ContentSortLabel
-            // 
-            ContentSortLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ContentSortLabel.AutoSize = true;
-            ContentSortLabel.Location = new Point(9, 6);
-            ContentSortLabel.Name = "ContentSortLabel";
-            ContentSortLabel.Size = new Size(124, 20);
-            ContentSortLabel.TabIndex = 0;
-            ContentSortLabel.Text = "Сортировать по:";
             // 
             // ContentRecContainer
             // 
-            ContentRecContainer.Controls.Add(AddRecipeButton);
+            ContentRecContainer.Controls.Add(btnAddRecipe);
             ContentRecContainer.Controls.Add(ContentRecPanel);
             ContentRecContainer.Dock = DockStyle.Fill;
-            ContentRecContainer.Location = new Point(2, 135);
+            ContentRecContainer.Location = new Point(2, 140);
             ContentRecContainer.Margin = new Padding(0);
             ContentRecContainer.Name = "ContentRecContainer";
-            ContentRecContainer.Size = new Size(580, 224);
+            ContentRecContainer.Size = new Size(837, 323);
             ContentRecContainer.TabIndex = 13;
             // 
-            // AddRecipeButton
+            // btnAddRecipe
             // 
-            AddRecipeButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AddRecipeButton.BackColor = Color.LightGray;
-            AddRecipeButton.Cursor = Cursors.Hand;
-            AddRecipeButton.FlatAppearance.BorderSize = 0;
-            AddRecipeButton.FlatStyle = FlatStyle.Flat;
-            AddRecipeButton.Location = new Point(526, 180);
-            AddRecipeButton.Margin = new Padding(12);
-            AddRecipeButton.Name = "AddRecipeButton";
-            AddRecipeButton.Size = new Size(32, 32);
-            AddRecipeButton.TabIndex = 0;
-            AddRecipeButton.Text = "+";
-            AddRecipeButton.UseVisualStyleBackColor = false;
+            btnAddRecipe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAddRecipe.BackColor = Color.LightGray;
+            btnAddRecipe.Cursor = Cursors.Hand;
+            btnAddRecipe.FlatAppearance.BorderSize = 0;
+            btnAddRecipe.FlatStyle = FlatStyle.Flat;
+            btnAddRecipe.Location = new Point(751, 247);
+            btnAddRecipe.Margin = new Padding(12);
+            btnAddRecipe.Name = "btnAddRecipe";
+            btnAddRecipe.Size = new Size(64, 64);
+            btnAddRecipe.TabIndex = 0;
+            btnAddRecipe.Text = "➕";
+            btnAddRecipe.UseVisualStyleBackColor = false;
             // 
             // ContentRecPanel
             // 
@@ -368,8 +315,40 @@
             ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
             ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
             ContentRecPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
-            ContentRecPanel.Size = new Size(580, 224);
+            ContentRecPanel.Size = new Size(837, 323);
             ContentRecPanel.TabIndex = 3;
+            // 
+            // ContentSortPanel
+            // 
+            ContentSortPanel.AutoSize = true;
+            ContentSortPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ContentSortPanel.Controls.Add(cboContentSort);
+            ContentSortPanel.Controls.Add(ContentSortLabel);
+            ContentSortPanel.Dock = DockStyle.Right;
+            ContentSortPanel.Location = new Point(565, 102);
+            ContentSortPanel.Margin = new Padding(0);
+            ContentSortPanel.Name = "ContentSortPanel";
+            ContentSortPanel.Size = new Size(274, 34);
+            ContentSortPanel.TabIndex = 2;
+            // 
+            // ContentSortComboBox
+            // 
+            cboContentSort.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboContentSort.Location = new Point(125, 3);
+            cboContentSort.Name = "ContentSortComboBox";
+            cboContentSort.Size = new Size(146, 28);
+            cboContentSort.TabIndex = 1;
+            // 
+            // ContentSortLabel
+            // 
+            ContentSortLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ContentSortLabel.AutoSize = true;
+            ContentSortLabel.Location = new Point(3, 6);
+            ContentSortLabel.Name = "ContentSortLabel";
+            ContentSortLabel.Size = new Size(124, 20);
+            ContentSortLabel.TabIndex = 0;
+            ContentSortLabel.Text = "Сортировать по:";
             // 
             // tableLayoutPanel4
             // 
@@ -449,28 +428,29 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
-            ClientSize = new Size(584, 361);
+            ClientSize = new Size(841, 465);
             Controls.Add(UserLayoutPanel);
             Controls.Add(ContentLayoutPanel);
             MinimumSize = new Size(600, 400);
             Name = "MainForm";
             Text = "Главная форма";
+            Load += MainForm_Load;
             MouseLeave += MainForm_MouseLeave;
             ContentHeaderPanel.ResumeLayout(false);
-            ContentHeaderSearchPanel.ResumeLayout(false);
-            ContentHeaderSearchPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)ContentHeaderSearchPB).EndInit();
+            ContentHeaderPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             UserLayoutPanel.ResumeLayout(false);
             UserLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)UserPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picUser).EndInit();
             UserSlideLayoutPanel.ResumeLayout(false);
             ContentTagPanel.ResumeLayout(false);
             ContentTagPanel.PerformLayout();
             ContentLayoutPanel.ResumeLayout(false);
             ContentLayoutPanel.PerformLayout();
+            ContentRecContainer.ResumeLayout(false);
             ContentSortPanel.ResumeLayout(false);
             ContentSortPanel.PerformLayout();
-            ContentRecContainer.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             tableLayoutPanel7.ResumeLayout(false);
@@ -482,18 +462,15 @@
         #endregion
 
         private Panel ContentHeaderPanel;
-        private PictureBox UserPictureBox;
-        private Label UserLabel;
+        private PictureBox picUser;
+        private Label lblUser;
         private TableLayoutPanel UserLayoutPanel;
-        private Label BuyListLabel;
-        private Panel ContentHeaderSearchPanel;
-        private PictureBox ContentHeaderSearchPB;
-        private TextBox ContentHeaderSearchTB;
+        private Label lblShoppingList;
         private Panel ContentTagPanel;
         private TableLayoutPanel ContentLayoutPanel;
         private FlowLayoutPanel ContentTagFlowPanel;
         private Panel ContentSortPanel;
-        private ComboBox ContentSortComboBox;
+        private ComboBox cboContentSort;
         private Label ContentSortLabel;
         private TableLayoutPanel tableLayoutPanel4;
         private PictureBox pictureBox4;
@@ -502,11 +479,13 @@
         private PictureBox pictureBox6;
         private Label label7;
         private TableLayoutPanel UserSlideLayoutPanel;
-        private Label LabelExit;
-        private Label LabelHelp;
-        private Label LabelChangeProfile;
+        private Label lblExit;
+        private Label lblHelp;
+        private Label lblChangeProfile;
         private TableLayoutPanel ContentRecPanel;
-        private Button AddRecipeButton;
+        private Button btnAddRecipe;
         private Panel ContentRecContainer;
+        private TextBox textBox1;
+        private Panel panel1;
     }
 }

@@ -1,8 +1,5 @@
-﻿using Microsoft.VisualBasic.Logging;
-using System.Data.SQLite;
-using System.Reflection.Metadata.Ecma335;
+﻿using System.Data.SQLite;
 using System.Runtime.InteropServices;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace recipe_book
 {
@@ -10,64 +7,10 @@ namespace recipe_book
     {
 
         private Color UserLayoutPanelOriginalBackColor;
-        private List<TableLayoutPanel> receipts = new List<TableLayoutPanel>();
+        private readonly List<TableLayoutPanel> recipes = new();
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
-
-        /// <summary>
-        /// Генерация рецепта
-        /// </summary>
-        /// <param name="caption">Заголовок рецепта</param>
-        /// <returns></returns>
-        /// ToDo: Добавить как параметр изображение рецепта
-        public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
-        {
-            TableLayoutPanel panel = new TableLayoutPanel();
-            panel.ColumnCount = 2;
-            panel.RowCount = 2;
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20));
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
-            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-            panel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            panel.Dock = DockStyle.Fill;
-
-            Label label = new Label();
-            label.AutoSize = false;
-            label.Dock = DockStyle.Fill;
-            label.Text = caption;
-            label.TextAlign = ContentAlignment.MiddleCenter;
-            panel.Margin = new Padding(3);
-            panel.Controls.Add(label);
-            panel.SetColumn(label, 0);
-            panel.SetRow(label, 0);
-            panel.SetColumnSpan(label, 1);
-            panel.SetRowSpan(label, 1);
-
-            Button btn = new Button();
-            btn.Text = "≡";
-            btn.Dock = DockStyle.Fill;
-            btn.Margin = new Padding(0);
-            panel.Controls.Add(btn);
-            panel.SetColumn(btn, 1);
-            panel.SetRow(btn, 0);
-            panel.SetColumnSpan(btn, 1);
-            panel.SetRowSpan(btn, 1);
-
-            PictureBox pb = new PictureBox();
-            pb.Dock = DockStyle.Fill;
-            pb.Margin = new Padding(0);
-            panel.Controls.Add(pb);
-            panel.SetColumn(pb, 0);
-            panel.SetRow(pb, 1);
-            panel.SetColumnSpan(pb, 2);
-            panel.SetRowSpan(pb, 1);
-            panel.Margin = new Padding(12);
-
-            return (panel, label, btn, pb);
-        }
 
         public MainForm()
         {
@@ -90,7 +33,7 @@ namespace recipe_book
 
                 // Генерация рецепта
                 (TableLayoutPanel panel, Label label, Button btn, PictureBox pb) = BuildRecipeControls($"Рецепт {ContentRecPanel.Controls.Count + 1}");
-                receipts.Add(panel);
+                recipes.Add(panel);
 
                 // Добавление рецепта на форму
                 ContentRecPanel.Controls.Add(panel);
@@ -106,18 +49,92 @@ namespace recipe_book
             // Заполнение списка тегов
             for (int i = 0; i < 32; i += 1)
             {
-                Button button = new Button();
-                button.Text = $"Тег {i + 1}";
+                Button button = new() { Text = $"Тег {i + 1}" };
                 ContentTagFlowPanel.Controls.Add(button);
             }
 
             // Заполнение методов сортировки
-            ContentSortComboBox.Items.AddRange(new string[] { "Дате создания", "Дате изменения", "Рейтингу" });
-            ContentSortComboBox.Text = "Дате создания";
+            cboContentSort.Items.AddRange(new string[] { "Дате создания", "Дате изменения", "Рейтингу" });
+            cboContentSort.Text = "Дате создания";
 
             // Скругление краев у изображения пользователя, а также кнопки создания рецепта
-            UserPictureBox.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, UserPictureBox.Width, UserPictureBox.Height, UserPictureBox.Width, UserPictureBox.Height));
-            AddRecipeButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, AddRecipeButton.Width, AddRecipeButton.Height, AddRecipeButton.Width, AddRecipeButton.Height));
+            picUser.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, picUser.Width, picUser.Height, picUser.Width, picUser.Height));
+            btnAddRecipe.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAddRecipe.Width, btnAddRecipe.Height, btnAddRecipe.Width, btnAddRecipe.Height));
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            AuthForm authForm = new();
+            if (authForm.ShowDialog() != DialogResult.OK)
+                return;
+            lblUser.Text = authForm.Login;
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DbModule.Conn.Dispose();
+        }
+
+        /// <summary>
+        /// Генерация рецепта
+        /// </summary>
+        /// <param name="caption">Заголовок рецепта</param>
+        /// <returns></returns>
+        /// ToDo: Добавить как параметр изображение рецепта
+        public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
+        {
+            TableLayoutPanel panel = new()
+            {
+                ColumnCount = 2,
+                RowCount = 2,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right,
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
+                Dock = DockStyle.Fill,
+                Margin = new Padding(3)
+            };
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20));
+            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
+            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+            Label label = new()
+            {
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                Text = caption,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            panel.Controls.Add(label);
+            panel.SetColumn(label, 0);
+            panel.SetRow(label, 0);
+            panel.SetColumnSpan(label, 1);
+            panel.SetRowSpan(label, 1);
+
+            Button btn = new()
+            {
+                Text = "❌",
+                Dock = DockStyle.Fill,
+                Margin = new Padding(0)
+            };
+            panel.Controls.Add(btn);
+            panel.SetColumn(btn, 1);
+            panel.SetRow(btn, 0);
+            panel.SetColumnSpan(btn, 1);
+            panel.SetRowSpan(btn, 1);
+
+            PictureBox pb = new()
+            {
+                Dock = DockStyle.Fill,
+                Margin = new Padding(0)
+            };
+            panel.Controls.Add(pb);
+            panel.SetColumn(pb, 0);
+            panel.SetRow(pb, 1);
+            panel.SetColumnSpan(pb, 2);
+            panel.SetRowSpan(pb, 1);
+            panel.Margin = new Padding(12);
+
+            return (panel, label, btn, pb);
         }
 
         /// <summary>
@@ -161,36 +178,16 @@ namespace recipe_book
                 HideUserPanel();
         }
 
-        private void BuyListLabel_Click(object sender, EventArgs e)
+        private void lblShoppingList_Click(object sender, EventArgs e)
         {
-            ShoppingListForm ShoppingList = new ShoppingListForm();
 
-            using (SQLiteConnection Connection = new SQLiteConnection("Data Source = Database.db"))
-            {
-                Connection.Open();
-                SQLiteCommand Command = new SQLiteCommand();
-                Command.Connection = Connection;
-
-                Command.CommandText = $"SELECT Id FROM USERS WHERE Login = '{UserLabel.Text}'";
-
-                using (SQLiteDataReader Reader = Command.ExecuteReader())
-                {
-                    Reader.Read();
-                    ShoppingList.UserID = Reader.GetInt32(0);
-                }
-            }
-
-            ShoppingList.Show();
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void lblExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        public void UserNameChanger(string UserName)
-        {
-            UserLabel.Text = UserName;
+            Hide();
+            MainForm_Load(sender, e);
+            Show();
         }
     }
 }
