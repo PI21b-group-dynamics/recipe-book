@@ -4,76 +4,81 @@ namespace recipe_book
 {
     public partial class AuthForm : Form
     {
+        public string Login { get => txtLogin.Text; }
+
         public AuthForm()
         {
             InitializeComponent();
-            DB_Initialization();
-        }
-
-        private void signInBtn_Click(object sender, EventArgs e)
-        {
-            if (loginInp.Text == "" || passwordInp.Text == "")
-            {
-                MessageBox.Show("Все текстовые поля должны быть заполнены", "Ошибка при авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
-            {
-                string Login = loginInp.Text;
-                string Password = passwordInp.Text;
-
-                string SQLExpression = $"SELECT Login FROM USERS WHERE Login = '{Login}' AND Password = '{Password}'";
-                using (SQLiteConnection Connection = new SQLiteConnection("Data Source = Database.db"))
-                {
-                    Connection.Open();
-
-                    SQLiteCommand Command = new SQLiteCommand(SQLExpression, Connection);
-                    using (SQLiteDataReader Reader = Command.ExecuteReader())
-                    {
-                        if (Reader.HasRows)
-                        {
-                            Hide();
-                            MainForm Main = new MainForm();
-                            Main.UserNameChanger(Login);
-                            Main.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Неверно введен логин и/или пароль", "Ошибка при авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void signUpBtn_Click(object sender, EventArgs e)
-        {
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.Show();
         }
 
         private void AuthForm_Load(object sender, EventArgs e)
         {
-            ActiveControl = signInBtn;
+            ActiveControl = btnSignIn;
         }
 
-        private void DB_Initialization()
+        private void authFields_TextChanged(object sender, EventArgs e)
         {
-            // Если файла БД нет, то создаем его и инициализируем БД
-            if (!File.Exists("Database.db"))
+            btnSignIn.Enabled = (txtLogin.TextLength > 0 || txtEmail.TextLength > 0) && txtPassword.TextLength > 0;
+            btnSignUp.Enabled = txtLogin.TextLength > 0 && txtEmail.TextLength > 0 && txtPassword.TextLength > 0;
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT login FROM Users
+                WHERE ($login = '' OR login = $login)
+                    AND ($email = '' OR email = $email)
+                    AND password = $password
+                LIMIT 1;
+                """,
+                new SQLiteParameter("login", txtLogin.Text),
+                new SQLiteParameter("email", txtEmail.Text),
+                new SQLiteParameter("password", txtPassword.Text)
+            );
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
             {
-                using (SQLiteConnection Connection = new SQLiteConnection("Data Source = Database.db"))
-                {
-                    Connection.Open();
-                    SQLiteCommand Command = new SQLiteCommand();
-                    Command.Connection = Connection;
-                    Command.CommandText = "CREATE TABLE USERS (Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, Login TEXT NOT NULL UNIQUE, " +
-                                          "Email TEXT NOT NULL UNIQUE, Password TEXT NOT NULL) ";
-                    Command.ExecuteNonQuery();
-                    Command.CommandText = "CREATE TABLE GROCERY_LIST (Id INTEGER NOT NULL, Products TEXT, FOREIGN KEY (Id) REFERENCES USERS(Id) ON DELETE CASCADE)";
-                    Command.ExecuteNonQuery();
-                }
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(
+                    caption: "Ошибка входа",
+                    text: "Учётная запись с такими данными не найдена.",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                INSERT INTO Users (login, email, password)
+                VALUES ($login, $email, $password)
+                """,
+                new SQLiteParameter("login", txtLogin.Text),
+                new SQLiteParameter("email", txtEmail.Text),
+                new SQLiteParameter("password", txtPassword.Text)
+            );
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(
+                    caption: "Ошибка регистрации",
+                    text: ex.Message,
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
+            finally
+            {
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
     }

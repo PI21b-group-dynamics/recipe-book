@@ -33,11 +33,12 @@ namespace recipe_book
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            loginInp = new TextBox();
-            passwordInp = new TextBox();
-            signInBtn = new Button();
-            signUpBtn = new Button();
             label1 = new Label();
+            btnSignIn = new Button();
+            txtPassword = new TextBox();
+            txtEmail = new TextBox();
+            txtLogin = new TextBox();
+            btnSignUp = new Button();
             linkLabel1 = new LinkLabel();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -46,91 +47,100 @@ namespace recipe_book
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(loginInp, 0, 0);
-            tableLayoutPanel1.Controls.Add(passwordInp, 0, 1);
-            tableLayoutPanel1.Controls.Add(signInBtn, 0, 3);
-            tableLayoutPanel1.Controls.Add(signUpBtn, 0, 5);
-            tableLayoutPanel1.Controls.Add(label1, 0, 4);
-            tableLayoutPanel1.Controls.Add(linkLabel1, 0, 6);
+            tableLayoutPanel1.Controls.Add(label1, 0, 5);
+            tableLayoutPanel1.Controls.Add(btnSignIn, 0, 4);
+            tableLayoutPanel1.Controls.Add(txtPassword, 0, 2);
+            tableLayoutPanel1.Controls.Add(txtEmail, 0, 1);
+            tableLayoutPanel1.Controls.Add(txtLogin, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnSignUp, 0, 6);
+            tableLayoutPanel1.Controls.Add(linkLabel1, 0, 7);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(9, 8, 9, 8);
-            tableLayoutPanel1.RowCount = 7;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 11F));
+            tableLayoutPanel1.Padding = new Padding(10, 11, 10, 11);
+            tableLayoutPanel1.RowCount = 8;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 6F));
-            tableLayoutPanel1.Size = new Size(269, 167);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            tableLayoutPanel1.Size = new Size(307, 258);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // loginInp
-            // 
-            loginInp.Dock = DockStyle.Fill;
-            loginInp.Location = new Point(12, 10);
-            loginInp.Margin = new Padding(3, 2, 3, 2);
-            loginInp.Name = "loginInp";
-            loginInp.PlaceholderText = "Логин";
-            loginInp.Size = new Size(245, 23);
-            loginInp.TabIndex = 0;
-            // 
-            // passwordInp
-            // 
-            passwordInp.Dock = DockStyle.Fill;
-            passwordInp.Location = new Point(12, 37);
-            passwordInp.Margin = new Padding(3, 2, 3, 2);
-            passwordInp.Name = "passwordInp";
-            passwordInp.PlaceholderText = "Пароль";
-            passwordInp.Size = new Size(245, 23);
-            passwordInp.TabIndex = 1;
-            passwordInp.UseSystemPasswordChar = true;
-            // 
-            // signInBtn
-            // 
-            signInBtn.Dock = DockStyle.Fill;
-            signInBtn.Location = new Point(12, 75);
-            signInBtn.Margin = new Padding(3, 2, 3, 2);
-            signInBtn.Name = "signInBtn";
-            signInBtn.Size = new Size(245, 22);
-            signInBtn.TabIndex = 2;
-            signInBtn.Text = "Войти";
-            signInBtn.UseVisualStyleBackColor = true;
-            signInBtn.Click += signInBtn_Click;
-            // 
-            // signUpBtn
-            // 
-            signUpBtn.Dock = DockStyle.Fill;
-            signUpBtn.Location = new Point(12, 116);
-            signUpBtn.Margin = new Padding(3, 2, 3, 2);
-            signUpBtn.Name = "signUpBtn";
-            signUpBtn.Size = new Size(245, 22);
-            signUpBtn.TabIndex = 3;
-            signUpBtn.Text = "Зарегистрироваться";
-            signUpBtn.UseVisualStyleBackColor = true;
-            signUpBtn.Click += signUpBtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Dock = DockStyle.Fill;
-            label1.Location = new Point(12, 99);
+            label1.Location = new Point(13, 165);
             label1.Name = "label1";
-            label1.Size = new Size(245, 15);
+            label1.Size = new Size(281, 25);
             label1.TabIndex = 4;
             label1.Text = "или";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnSignIn
+            // 
+            btnSignIn.Enabled = false;
+            btnSignIn.Location = new Point(13, 133);
+            btnSignIn.Name = "btnSignIn";
+            btnSignIn.Size = new Size(281, 29);
+            btnSignIn.TabIndex = 2;
+            btnSignIn.Text = "Войти";
+            btnSignIn.UseVisualStyleBackColor = true;
+            btnSignIn.Click += btnSignIn_Click;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Dock = DockStyle.Top;
+            txtPassword.Location = new Point(13, 80);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PlaceholderText = "Пароль";
+            txtPassword.Size = new Size(281, 27);
+            txtPassword.TabIndex = 1;
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.TextChanged += authFields_TextChanged;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Dock = DockStyle.Top;
+            txtEmail.Location = new Point(13, 47);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "E-mail";
+            txtEmail.Size = new Size(281, 27);
+            txtEmail.TabIndex = 0;
+            txtEmail.TextChanged += authFields_TextChanged;
+            // 
+            // txtLogin
+            // 
+            txtLogin.Dock = DockStyle.Top;
+            txtLogin.Location = new Point(13, 14);
+            txtLogin.Name = "txtLogin";
+            txtLogin.PlaceholderText = "Логин";
+            txtLogin.Size = new Size(281, 27);
+            txtLogin.TabIndex = 6;
+            txtLogin.TextChanged += authFields_TextChanged;
+            // 
+            // btnSignUp
+            // 
+            btnSignUp.Enabled = false;
+            btnSignUp.Location = new Point(13, 193);
+            btnSignUp.Name = "btnSignUp";
+            btnSignUp.Size = new Size(281, 29);
+            btnSignUp.TabIndex = 3;
+            btnSignUp.Text = "Зарегистрироваться";
+            btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.Click += btnSignUp_Click;
             // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
             linkLabel1.Dock = DockStyle.Fill;
-            linkLabel1.Location = new Point(12, 140);
+            linkLabel1.Location = new Point(13, 225);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(245, 19);
+            linkLabel1.Size = new Size(281, 22);
             linkLabel1.TabIndex = 5;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Забыли пароль?";
@@ -138,13 +148,13 @@ namespace recipe_book
             // 
             // AuthForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(269, 167);
+            ClientSize = new Size(307, 258);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AuthForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Авторизация";
@@ -157,11 +167,12 @@ namespace recipe_book
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private TextBox loginInp;
-        private TextBox passwordInp;
-        private Button signInBtn;
-        private Button signUpBtn;
+        private TextBox txtEmail;
+        private TextBox txtPassword;
+        private Button btnSignIn;
+        private Button btnSignUp;
         private Label label1;
         private LinkLabel linkLabel1;
+        private TextBox txtLogin;
     }
 }
