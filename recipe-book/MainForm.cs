@@ -86,7 +86,6 @@ namespace recipe_book
 
             Label label = new()
             {
-                AutoSize = false,
                 Dock = DockStyle.Fill,
                 Text = caption,
                 TextAlign = ContentAlignment.MiddleCenter
@@ -124,7 +123,7 @@ namespace recipe_book
             return (panel, label, btn, pb);
         }
 
-        private void ChangeUserPanelVisibility(bool visibility)
+        private void ChangeSlideMenuVisibility(bool visibility)
         {
             pnlUser.BackColor = visibility ? pnlSlideMenu.BackColor : UserLayoutPanelOriginalBackColor;
             pnlSlideMenu.Visible = visibility;
@@ -132,13 +131,13 @@ namespace recipe_book
 
         private void pnlUser_MouseEnter(object sender, EventArgs e)
         {
-            ChangeUserPanelVisibility(true);
+            ChangeSlideMenuVisibility(true);
         }
 
         private void HideSlideMenuOnMouseLeave(object sender, EventArgs e)
         {
             if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                ChangeUserPanelVisibility(false);
+                ChangeSlideMenuVisibility(false);
         }
 
         private void lblExit_Click(object sender, EventArgs e)
@@ -147,6 +146,11 @@ namespace recipe_book
             MainForm_Load(sender, e);
             if (!IsDisposed)
                 Show();
+        }
+
+        private void btnShoppingList_Click(object sender, EventArgs e)
+        {
+            new ShoppingListForm();
         }
     }
 }

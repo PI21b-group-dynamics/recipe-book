@@ -329,6 +329,7 @@
             btnShoppingList.TabIndex = 3;
             btnShoppingList.Text = "Список покупок";
             btnShoppingList.UseVisualStyleBackColor = true;
+            btnShoppingList.Click += btnShoppingList_Click;
             // 
             // MainForm
             // 
