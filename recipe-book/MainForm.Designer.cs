@@ -75,6 +75,8 @@
             picRecipePhoto = new PictureBox();
             btnLoadRecipePhoto = new Button();
             btnDeleteRecipePhoto = new Button();
+            pnlTagInput = new AutoFillingFlowPanel();
+            pnlIngredientInput = new AutoFillingFlowPanel();
             dlgLoadRecipePhoto = new OpenFileDialog();
             pnlSlideMenu.SuspendLayout();
             pnlMainLayout.SuspendLayout();
@@ -395,6 +397,8 @@
             tableLayoutPanel2.Controls.Add(picRecipePhoto, 1, 1);
             tableLayoutPanel2.Controls.Add(btnLoadRecipePhoto, 3, 2);
             tableLayoutPanel2.Controls.Add(btnDeleteRecipePhoto, 2, 2);
+            tableLayoutPanel2.Controls.Add(pnlTagInput, 1, 5);
+            tableLayoutPanel2.Controls.Add(pnlIngredientInput, 1, 6);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -462,27 +466,27 @@
             label5.Dock = DockStyle.Fill;
             label5.Location = new Point(3, 506);
             label5.Name = "label5";
-            label5.Size = new Size(175, 20);
+            label5.Padding = new Padding(0, 8, 0, 0);
+            label5.Size = new Size(175, 73);
             label5.TabIndex = 4;
             label5.Text = "Теги:";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Fill;
-            label6.Location = new Point(3, 526);
+            label6.Location = new Point(3, 579);
             label6.Name = "label6";
-            label6.Size = new Size(175, 20);
+            label6.Padding = new Padding(0, 8, 0, 0);
+            label6.Size = new Size(175, 73);
             label6.TabIndex = 5;
             label6.Text = "Ингредиенты:";
-            label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
-            label7.Location = new Point(3, 546);
+            label7.Location = new Point(3, 652);
             label7.Name = "label7";
             label7.Size = new Size(175, 366);
             label7.TabIndex = 6;
@@ -501,7 +505,7 @@
             // 
             tableLayoutPanel2.SetColumnSpan(textBox2, 3);
             textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(184, 549);
+            textBox2.Location = new Point(184, 655);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(763, 360);
@@ -641,7 +645,7 @@
             // button1
             // 
             button1.Dock = DockStyle.Top;
-            button1.Location = new Point(833, 915);
+            button1.Location = new Point(833, 1021);
             button1.Name = "button1";
             button1.Size = new Size(114, 29);
             button1.TabIndex = 1;
@@ -651,7 +655,7 @@
             // btnCancelCreationOrEdition
             // 
             btnCancelCreationOrEdition.Dock = DockStyle.Top;
-            btnCancelCreationOrEdition.Location = new Point(713, 915);
+            btnCancelCreationOrEdition.Location = new Point(713, 1021);
             btnCancelCreationOrEdition.Name = "btnCancelCreationOrEdition";
             btnCancelCreationOrEdition.Size = new Size(114, 29);
             btnCancelCreationOrEdition.TabIndex = 2;
@@ -692,6 +696,25 @@
             btnDeleteRecipePhoto.Text = "Удалить";
             btnDeleteRecipePhoto.UseVisualStyleBackColor = true;
             btnDeleteRecipePhoto.Click += btnDeleteRecipePhoto_Click;
+            // 
+            // pnlTagInput
+            // 
+            pnlTagInput.AutoScroll = true;
+            tableLayoutPanel2.SetColumnSpan(pnlTagInput, 3);
+            pnlTagInput.Dock = DockStyle.Fill;
+            pnlTagInput.Location = new Point(184, 509);
+            pnlTagInput.Name = "pnlTagInput";
+            pnlTagInput.Size = new Size(763, 67);
+            pnlTagInput.TabIndex = 14;
+            // 
+            // pnlIngredientInput
+            // 
+            pnlIngredientInput.AutoScroll = true;
+            pnlIngredientInput.Dock = DockStyle.Fill;
+            pnlIngredientInput.Location = new Point(184, 582);
+            pnlIngredientInput.Name = "pnlIngredientInput";
+            pnlIngredientInput.Size = new Size(523, 67);
+            pnlIngredientInput.TabIndex = 15;
             // 
             // dlgLoadRecipePhoto
             // 
@@ -783,5 +806,7 @@
         private Button btnLoadRecipePhoto;
         private Button btnDeleteRecipePhoto;
         private OpenFileDialog dlgLoadRecipePhoto;
+        private AutoFillingFlowPanel pnlTagInput;
+        private AutoFillingFlowPanel pnlIngredientInput;
     }
 }
