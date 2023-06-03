@@ -1,30 +1,15 @@
-﻿using System.Reflection;
+﻿using System.Drawing.Drawing2D;
 
 namespace recipe_book
 {
 	internal static class Utils
 	{
-		public static T Clone<T>(this T controlToClone)
-		where T : Control
+		public static void MakeRound(Control control)
 		{
-			PropertyInfo[] controlProperties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-			T instance = Activator.CreateInstance<T>();
-
-			foreach (PropertyInfo propInfo in controlProperties)
-			{
-				if (propInfo.CanWrite)
-				{
-					try
-					{
-						if (propInfo.Name != "WindowTarget")
-							propInfo.SetValue(instance, propInfo.GetValue(controlToClone, null), null);
-					}
-					catch (Exception e) { }
-				}
-			}
-
-			return instance;
-		}
+            using GraphicsPath graphicsPath = new();
+			control.Height = control.Width;
+            graphicsPath.AddEllipse(0, 0, control.Width, control.Height);
+            control.Region = new Region(graphicsPath);
+        }
 	}
 }
