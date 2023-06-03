@@ -1,6 +1,4 @@
-﻿using System.Data.SQLite;
-
-namespace recipe_book
+﻿namespace recipe_book
 {
     public partial class MainForm : Form
     {

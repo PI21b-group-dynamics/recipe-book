@@ -3,12 +3,12 @@
     partial class MainForm
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,116 +23,50 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            pnlHeader = new Panel();
-            pnlSearch = new Panel();
-            txtSearch = new TextBox();
-            pnlUser = new TableLayoutPanel();
-            picUser = new PictureBox();
             pnlSlideMenu = new TableLayoutPanel();
             lblChangeProfile = new Label();
             lblHelp = new Label();
             lblExit = new Label();
+            pnlMainLayout = new TableLayoutPanel();
+            txtSearch = new TextBox();
+            pnlUser = new TableLayoutPanel();
+            picUser = new PictureBox();
             lblUser = new Label();
-            pnlFormContent = new TableLayoutPanel();
-            ContentTagPanel = new Panel();
             pnlTags = new FlowLayoutPanel();
-            ContentRecContainer = new Panel();
+            tabMainFormTabs = new TablessControl();
+            tabPage1 = new TabPage();
             btnAddRecipe = new Button();
-            pnlRecipes = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             cboContentSort = new ComboBox();
             lblSortBy = new Label();
             btnShoppingList = new Button();
-            pnlHeader.SuspendLayout();
-            pnlSearch.SuspendLayout();
+            pnlRecipes = new TableLayoutPanel();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            pnlSlideMenu.SuspendLayout();
+            pnlMainLayout.SuspendLayout();
             pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picUser).BeginInit();
-            pnlSlideMenu.SuspendLayout();
-            pnlFormContent.SuspendLayout();
-            ContentTagPanel.SuspendLayout();
-            ContentRecContainer.SuspendLayout();
+            tabMainFormTabs.SuspendLayout();
+            tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // pnlHeader
-            // 
-            pnlHeader.Controls.Add(pnlSearch);
-            pnlHeader.Dock = DockStyle.Fill;
-            pnlHeader.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            pnlHeader.Location = new Point(2, 2);
-            pnlHeader.Margin = new Padding(0);
-            pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(837, 56);
-            pnlHeader.TabIndex = 0;
-            // 
-            // pnlSearch
-            // 
-            pnlSearch.AutoSize = true;
-            pnlSearch.Controls.Add(txtSearch);
-            pnlSearch.Dock = DockStyle.Right;
-            pnlSearch.Location = new Point(563, 0);
-            pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(274, 56);
-            pnlSearch.TabIndex = 1;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(3, 12);
-            txtSearch.Name = "txtSearch";
-            txtSearch.PlaceholderText = "🔍 Найти...";
-            txtSearch.Size = new Size(268, 32);
-            txtSearch.TabIndex = 0;
-            // 
-            // pnlUser
-            // 
-            pnlUser.AutoSize = true;
-            pnlUser.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            pnlUser.ColumnCount = 2;
-            pnlUser.ColumnStyles.Add(new ColumnStyle());
-            pnlUser.ColumnStyles.Add(new ColumnStyle());
-            pnlUser.Controls.Add(picUser, 0, 0);
-            pnlUser.Controls.Add(pnlSlideMenu, 0, 1);
-            pnlUser.Controls.Add(lblUser, 1, 0);
-            pnlUser.Location = new Point(3, 3);
-            pnlUser.Name = "pnlUser";
-            pnlUser.RowCount = 2;
-            pnlUser.RowStyles.Add(new RowStyle());
-            pnlUser.RowStyles.Add(new RowStyle());
-            pnlUser.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlUser.Size = new Size(204, 163);
-            pnlUser.TabIndex = 2;
-            pnlUser.MouseEnter += pnlUser_MouseEnter;
-            pnlUser.MouseLeave += HideSlideMenuOnMouseLeave;
-            // 
-            // picUser
-            // 
-            picUser.Dock = DockStyle.Fill;
-            picUser.Image = Properties.Resources.user_icon;
-            picUser.InitialImage = (Image)resources.GetObject("picUser.InitialImage");
-            picUser.Location = new Point(4, 4);
-            picUser.Margin = new Padding(4);
-            picUser.Name = "picUser";
-            picUser.Size = new Size(48, 48);
-            picUser.SizeMode = PictureBoxSizeMode.StretchImage;
-            picUser.TabIndex = 1;
-            picUser.TabStop = false;
             // 
             // pnlSlideMenu
             // 
             pnlSlideMenu.BackColor = SystemColors.ControlDark;
             pnlSlideMenu.ColumnCount = 1;
-            pnlUser.SetColumnSpan(pnlSlideMenu, 2);
             pnlSlideMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             pnlSlideMenu.Controls.Add(lblChangeProfile, 0, 0);
             pnlSlideMenu.Controls.Add(lblHelp, 0, 1);
             pnlSlideMenu.Controls.Add(lblExit, 0, 2);
-            pnlSlideMenu.Location = new Point(0, 56);
+            pnlSlideMenu.Location = new Point(3, 57);
             pnlSlideMenu.Margin = new Padding(0);
             pnlSlideMenu.Name = "pnlSlideMenu";
             pnlSlideMenu.Padding = new Padding(52, 0, 0, 0);
@@ -141,19 +75,20 @@
             pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             pnlSlideMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlSlideMenu.Size = new Size(204, 107);
-            pnlSlideMenu.TabIndex = 6;
+            pnlSlideMenu.Size = new Size(252, 107);
+            pnlSlideMenu.TabIndex = 7;
             pnlSlideMenu.Visible = false;
             pnlSlideMenu.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
             // lblChangeProfile
             // 
+            lblChangeProfile.AutoEllipsis = true;
             lblChangeProfile.Cursor = Cursors.Hand;
             lblChangeProfile.Dock = DockStyle.Fill;
             lblChangeProfile.Location = new Point(60, 4);
             lblChangeProfile.Margin = new Padding(8, 4, 8, 4);
             lblChangeProfile.Name = "lblChangeProfile";
-            lblChangeProfile.Size = new Size(136, 27);
+            lblChangeProfile.Size = new Size(184, 27);
             lblChangeProfile.TabIndex = 4;
             lblChangeProfile.Text = "Редактировать профиль";
             // 
@@ -164,7 +99,7 @@
             lblHelp.Location = new Point(60, 39);
             lblHelp.Margin = new Padding(8, 4, 8, 4);
             lblHelp.Name = "lblHelp";
-            lblHelp.Size = new Size(136, 27);
+            lblHelp.Size = new Size(184, 27);
             lblHelp.TabIndex = 5;
             lblHelp.Text = "Справка";
             // 
@@ -175,111 +110,132 @@
             lblExit.Location = new Point(60, 74);
             lblExit.Margin = new Padding(8, 4, 8, 4);
             lblExit.Name = "lblExit";
-            lblExit.Size = new Size(136, 29);
+            lblExit.Size = new Size(184, 29);
             lblExit.TabIndex = 6;
             lblExit.Text = "Выйти";
             lblExit.Click += lblExit_Click;
             // 
+            // pnlMainLayout
+            // 
+            pnlMainLayout.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlMainLayout.ColumnCount = 3;
+            pnlMainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            pnlMainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            pnlMainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            pnlMainLayout.Controls.Add(txtSearch, 2, 0);
+            pnlMainLayout.Controls.Add(pnlUser, 0, 0);
+            pnlMainLayout.Controls.Add(pnlTags, 0, 1);
+            pnlMainLayout.Controls.Add(tabMainFormTabs, 0, 2);
+            pnlMainLayout.Location = new Point(0, 0);
+            pnlMainLayout.Name = "pnlMainLayout";
+            pnlMainLayout.RowCount = 3;
+            pnlMainLayout.RowStyles.Add(new RowStyle());
+            pnlMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
+            pnlMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            pnlMainLayout.Size = new Size(928, 496);
+            pnlMainLayout.TabIndex = 8;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Dock = DockStyle.Top;
+            txtSearch.Location = new Point(621, 16);
+            txtSearch.Margin = new Padding(3, 16, 3, 3);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "🔍 Найти...";
+            txtSearch.Size = new Size(304, 27);
+            txtSearch.TabIndex = 1;
+            // 
+            // pnlUser
+            // 
+            pnlUser.AutoSize = true;
+            pnlUser.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            pnlUser.ColumnCount = 2;
+            pnlUser.ColumnStyles.Add(new ColumnStyle());
+            pnlUser.ColumnStyles.Add(new ColumnStyle());
+            pnlUser.Controls.Add(picUser, 0, 0);
+            pnlUser.Controls.Add(lblUser, 1, 0);
+            pnlUser.Location = new Point(3, 3);
+            pnlUser.Name = "pnlUser";
+            pnlUser.RowCount = 2;
+            pnlUser.RowStyles.Add(new RowStyle());
+            pnlUser.RowStyles.Add(new RowStyle());
+            pnlUser.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            pnlUser.Size = new Size(252, 54);
+            pnlUser.TabIndex = 3;
+            // 
+            // picUser
+            // 
+            picUser.Dock = DockStyle.Fill;
+            picUser.Image = Properties.Resources.user_icon;
+            picUser.InitialImage = (Image)resources.GetObject("picUser.InitialImage");
+            picUser.Location = new Point(3, 3);
+            picUser.Name = "picUser";
+            picUser.Size = new Size(48, 48);
+            picUser.SizeMode = PictureBoxSizeMode.StretchImage;
+            picUser.TabIndex = 1;
+            picUser.TabStop = false;
+            picUser.MouseEnter += pnlUser_MouseEnter;
+            picUser.MouseLeave += HideSlideMenuOnMouseLeave;
+            // 
             // lblUser
             // 
-            lblUser.AutoSize = true;
             lblUser.Dock = DockStyle.Left;
             lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblUser.Location = new Point(60, 0);
+            lblUser.Location = new Point(58, 0);
             lblUser.Margin = new Padding(4, 0, 0, 0);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(111, 56);
+            lblUser.Size = new Size(194, 54);
             lblUser.TabIndex = 0;
             lblUser.Text = "Пользователь";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // pnlFormContent
-            // 
-            pnlFormContent.AutoSize = true;
-            pnlFormContent.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
-            pnlFormContent.ColumnCount = 1;
-            pnlFormContent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            pnlFormContent.Controls.Add(pnlHeader, 0, 0);
-            pnlFormContent.Controls.Add(ContentTagPanel, 0, 1);
-            pnlFormContent.Controls.Add(ContentRecContainer, 0, 4);
-            pnlFormContent.Controls.Add(tableLayoutPanel1, 0, 2);
-            pnlFormContent.Dock = DockStyle.Fill;
-            pnlFormContent.Location = new Point(0, 0);
-            pnlFormContent.Name = "pnlFormContent";
-            pnlFormContent.RowCount = 5;
-            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
-            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
-            pnlFormContent.RowStyles.Add(new RowStyle());
-            pnlFormContent.RowStyles.Add(new RowStyle());
-            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlFormContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlFormContent.Size = new Size(841, 465);
-            pnlFormContent.TabIndex = 2;
-            // 
-            // ContentTagPanel
-            // 
-            ContentTagPanel.AutoSize = true;
-            ContentTagPanel.Controls.Add(pnlTags);
-            ContentTagPanel.Dock = DockStyle.Fill;
-            ContentTagPanel.Location = new Point(2, 60);
-            ContentTagPanel.Margin = new Padding(0);
-            ContentTagPanel.Name = "ContentTagPanel";
-            ContentTagPanel.Size = new Size(837, 58);
-            ContentTagPanel.TabIndex = 1;
+            lblUser.MouseEnter += pnlUser_MouseEnter;
             // 
             // pnlTags
             // 
             pnlTags.AutoScroll = true;
+            pnlMainLayout.SetColumnSpan(pnlTags, 3);
             pnlTags.Dock = DockStyle.Fill;
-            pnlTags.Location = new Point(0, 0);
+            pnlTags.Location = new Point(0, 60);
             pnlTags.Margin = new Padding(0);
             pnlTags.Name = "pnlTags";
-            pnlTags.Size = new Size(837, 58);
-            pnlTags.TabIndex = 3;
+            pnlTags.Size = new Size(928, 58);
+            pnlTags.TabIndex = 4;
             pnlTags.WrapContents = false;
             // 
-            // ContentRecContainer
+            // tabMainFormTabs
             // 
-            ContentRecContainer.Controls.Add(btnAddRecipe);
-            ContentRecContainer.Controls.Add(pnlRecipes);
-            ContentRecContainer.Dock = DockStyle.Fill;
-            ContentRecContainer.Location = new Point(2, 166);
-            ContentRecContainer.Margin = new Padding(0);
-            ContentRecContainer.Name = "ContentRecContainer";
-            ContentRecContainer.Size = new Size(837, 297);
-            ContentRecContainer.TabIndex = 13;
+            pnlMainLayout.SetColumnSpan(tabMainFormTabs, 3);
+            tabMainFormTabs.Controls.Add(tabPage1);
+            tabMainFormTabs.Controls.Add(tabPage2);
+            tabMainFormTabs.Controls.Add(tabPage3);
+            tabMainFormTabs.Dock = DockStyle.Fill;
+            tabMainFormTabs.Location = new Point(3, 121);
+            tabMainFormTabs.Name = "tabMainFormTabs";
+            tabMainFormTabs.SelectedIndex = 0;
+            tabMainFormTabs.Size = new Size(922, 372);
+            tabMainFormTabs.TabIndex = 5;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(btnAddRecipe);
+            tabPage1.Controls.Add(tableLayoutPanel1);
+            tabPage1.Location = new Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(914, 339);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Список";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnAddRecipe
             // 
             btnAddRecipe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddRecipe.Location = new Point(728, 213);
+            btnAddRecipe.Location = new Point(805, 252);
             btnAddRecipe.Name = "btnAddRecipe";
             btnAddRecipe.Size = new Size(70, 70);
-            btnAddRecipe.TabIndex = 0;
+            btnAddRecipe.TabIndex = 9;
             btnAddRecipe.Text = "➕";
             btnAddRecipe.UseVisualStyleBackColor = true;
-            // 
-            // pnlRecipes
-            // 
-            pnlRecipes.AutoScroll = true;
-            pnlRecipes.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            pnlRecipes.ColumnCount = 4;
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.Dock = DockStyle.Fill;
-            pnlRecipes.Location = new Point(0, 0);
-            pnlRecipes.Margin = new Padding(0);
-            pnlRecipes.Name = "pnlRecipes";
-            pnlRecipes.RowCount = 5;
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
-            pnlRecipes.Size = new Size(837, 297);
-            pnlRecipes.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -287,101 +243,135 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 147F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.Controls.Add(cboContentSort, 3, 0);
             tableLayoutPanel1.Controls.Add(lblSortBy, 2, 0);
             tableLayoutPanel1.Controls.Add(btnShoppingList, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(10, 123);
-            tableLayoutPanel1.Margin = new Padding(8, 3, 29, 3);
+            tableLayoutPanel1.Controls.Add(pnlRecipes, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(800, 36);
-            tableLayoutPanel1.TabIndex = 14;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(908, 333);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // cboContentSort
             // 
-            cboContentSort.Dock = DockStyle.Fill;
             cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboContentSort.Location = new Point(656, 3);
+            cboContentSort.FormattingEnabled = true;
+            cboContentSort.Location = new Point(749, 3);
             cboContentSort.Name = "cboContentSort";
-            cboContentSort.Size = new Size(141, 28);
-            cboContentSort.TabIndex = 1;
+            cboContentSort.Size = new Size(156, 28);
+            cboContentSort.TabIndex = 9;
             // 
             // lblSortBy
             // 
             lblSortBy.AutoSize = true;
             lblSortBy.Dock = DockStyle.Fill;
-            lblSortBy.Location = new Point(526, 0);
+            lblSortBy.Location = new Point(619, 0);
             lblSortBy.Name = "lblSortBy";
             lblSortBy.Size = new Size(124, 36);
-            lblSortBy.TabIndex = 2;
+            lblSortBy.TabIndex = 10;
             lblSortBy.Text = "Сортировать по:";
-            lblSortBy.TextAlign = ContentAlignment.MiddleRight;
+            lblSortBy.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnShoppingList
             // 
             btnShoppingList.AutoSize = true;
             btnShoppingList.Location = new Point(3, 3);
             btnShoppingList.Name = "btnShoppingList";
-            btnShoppingList.Size = new Size(140, 30);
-            btnShoppingList.TabIndex = 3;
-            btnShoppingList.Text = "Список покупок";
+            btnShoppingList.Size = new Size(313, 30);
+            btnShoppingList.TabIndex = 11;
+            btnShoppingList.Text = "Список покупок по выбранным рецептам";
             btnShoppingList.UseVisualStyleBackColor = true;
             btnShoppingList.Click += btnShoppingList_Click;
             // 
-            // MainForm
+            // pnlRecipes
             // 
-            AutoScaleMode = AutoScaleMode.None;
-            AutoScroll = true;
-            ClientSize = new Size(841, 465);
-            Controls.Add(pnlUser);
-            Controls.Add(pnlFormContent);
-            MinimumSize = new Size(600, 400);
-            Name = "MainForm";
+            pnlRecipes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlRecipes.AutoScroll = true;
+            pnlRecipes.ColumnCount = 4;
+            tableLayoutPanel1.SetColumnSpan(pnlRecipes, 4);
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.Location = new Point(3, 39);
+            pnlRecipes.Name = "pnlRecipes";
+            pnlRecipes.RowCount = 6;
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
+            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
+            pnlRecipes.Size = new Size(902, 291);
+            pnlRecipes.TabIndex = 12;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(914, 339);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Просмотр";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(914, 339);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Создание и редактирование";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // NewMainForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(928, 498);
+            Controls.Add(pnlSlideMenu);
+            Controls.Add(pnlMainLayout);
+            Name = "NewMainForm";
             Text = "Книга рецептов";
             Load += MainForm_Load;
-            MouseLeave += HideSlideMenuOnMouseLeave;
-            pnlHeader.ResumeLayout(false);
-            pnlHeader.PerformLayout();
-            pnlSearch.ResumeLayout(false);
-            pnlSearch.PerformLayout();
-            pnlUser.ResumeLayout(false);
-            pnlUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picUser).EndInit();
+            FormClosed += MainForm_FormClosed;
             pnlSlideMenu.ResumeLayout(false);
-            pnlFormContent.ResumeLayout(false);
-            pnlFormContent.PerformLayout();
-            ContentTagPanel.ResumeLayout(false);
-            ContentRecContainer.ResumeLayout(false);
+            pnlMainLayout.ResumeLayout(false);
+            pnlMainLayout.PerformLayout();
+            pnlUser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picUser).EndInit();
+            tabMainFormTabs.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Panel pnlHeader;
-        private Panel pnlSearch;
-        private PictureBox picUser;
-        private Label lblUser;
-        private Label lblSortBy;
+        private TableLayoutPanel pnlSlideMenu;
+        private Label lblChangeProfile;
+        private Label lblHelp;
+        private Label lblExit;
+        private TableLayoutPanel pnlMainLayout;
         private TextBox txtSearch;
         private TableLayoutPanel pnlUser;
-        private TableLayoutPanel pnlFormContent;
+        private PictureBox picUser;
+        private Label lblUser;
+        private FlowLayoutPanel pnlTags;
+        private TablessControl tabMainFormTabs;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
         private ComboBox cboContentSort;
-        private TableLayoutPanel pnlSlideMenu;
-        private Label lblExit;
-        private Label lblHelp;
-        private Label lblChangeProfile;
-        private Panel ContentRecContainer;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label lblSortBy;
         private Button btnShoppingList;
         private Button btnAddRecipe;
         private TableLayoutPanel pnlRecipes;
-        private Panel ContentTagPanel;
-        private FlowLayoutPanel pnlTags;
+        private TabPage tabPage3;
     }
 }
