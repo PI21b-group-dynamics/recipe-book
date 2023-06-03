@@ -2,17 +2,21 @@
 {
     public partial class MainForm : Form
     {
-        private Color UserLayoutPanelOriginalBackColor;
+        private readonly Color UserLayoutPanelOriginalBackColor;
         private readonly List<TableLayoutPanel> recipes = new();
+        private readonly Rectangle SlideMenuHoverZone;
 
         public MainForm()
         {
             InitializeComponent();
             UserLayoutPanelOriginalBackColor = pnlUser.BackColor;
-
-            pnlRecipes.AutoScroll = true;
-            pnlRecipes.HorizontalScroll.Visible = false;
-            pnlRecipes.VerticalScroll.Visible = true;
+            SlideMenuHoverZone = new(
+                new Point(),
+                new Size(
+                    pnlUser.Width,
+                    pnlUser.Height + pnlSlideMenu.Height
+                )
+            );
 
             // Заполнение таблицы рецептов
             int rows = 6;
@@ -135,7 +139,7 @@
 
         private void HideSlideMenuOnMouseLeave(object sender, EventArgs e)
         {
-            if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
+            if (!SlideMenuHoverZone.Contains(PointToClient(Cursor.Position)))
                 ChangeSlideMenuVisibility(false);
         }
 
@@ -198,6 +202,7 @@
                 finally
                 {
                     picRecipePhoto.Visible = true;
+                    btnDeleteRecipePhoto.Enabled = true;
                 }
             }
         }
@@ -206,6 +211,7 @@
         {
             picRecipePhoto.Visible = false;
             picRecipePhoto.Image = null;
+            btnDeleteRecipePhoto.Enabled = false;
         }
     }
 }

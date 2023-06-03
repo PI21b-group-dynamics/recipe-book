@@ -168,17 +168,17 @@
             pnlMainLayout.RowStyles.Add(new RowStyle());
             pnlMainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             pnlMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlMainLayout.Size = new Size(928, 496);
+            pnlMainLayout.Size = new Size(964, 529);
             pnlMainLayout.TabIndex = 8;
             // 
             // txtSearch
             // 
             txtSearch.Dock = DockStyle.Top;
-            txtSearch.Location = new Point(621, 16);
+            txtSearch.Location = new Point(645, 16);
             txtSearch.Margin = new Padding(3, 16, 3, 3);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "🔍 Найти...";
-            txtSearch.Size = new Size(304, 27);
+            txtSearch.Size = new Size(316, 27);
             txtSearch.TabIndex = 1;
             // 
             // pnlUser
@@ -225,6 +225,7 @@
             lblUser.Text = "Пользователь";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
             lblUser.MouseEnter += pnlUser_MouseEnter;
+            lblUser.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
             // tbcMainFormTabs
             // 
@@ -236,7 +237,7 @@
             tbcMainFormTabs.Location = new Point(3, 63);
             tbcMainFormTabs.Name = "tbcMainFormTabs";
             tbcMainFormTabs.SelectedIndex = 0;
-            tbcMainFormTabs.Size = new Size(922, 430);
+            tbcMainFormTabs.Size = new Size(958, 463);
             tbcMainFormTabs.TabIndex = 5;
             tbcMainFormTabs.SelectedIndexChanged += tbcMainFormTabs_SelectedIndexChanged;
             // 
@@ -247,7 +248,7 @@
             tabListOfRecipes.Location = new Point(4, 29);
             tabListOfRecipes.Name = "tabListOfRecipes";
             tabListOfRecipes.Padding = new Padding(3);
-            tabListOfRecipes.Size = new Size(914, 397);
+            tabListOfRecipes.Size = new Size(950, 430);
             tabListOfRecipes.TabIndex = 0;
             tabListOfRecipes.Text = "Список";
             tabListOfRecipes.UseVisualStyleBackColor = true;
@@ -255,7 +256,7 @@
             // btnAddRecipe
             // 
             btnAddRecipe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddRecipe.Location = new Point(805, 310);
+            btnAddRecipe.Location = new Point(833, 338);
             btnAddRecipe.Name = "btnAddRecipe";
             btnAddRecipe.Size = new Size(70, 70);
             btnAddRecipe.TabIndex = 9;
@@ -282,14 +283,14 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(908, 391);
+            tableLayoutPanel1.Size = new Size(944, 424);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // cboContentSort
             // 
             cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
             cboContentSort.FormattingEnabled = true;
-            cboContentSort.Location = new Point(749, 61);
+            cboContentSort.Location = new Point(785, 61);
             cboContentSort.Name = "cboContentSort";
             cboContentSort.Size = new Size(156, 28);
             cboContentSort.TabIndex = 9;
@@ -298,7 +299,7 @@
             // 
             lblSortBy.AutoSize = true;
             lblSortBy.Dock = DockStyle.Fill;
-            lblSortBy.Location = new Point(619, 58);
+            lblSortBy.Location = new Point(655, 58);
             lblSortBy.Name = "lblSortBy";
             lblSortBy.Size = new Size(124, 36);
             lblSortBy.TabIndex = 10;
@@ -313,7 +314,7 @@
             pnlTags.Location = new Point(0, 0);
             pnlTags.Margin = new Padding(0);
             pnlTags.Name = "pnlTags";
-            pnlTags.Size = new Size(908, 58);
+            pnlTags.Size = new Size(944, 58);
             pnlTags.TabIndex = 4;
             pnlTags.WrapContents = false;
             // 
@@ -347,7 +348,7 @@
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.Size = new Size(902, 291);
+            pnlRecipes.Size = new Size(938, 324);
             pnlRecipes.TabIndex = 12;
             // 
             // tabRecipeView
@@ -355,7 +356,7 @@
             tabRecipeView.Location = new Point(4, 29);
             tabRecipeView.Name = "tabRecipeView";
             tabRecipeView.Padding = new Padding(3);
-            tabRecipeView.Size = new Size(914, 397);
+            tabRecipeView.Size = new Size(950, 430);
             tabRecipeView.TabIndex = 1;
             tabRecipeView.Text = "Просмотр";
             tabRecipeView.UseVisualStyleBackColor = true;
@@ -365,7 +366,7 @@
             tabCreateOrEditRecipe.Controls.Add(tableLayoutPanel2);
             tabCreateOrEditRecipe.Location = new Point(4, 29);
             tabCreateOrEditRecipe.Name = "tabCreateOrEditRecipe";
-            tabCreateOrEditRecipe.Size = new Size(914, 397);
+            tabCreateOrEditRecipe.Size = new Size(950, 430);
             tabCreateOrEditRecipe.TabIndex = 2;
             tabCreateOrEditRecipe.Text = "Создание и редактирование";
             tabCreateOrEditRecipe.UseVisualStyleBackColor = true;
@@ -407,7 +408,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(914, 397);
+            tableLayoutPanel2.Size = new Size(950, 430);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -428,7 +429,7 @@
             label2.Location = new Point(3, 33);
             label2.Name = "label2";
             tableLayoutPanel2.SetRowSpan(label2, 2);
-            label2.Size = new Size(175, 399);
+            label2.Size = new Size(175, 401);
             label2.TabIndex = 1;
             label2.Text = "Фотография:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -437,7 +438,7 @@
             // 
             label3.AutoSize = true;
             label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(3, 432);
+            label3.Location = new Point(3, 434);
             label3.Name = "label3";
             label3.Size = new Size(175, 39);
             label3.TabIndex = 2;
@@ -448,7 +449,7 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(3, 471);
+            label4.Location = new Point(3, 473);
             label4.Name = "label4";
             label4.Size = new Size(175, 33);
             label4.TabIndex = 3;
@@ -459,7 +460,7 @@
             // 
             label5.AutoSize = true;
             label5.Dock = DockStyle.Fill;
-            label5.Location = new Point(3, 504);
+            label5.Location = new Point(3, 506);
             label5.Name = "label5";
             label5.Size = new Size(175, 20);
             label5.TabIndex = 4;
@@ -470,7 +471,7 @@
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Fill;
-            label6.Location = new Point(3, 524);
+            label6.Location = new Point(3, 526);
             label6.Name = "label6";
             label6.Size = new Size(175, 20);
             label6.TabIndex = 5;
@@ -481,9 +482,9 @@
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
-            label7.Location = new Point(3, 544);
+            label7.Location = new Point(3, 546);
             label7.Name = "label7";
-            label7.Size = new Size(175, 136);
+            label7.Size = new Size(175, 366);
             label7.TabIndex = 6;
             label7.Text = "Способ приготовления:";
             // 
@@ -493,23 +494,23 @@
             textBox1.Dock = DockStyle.Top;
             textBox1.Location = new Point(184, 3);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(727, 27);
+            textBox1.Size = new Size(763, 27);
             textBox1.TabIndex = 7;
             // 
             // textBox2
             // 
             tableLayoutPanel2.SetColumnSpan(textBox2, 3);
             textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(184, 547);
+            textBox2.Location = new Point(184, 549);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(727, 130);
+            textBox2.Size = new Size(763, 360);
             textBox2.TabIndex = 8;
             // 
             // numericUpDown1
             // 
             numericUpDown1.AutoSize = true;
-            numericUpDown1.Location = new Point(184, 474);
+            numericUpDown1.Location = new Point(184, 476);
             numericUpDown1.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -541,7 +542,7 @@
             tableLayoutPanel3.Controls.Add(label10, 7, 0);
             tableLayoutPanel3.Controls.Add(numericUpDown6, 8, 0);
             tableLayoutPanel3.Controls.Add(label11, 9, 0);
-            tableLayoutPanel3.Location = new Point(184, 435);
+            tableLayoutPanel3.Location = new Point(184, 437);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle());
@@ -640,7 +641,7 @@
             // button1
             // 
             button1.Dock = DockStyle.Top;
-            button1.Location = new Point(797, 683);
+            button1.Location = new Point(833, 915);
             button1.Name = "button1";
             button1.Size = new Size(114, 29);
             button1.TabIndex = 1;
@@ -650,7 +651,7 @@
             // btnCancelCreationOrEdition
             // 
             btnCancelCreationOrEdition.Dock = DockStyle.Top;
-            btnCancelCreationOrEdition.Location = new Point(677, 683);
+            btnCancelCreationOrEdition.Location = new Point(713, 915);
             btnCancelCreationOrEdition.Name = "btnCancelCreationOrEdition";
             btnCancelCreationOrEdition.Size = new Size(114, 29);
             btnCancelCreationOrEdition.TabIndex = 2;
@@ -664,7 +665,7 @@
             picRecipePhoto.Dock = DockStyle.Fill;
             picRecipePhoto.Location = new Point(184, 36);
             picRecipePhoto.Name = "picRecipePhoto";
-            picRecipePhoto.Size = new Size(727, 358);
+            picRecipePhoto.Size = new Size(763, 360);
             picRecipePhoto.SizeMode = PictureBoxSizeMode.Zoom;
             picRecipePhoto.TabIndex = 11;
             picRecipePhoto.TabStop = false;
@@ -672,7 +673,7 @@
             // btnLoadRecipePhoto
             // 
             btnLoadRecipePhoto.Dock = DockStyle.Fill;
-            btnLoadRecipePhoto.Location = new Point(797, 400);
+            btnLoadRecipePhoto.Location = new Point(833, 402);
             btnLoadRecipePhoto.Name = "btnLoadRecipePhoto";
             btnLoadRecipePhoto.Size = new Size(114, 29);
             btnLoadRecipePhoto.TabIndex = 12;
@@ -683,7 +684,8 @@
             // btnDeleteRecipePhoto
             // 
             btnDeleteRecipePhoto.Dock = DockStyle.Fill;
-            btnDeleteRecipePhoto.Location = new Point(677, 400);
+            btnDeleteRecipePhoto.Enabled = false;
+            btnDeleteRecipePhoto.Location = new Point(713, 402);
             btnDeleteRecipePhoto.Name = "btnDeleteRecipePhoto";
             btnDeleteRecipePhoto.Size = new Size(114, 29);
             btnDeleteRecipePhoto.TabIndex = 13;
@@ -702,7 +704,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(928, 498);
+            ClientSize = new Size(964, 531);
             Controls.Add(pnlSlideMenu);
             Controls.Add(pnlMainLayout);
             Name = "MainForm";
