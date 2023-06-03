@@ -2,7 +2,7 @@
 
 namespace recipe_book
 {
-    public partial class AuthForm : Form
+    public sealed partial class AuthForm : Form
     {
         public string Login { get => txtLogin.Text; }
 

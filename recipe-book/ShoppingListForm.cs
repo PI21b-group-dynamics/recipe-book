@@ -1,9 +1,8 @@
-﻿using System.Data.Entity.Core.Objects;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 
 namespace recipe_book
 {
-    public partial class ShoppingListForm : Form
+    public sealed partial class ShoppingListForm : Form
     {
         public int UserID;
 

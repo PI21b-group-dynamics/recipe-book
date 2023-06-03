@@ -1,6 +1,6 @@
 ﻿namespace recipe_book
 {
-    public partial class MainForm : Form
+    public sealed partial class MainForm : Form
     {
         private readonly Color UserLayoutPanelOriginalBackColor;
         private readonly List<TableLayoutPanel> recipes = new();
@@ -178,7 +178,7 @@
             }
             else if (tbcMainFormTabs.SelectedTab == tabRecipeView)
             {
-
+                txtSearch.Visible = false;
             }
         }
 

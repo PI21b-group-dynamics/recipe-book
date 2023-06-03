@@ -1,6 +1,6 @@
 ﻿namespace recipe_book
 {
-    internal class TablessControl : TabControl
+    internal sealed class TablessControl : TabControl
     {
         protected override void WndProc(ref Message m)
         {
