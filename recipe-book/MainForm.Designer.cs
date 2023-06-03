@@ -710,10 +710,11 @@
             // pnlIngredientInput
             // 
             pnlIngredientInput.AutoScroll = true;
+            tableLayoutPanel2.SetColumnSpan(pnlIngredientInput, 3);
             pnlIngredientInput.Dock = DockStyle.Fill;
             pnlIngredientInput.Location = new Point(184, 582);
             pnlIngredientInput.Name = "pnlIngredientInput";
-            pnlIngredientInput.Size = new Size(523, 67);
+            pnlIngredientInput.Size = new Size(763, 67);
             pnlIngredientInput.TabIndex = 15;
             // 
             // dlgLoadRecipePhoto
