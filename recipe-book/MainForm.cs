@@ -135,19 +135,7 @@ namespace recipe_book
             ChangeUserPanelVisibility(true);
         }
 
-        private void pnlUser_MouseLeave(object sender, EventArgs e)
-        {
-            if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                ChangeUserPanelVisibility(false);
-        }
-
-        private void pnlSlideMenu_MouseLeave(object sender, EventArgs e)
-        {
-            if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                ChangeUserPanelVisibility(false);
-        }
-
-        private void MainForm_MouseLeave(object sender, EventArgs e)
+        private void HideSlideMenuOnMouseLeave(object sender, EventArgs e)
         {
             if (!pnlUser.ClientRectangle.Contains(PointToClient(Cursor.Position)))
                 ChangeUserPanelVisibility(false);

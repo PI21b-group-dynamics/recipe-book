@@ -108,7 +108,7 @@
             pnlUser.Size = new Size(204, 163);
             pnlUser.TabIndex = 2;
             pnlUser.MouseEnter += pnlUser_MouseEnter;
-            pnlUser.MouseLeave += pnlUser_MouseLeave;
+            pnlUser.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
             // picUser
             // 
@@ -144,7 +144,7 @@
             pnlSlideMenu.Size = new Size(204, 107);
             pnlSlideMenu.TabIndex = 6;
             pnlSlideMenu.Visible = false;
-            pnlSlideMenu.MouseLeave += pnlSlideMenu_MouseLeave;
+            pnlSlideMenu.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
             // lblChangeProfile
             // 
@@ -341,7 +341,7 @@
             Name = "MainForm";
             Text = "Книга рецептов";
             Load += MainForm_Load;
-            MouseLeave += MainForm_MouseLeave;
+            MouseLeave += HideSlideMenuOnMouseLeave;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             pnlSearch.ResumeLayout(false);
