@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-using System.Drawing.Drawing2D;
 
 namespace recipe_book
 {
@@ -42,21 +41,18 @@ namespace recipe_book
             for (int i = 0; i < rows; ++i)
                 pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 180));
 
-            // Заполнение списка тегов
             for (int i = 0; i < 24; ++i)
             {
                 Button button = new() { Text = $"Тег {i + 1}", AutoSize = true };
                 pnlTags.Controls.Add(button);
             }
 
-            // Заполнение методов сортировки
             cboContentSort.Items.AddRange(new string[] { "Дате создания", "Дате изменения", "Рейтингу" });
             cboContentSort.SelectedIndex = 0;
 
-            // Скругление краев у изображения пользователя
-            using GraphicsPath graphicsPath = new();
-            graphicsPath.AddEllipse(0, 0, picUser.Width, picUser.Height);
-            picUser.Region = new Region(graphicsPath);
+            Utils.MakeRound(picUser);
+            Utils.MakeRound(btnAddRecipe);
+            ActiveControl = btnAddRecipe;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -72,12 +68,6 @@ namespace recipe_book
             DbModule.Conn.Dispose();
         }
 
-        /// <summary>
-        /// Генерация рецепта
-        /// </summary>
-        /// <param name="caption">Заголовок рецепта</param>
-        /// <returns></returns>
-        /// ToDo: Добавить как параметр изображение рецепта
         public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
         {
             TableLayoutPanel panel = new()
