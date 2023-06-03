@@ -50,6 +50,7 @@
 
             Utils.MakeRound(picUser);
             Utils.MakeRound(btnAddRecipe);
+            picRecipePhoto.Visible = false;
             ActiveControl = btnAddRecipe;
         }
 
@@ -149,6 +150,62 @@
         private void btnShoppingList_Click(object sender, EventArgs e)
         {
             new ShoppingListForm();
+        }
+
+        private void btnAddRecipe_Click(object sender, EventArgs e)
+        {
+            tbcMainFormTabs.SelectedTab = tabCreateOrEditRecipe;
+        }
+
+        private void btnCancelCreationOrEdition_Click(object sender, EventArgs e)
+        {
+            tbcMainFormTabs.SelectedTab = tabListOfRecipes;
+        }
+
+        private void tbcMainFormTabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tbcMainFormTabs.SelectedTab == tabListOfRecipes)
+            {
+                txtSearch.Visible = true;
+            }
+            else if (tbcMainFormTabs.SelectedTab == tabCreateOrEditRecipe)
+            {
+                txtSearch.Visible = false;
+            }
+            else if (tbcMainFormTabs.SelectedTab == tabRecipeView)
+            {
+
+            }
+        }
+
+        private void btnLoadRecipePhoto_Click(object sender, EventArgs e)
+        {
+            if (dlgLoadRecipePhoto.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    picRecipePhoto.Image = Image.FromFile(dlgLoadRecipePhoto.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        caption: "Ошибка добавления фотографии",
+                        text: ex.Message,
+                        buttons: MessageBoxButtons.OK,
+                        icon: MessageBoxIcon.Error
+                    );
+                }
+                finally
+                {
+                    picRecipePhoto.Visible = true;
+                }
+            }
+        }
+
+        private void btnDeleteRecipePhoto_Click(object sender, EventArgs e)
+        {
+            picRecipePhoto.Visible = false;
+            picRecipePhoto.Image = null;
         }
     }
 }
