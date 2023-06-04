@@ -1,4 +1,6 @@
-﻿namespace recipe_book
+﻿using System.Data.SQLite;
+
+namespace recipe_book
 {
     public sealed partial class MainForm : Form
     {
@@ -188,7 +190,7 @@
             {
                 try
                 {
-                    picRecipePhoto.Image = Image.FromFile(dlgLoadRecipePhoto.FileName);
+                    picRecipePhoto.ImageLocation = dlgLoadRecipePhoto.FileName;
                 }
                 catch (Exception ex)
                 {
@@ -212,6 +214,48 @@
             picRecipePhoto.Visible = false;
             picRecipePhoto.Image = null;
             btnDeleteRecipePhoto.Enabled = false;
+        }
+
+        private void btnSaveRecipe_Click(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT id FROM Users 
+                WHERE login = $login
+                """,
+                new SQLiteParameter("login", lblUser.Text)
+            );
+
+            int userId;
+            using (SQLiteDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                userId = reader.GetInt32(0);
+            }
+
+            string cookingTime = $"{udWeeks.Value}:{udDays.Value}:{udHours.Value}:{udMinutes.Value}:{udSeconds.Value}";
+
+            byte[]? imageData = null;
+            if (picRecipePhoto.Image != null)
+            {
+                using (FileStream fs = new FileStream(picRecipePhoto.ImageLocation, FileMode.Open))
+                {
+                    imageData = new byte[fs.Length];
+                    fs.Read(imageData, 0, imageData.Length);
+                }
+            }
+
+            cmd = DbModule.CreateCommand("""
+                INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method)
+                VALUES ($user_id, $name, $rating, $cooking_time, $photo, $cooking_method)
+                """,
+                new SQLiteParameter("user_id", userId),
+                new SQLiteParameter("name", txtRecipeName.Text),
+                new SQLiteParameter("rating", udRecipeRating.Value),
+                new SQLiteParameter("cooking_time", cookingTime),
+                new SQLiteParameter("photo", imageData),
+                new SQLiteParameter("cooking_method", txtCookingMethod.Text)
+            );
+            cmd.ExecuteNonQuery();
         }
     }
 }

@@ -11,15 +11,8 @@ namespace recipe_book
         {
             Conn = new SQLiteConnection($"Data Source = {DB_FILENAME}");
             Conn.Open();
-            SQLiteCommand cmd = CreateCommand("""
-                CREATE TABLE IF NOT EXISTS Users (
-                    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                    login TEXT NOT NULL UNIQUE,
-                    email TEXT NOT NULL UNIQUE,
-                    password TEXT NOT NULL
-                );
-                """
-            );
+
+            SQLiteCommand cmd = CreateCommand(File.ReadAllText(@"..\..\..\InitDB.sql")); 
             cmd.ExecuteNonQuery();
         }
 
