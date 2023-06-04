@@ -258,6 +258,30 @@ namespace recipe_book
                 new SQLiteParameter("cooking_method", txtCookingMethod.Text)
             );
             cmd.ExecuteNonQuery();
+
+            // Добавление тегов, созданных пользователем
+            foreach(ComboBox cbTags in pnlTagInput.Controls)
+            {
+                cmd = DbModule.CreateCommand("""
+                    INSERT INTO Tags (name)
+                    VALUES ($name)
+                    """,
+                    new SQLiteParameter("name", cbTags.Text)
+                );
+                cmd.ExecuteNonQuery();
+            }
+
+            // Добавление ингредиентов, созданных пользователем
+            foreach (ComboBox cbIngredients in pnlIngredientInput.Controls)
+            {
+                cmd = DbModule.CreateCommand("""
+                    INSERT INTO Ingredients (name)
+                    VALUES ($name)
+                    """,
+                    new SQLiteParameter("name", cbIngredients.Text)
+                );
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
