@@ -4,12 +4,17 @@ namespace recipe_book
 {
     internal static class DbModule
     {
-        public const string DB_FILENAME = "Database.db";
         public static readonly SQLiteConnection Conn;
 
         static DbModule()
         {
-            Conn = new SQLiteConnection($"Data Source = {DB_FILENAME}");
+            DirectoryInfo dir = new(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "recipe-book"
+            ));
+            if (!dir.Exists)
+                dir.Create();
+            Conn = new SQLiteConnection($"""Data Source = {Path.Combine(dir.FullName, "Database.db")}""");
             Conn.Open();
 
             SQLiteCommand cmd = CreateCommand(File.ReadAllText(@"..\..\..\InitDB.sql")); 
