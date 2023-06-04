@@ -20,6 +20,8 @@ namespace recipe_book
                 )
             );
 
+            pnlSlideMenu.BringToFront();
+
             // Заполнение таблицы рецептов
             int rows = 6;
             int offset = pnlRecipes.Controls.Count;
