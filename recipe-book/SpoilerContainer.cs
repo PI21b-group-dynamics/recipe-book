@@ -1,6 +1,6 @@
 ﻿namespace recipe_book
 {
-    internal class SpoilerContainer : TableLayoutPanel
+    internal sealed class SpoilerContainer : TableLayoutPanel
     {
         private string? _title;
         public string Title
