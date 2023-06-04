@@ -2,7 +2,7 @@
 
 namespace recipe_book
 {
-    internal sealed class AutoFillingFlowPanelComboBox : ComboBox
+    internal sealed class _AutoFillingFlowPanelComboBox : ComboBox
     {
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -12,40 +12,38 @@ namespace recipe_book
             set => base.Parent = value;
         }
 
-        public AutoFillingFlowPanelComboBox()
+        public _AutoFillingFlowPanelComboBox()
         {
             DropDownStyle = ComboBoxStyle.DropDown;
-            TextChanged += ExpComboBox_TextChanged;
+            TextChanged += AutoFillingFlowPanelComboBox_TextChanged;
+            Validating += (object? sender, CancelEventArgs e) => Text = Text.Trim();
         }
 
-        private void ExpComboBox_TextChanged(object? sender, EventArgs e)
+        private void AutoFillingFlowPanelComboBox_TextChanged(object? sender, EventArgs e)
         {
+            if (Parent is null)
+                throw new NullReferenceException();
             if (Text == string.Empty)
-            {
-                Parent.Controls.Remove(Parent.EmptyTagBox);
                 Parent.EmptyTagBox = this;
-            }
             else if (Parent.EmptyTagBox == this)
-            {
-                Parent.EmptyTagBox = new AutoFillingFlowPanelComboBox() { Parent = Parent };
-            }
+                Parent.EmptyTagBox = new _AutoFillingFlowPanelComboBox();
         }
     }
 
 
     internal sealed class AutoFillingFlowPanel : FlowLayoutPanel
     {
-        public readonly Dictionary<AutoFillingFlowPanelComboBox, string> Tags = new();
-
-        private AutoFillingFlowPanelComboBox _emptyTagBox;
+        private _AutoFillingFlowPanelComboBox? _emptyTagBox;
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public AutoFillingFlowPanelComboBox EmptyTagBox
+        public _AutoFillingFlowPanelComboBox EmptyTagBox
         {
-            get => _emptyTagBox;
+            get => _emptyTagBox ?? throw new NullReferenceException();
             set
             {
-                if (!Controls.Contains(value))
+                if (Controls.Contains(value))
+                    Controls.Remove(_emptyTagBox);
+                else
                     Controls.Add(value);
                 _emptyTagBox = value;
             }
@@ -56,7 +54,7 @@ namespace recipe_book
             FlowDirection = FlowDirection.LeftToRight;
             WrapContents = true;
             AutoScroll = true;
-            EmptyTagBox = new AutoFillingFlowPanelComboBox();
+            EmptyTagBox = new _AutoFillingFlowPanelComboBox();
         }
     }
 }
