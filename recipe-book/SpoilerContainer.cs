@@ -18,7 +18,6 @@
                 Text = Title,
                 TextAlign = ContentAlignment.MiddleLeft,
                 AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
                 Dock = DockStyle.Fill
             };
             btnSpoiler.Click += btnSpoiler_Click;
