@@ -61,14 +61,14 @@
             txtCookingMethod = new TextBox();
             udRecipeRating = new NumericUpDown();
             tableLayoutPanel3 = new TableLayoutPanel();
-            udHours = new NumericUpDown();
-            udSeconds = new NumericUpDown();
-            udMinutes = new NumericUpDown();
+            numHours = new NumericUpDown();
+            numSeconds = new NumericUpDown();
+            numMinutes = new NumericUpDown();
             label8 = new Label();
             label9 = new Label();
-            udWeeks = new NumericUpDown();
+            numWeeks = new NumericUpDown();
             label10 = new Label();
-            udDays = new NumericUpDown();
+            numDays = new NumericUpDown();
             label11 = new Label();
             btnSaveRecipe = new Button();
             btnCancelCreationOrEdition = new Button();
@@ -89,11 +89,11 @@
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)udRecipeRating).BeginInit();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)udHours).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)udSeconds).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)udMinutes).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)udWeeks).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)udDays).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numHours).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numSeconds).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numMinutes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numWeeks).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numDays).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRecipePhoto).BeginInit();
             SuspendLayout();
             // 
@@ -538,14 +538,14 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel3.Controls.Add(udHours, 0, 0);
-            tableLayoutPanel3.Controls.Add(udSeconds, 4, 0);
-            tableLayoutPanel3.Controls.Add(udMinutes, 2, 0);
+            tableLayoutPanel3.Controls.Add(numHours, 0, 0);
+            tableLayoutPanel3.Controls.Add(numSeconds, 4, 0);
+            tableLayoutPanel3.Controls.Add(numMinutes, 2, 0);
             tableLayoutPanel3.Controls.Add(label8, 1, 0);
             tableLayoutPanel3.Controls.Add(label9, 3, 0);
-            tableLayoutPanel3.Controls.Add(udWeeks, 6, 0);
+            tableLayoutPanel3.Controls.Add(numWeeks, 6, 0);
             tableLayoutPanel3.Controls.Add(label10, 7, 0);
-            tableLayoutPanel3.Controls.Add(udDays, 8, 0);
+            tableLayoutPanel3.Controls.Add(numDays, 8, 0);
             tableLayoutPanel3.Controls.Add(label11, 9, 0);
             tableLayoutPanel3.Location = new Point(184, 437);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -556,30 +556,30 @@
             // 
             // udHours
             // 
-            udHours.AutoSize = true;
-            udHours.Location = new Point(3, 3);
-            udHours.Maximum = new decimal(new int[] { 72, 0, 0, 0 });
-            udHours.Name = "udHours";
-            udHours.Size = new Size(45, 27);
-            udHours.TabIndex = 0;
+            numHours.AutoSize = true;
+            numHours.Location = new Point(3, 3);
+            numHours.Maximum = new decimal(new int[] { 72, 0, 0, 0 });
+            numHours.Name = "udHours";
+            numHours.Size = new Size(45, 27);
+            numHours.TabIndex = 0;
             // 
             // udSeconds
             // 
-            udSeconds.AutoSize = true;
-            udSeconds.Location = new Point(141, 3);
-            udSeconds.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
-            udSeconds.Name = "udSeconds";
-            udSeconds.Size = new Size(45, 27);
-            udSeconds.TabIndex = 2;
+            numSeconds.AutoSize = true;
+            numSeconds.Location = new Point(141, 3);
+            numSeconds.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
+            numSeconds.Name = "udSeconds";
+            numSeconds.Size = new Size(45, 27);
+            numSeconds.TabIndex = 2;
             // 
             // udMinutes
             // 
-            udMinutes.AutoSize = true;
-            udMinutes.Location = new Point(72, 3);
-            udMinutes.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
-            udMinutes.Name = "udMinutes";
-            udMinutes.Size = new Size(45, 27);
-            udMinutes.TabIndex = 1;
+            numMinutes.AutoSize = true;
+            numMinutes.Location = new Point(72, 3);
+            numMinutes.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
+            numMinutes.Name = "udMinutes";
+            numMinutes.Size = new Size(45, 27);
+            numMinutes.TabIndex = 1;
             // 
             // label8
             // 
@@ -605,12 +605,12 @@
             // 
             // udWeeks
             // 
-            udWeeks.AutoSize = true;
-            udWeeks.Location = new Point(222, 3);
-            udWeeks.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
-            udWeeks.Name = "udWeeks";
-            udWeeks.Size = new Size(45, 27);
-            udWeeks.TabIndex = 5;
+            numWeeks.AutoSize = true;
+            numWeeks.Location = new Point(222, 3);
+            numWeeks.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
+            numWeeks.Name = "udWeeks";
+            numWeeks.Size = new Size(45, 27);
+            numWeeks.TabIndex = 5;
             // 
             // label10
             // 
@@ -625,12 +625,12 @@
             // 
             // udDays
             // 
-            udDays.AutoSize = true;
-            udDays.Location = new Point(344, 3);
-            udDays.Maximum = new decimal(new int[] { 29, 0, 0, 0 });
-            udDays.Name = "udDays";
-            udDays.Size = new Size(45, 27);
-            udDays.TabIndex = 7;
+            numDays.AutoSize = true;
+            numDays.Location = new Point(344, 3);
+            numDays.Maximum = new decimal(new int[] { 29, 0, 0, 0 });
+            numDays.Name = "udDays";
+            numDays.Size = new Size(45, 27);
+            numDays.TabIndex = 7;
             // 
             // label11
             // 
@@ -752,11 +752,11 @@
             ((System.ComponentModel.ISupportInitialize)udRecipeRating).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)udHours).EndInit();
-            ((System.ComponentModel.ISupportInitialize)udSeconds).EndInit();
-            ((System.ComponentModel.ISupportInitialize)udMinutes).EndInit();
-            ((System.ComponentModel.ISupportInitialize)udWeeks).EndInit();
-            ((System.ComponentModel.ISupportInitialize)udDays).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numHours).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numSeconds).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numMinutes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numWeeks).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numDays).EndInit();
             ((System.ComponentModel.ISupportInitialize)picRecipePhoto).EndInit();
             ResumeLayout(false);
         }
@@ -794,16 +794,16 @@
         private TextBox txtCookingMethod;
         private NumericUpDown udRecipeRating;
         private TableLayoutPanel tableLayoutPanel3;
-        private NumericUpDown udHours;
-        private NumericUpDown udMinutes;
-        private NumericUpDown udSeconds;
+        private NumericUpDown numHours;
+        private NumericUpDown numMinutes;
+        private NumericUpDown numSeconds;
         private Label label8;
         private Label label9;
         private Button btnCancelCreationOrEdition;
         private Button btnSaveRecipe;
-        private NumericUpDown udWeeks;
+        private NumericUpDown numWeeks;
         private Label label10;
-        private NumericUpDown udDays;
+        private NumericUpDown numDays;
         private Label label11;
         private PictureBox picRecipePhoto;
         private Button btnLoadRecipePhoto;
