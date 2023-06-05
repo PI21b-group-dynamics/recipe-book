@@ -14,7 +14,7 @@ namespace recipe_book
             ));
             if (!dir.Exists)
                 dir.Create();
-            Conn = new SQLiteConnection($"""Data Source = {Path.Combine(dir.FullName, "Database.db")}""");
+            Conn = new SQLiteConnection($"""Data Source = {Path.Combine(dir.FullName, "Database.sqlite")}""");
             Conn.Open();
 
             SQLiteCommand cmd = CreateCommand(File.ReadAllText(@"..\..\..\InitDB.sql")); 
