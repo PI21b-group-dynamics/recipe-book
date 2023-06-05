@@ -39,7 +39,7 @@ namespace recipe_book.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Recipe_Book.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("recipe_book.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,21 +61,39 @@ namespace recipe_book.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Ищет локализованную строку, похожую на CREATE TABLE IF NOT EXISTS Users (
+        ///	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        ///	login TEXT NOT NULL UNIQUE,
+        ///	email TEXT NOT NULL UNIQUE,
+        ///	password TEXT NOT NULL,
+        ///	photo BLOB
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS Tags (
+        ///	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        ///	name TEXT NOT NULL UNIQUE
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS Ingredients (
+        ///	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        ///	name TEXT NOT NULL UNIQUE
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS Recipes (
+        ///	id INTEGER NOT NULL PRIMARY KEY AUTOINCR [остаток строки не уместился]&quot;;.
         /// </summary>
-        internal static System.Drawing.Bitmap search_icon {
+        internal static string InitDB {
             get {
-                object obj = ResourceManager.GetObject("search-icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("InitDB", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap user_icon {
+        internal static System.Drawing.Bitmap UserIcon {
             get {
-                object obj = ResourceManager.GetObject("user-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("UserIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
