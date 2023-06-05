@@ -199,7 +199,7 @@ namespace recipe_book
             );
             cmd.ExecuteNonQuery();
 
-            SQLiteTransaction transaction;
+            SQLiteCommand cmdGetLastInsertedId = DbModule.CreateCommand("SELECT last_insert_rowid()");
             SQLiteParameter param;
             var autoFillingPanels = new[]
             {
@@ -207,21 +207,20 @@ namespace recipe_book
                 ("Ingredients", pnlIngredientInput)
             };
             foreach ((string tableName, AutoFillingFlowPanel panel) in autoFillingPanels)
-                using (transaction = DbModule.Conn.BeginTransaction())
+            {    
+                cmd = DbModule.CreateCommand($"""
+                    INSERT INTO {tableName} (name)
+                    VALUES ($name)
+                    """);
+                param = new SQLiteParameter("name");
+                cmd.Parameters.Add(param);
+                foreach (string value in panel.Values)
                 {
-                    cmd = DbModule.CreateCommand($"""
-                        INSERT INTO {tableName} (name)
-                        VALUES ($name)
-                        """);
-                    param = new SQLiteParameter("name");
-                    cmd.Parameters.Add(param);
-                    foreach (string value in panel.Values)
-                    {
-                        param.Value = value;
-                        cmd.ExecuteNonQuery();
-                    }
-                    transaction.Commit();
+                    param.Value = value;
+                    cmd.ExecuteNonQuery();
+                    (long)cmdGetLastInsertedId.ExecuteScalar(); // Вот нужный айдишник
                 }
+            }
             ClearRecipeInputFields();
             tbcMainFormTabs.SelectedTab = tabListOfRecipes;
         }
