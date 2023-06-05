@@ -62,5 +62,12 @@ namespace recipe_book
             AutoScroll = true;
             EmptyTagBox = new _AutoFillingFlowPanelComboBox();
         }
+
+        public void Clear()
+        {
+            var tmp = EmptyTagBox;
+            Controls.Clear();
+            EmptyTagBox = tmp;
+        }
     }
 }

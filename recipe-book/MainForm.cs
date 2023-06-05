@@ -114,6 +114,7 @@ namespace recipe_book
         private void btnCancelCreationOrEdition_Click(object sender, EventArgs e)
         {
             tbcMainFormTabs.SelectedTab = tabListOfRecipes;
+            ClearRecipeInputFields();
         }
 
         private void tbcMainFormTabs_SelectedIndexChanged(object sender, EventArgs e)
@@ -180,7 +181,7 @@ namespace recipe_book
                 """,
                 new SQLiteParameter("user_id", userId),
                 new SQLiteParameter("name", txtRecipeName.Text),
-                new SQLiteParameter("rating", udRecipeRating.Value),
+                new SQLiteParameter("rating", numRecipeRating.Value),
                 new SQLiteParameter("cooking_time", cookingTime),
                 new SQLiteParameter("photo", imageData),
                 new SQLiteParameter("cooking_method", txtCookingMethod.Text)
@@ -210,6 +211,23 @@ namespace recipe_book
                     }
                     transaction.Commit();
                 }
+            ClearRecipeInputFields();
+            tbcMainFormTabs.SelectedTab = tabListOfRecipes;
+        }
+
+        private void ClearRecipeInputFields()
+        {
+            txtRecipeName.Clear();
+            txtCookingMethod.Clear();
+            pnlTagInput.Clear();
+            pnlIngredientInput.Clear();
+            btnDeleteRecipePhoto_Click(new(), new());
+            numHours.Value = 0;
+            numMinutes.Value = 0;
+            numSeconds.Value = 0;
+            numWeeks.Value = 0;
+            numDays.Value = 0;
+            numRecipeRating.Value = 1;
         }
 
         public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
