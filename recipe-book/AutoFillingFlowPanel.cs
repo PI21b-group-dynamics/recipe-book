@@ -49,6 +49,12 @@ namespace recipe_book
             }
         }
 
+        public IEnumerable<string> Values
+        {
+            get => from _AutoFillingFlowPanelComboBox combobox in Controls
+                   where combobox != EmptyTagBox select combobox.Text;
+        }
+
         public AutoFillingFlowPanel()
         {
             FlowDirection = FlowDirection.LeftToRight;
