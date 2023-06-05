@@ -4,7 +4,7 @@ namespace recipe_book
 {
     public sealed partial class AuthForm : Form
     {
-        public long? Id;
+        public long Id;
         public string Login { get => txtLogin.Text; }
 
         public AuthForm()
@@ -71,7 +71,7 @@ namespace recipe_book
             {
                 cmd.ExecuteNonQuery();
                 cmd = DbModule.CreateCommand("SELECT last_insert_rowid();");
-                Id = (long?)cmd.ExecuteScalar();
+                Id = (long)cmd.ExecuteScalar();
                 DialogResult = DialogResult.OK;
                 Close();
             }

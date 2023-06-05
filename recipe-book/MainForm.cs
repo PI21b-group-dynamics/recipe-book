@@ -4,6 +4,7 @@ namespace recipe_book
 {
     public sealed partial class MainForm : Form
     {
+        private long userId;
         private readonly Color UserLayoutPanelOriginalBackColor;
         private readonly List<TableLayoutPanel> recipes = new();
         private readonly Rectangle SlideMenuHoverZone;
@@ -68,66 +69,12 @@ namespace recipe_book
             if (authForm.ShowDialog() != DialogResult.OK)
                 Close();
             lblUser.Text = authForm.Login;
+            userId = authForm.Id;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             DbModule.Conn.Dispose();
-        }
-
-        public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
-        {
-            TableLayoutPanel panel = new()
-            {
-                ColumnCount = 2,
-                RowCount = 2,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right,
-                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
-                Dock = DockStyle.Fill,
-                Margin = new Padding(3)
-            };
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20));
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
-            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-
-            Label label = new()
-            {
-                Dock = DockStyle.Fill,
-                Text = caption,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            panel.Controls.Add(label);
-            panel.SetColumn(label, 0);
-            panel.SetRow(label, 0);
-            panel.SetColumnSpan(label, 1);
-            panel.SetRowSpan(label, 1);
-
-            Button btn = new()
-            {
-                Text = "❌",
-                Dock = DockStyle.Fill,
-                Margin = new Padding(0)
-            };
-            panel.Controls.Add(btn);
-            panel.SetColumn(btn, 1);
-            panel.SetRow(btn, 0);
-            panel.SetColumnSpan(btn, 1);
-            panel.SetRowSpan(btn, 1);
-
-            PictureBox pb = new()
-            {
-                Dock = DockStyle.Fill,
-                Margin = new Padding(0)
-            };
-            panel.Controls.Add(pb);
-            panel.SetColumn(pb, 0);
-            panel.SetRow(pb, 1);
-            panel.SetColumnSpan(pb, 2);
-            panel.SetRowSpan(pb, 1);
-            panel.Margin = new Padding(12);
-
-            return (panel, label, btn, pb);
         }
 
         private void ChangeSlideMenuVisibility(bool visibility)
@@ -220,33 +167,17 @@ namespace recipe_book
 
         private void btnSaveRecipe_Click(object sender, EventArgs e)
         {
-            SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT id FROM Users 
-                WHERE login = $login
-                """,
-                new SQLiteParameter("login", lblUser.Text)
-            );
-
-            int userId;
-            using (SQLiteDataReader reader = cmd.ExecuteReader())
-            {
-                reader.Read();
-                userId = reader.GetInt32(0);
-            }
-
-            string cookingTime = $"{udWeeks.Value}:{udDays.Value}:{udHours.Value}:{udMinutes.Value}:{udSeconds.Value}";
+            string cookingTime = $"{numWeeks.Value}:{numDays.Value}:{numHours.Value}:{numMinutes.Value}:{numSeconds.Value}";
 
             byte[]? imageData = null;
             if (picRecipePhoto.Image != null)
             {
-                using (FileStream fs = new FileStream(picRecipePhoto.ImageLocation, FileMode.Open))
-                {
-                    imageData = new byte[fs.Length];
-                    fs.Read(imageData, 0, imageData.Length);
-                }
+                using FileStream fs = new(picRecipePhoto.ImageLocation, FileMode.Open);
+                imageData = new byte[fs.Length];
+                fs.Read(imageData, 0, imageData.Length);
             }
 
-            cmd = DbModule.CreateCommand("""
+            SQLiteCommand cmd = DbModule.CreateCommand("""
                 INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method)
                 VALUES ($user_id, $name, $rating, $cooking_time, $photo, $cooking_method)
                 """,
@@ -282,6 +213,61 @@ namespace recipe_book
                 );
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
+        {
+            TableLayoutPanel panel = new()
+            {
+                ColumnCount = 2,
+                RowCount = 2,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right,
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
+                Dock = DockStyle.Fill,
+                Margin = new Padding(3)
+            };
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20));
+            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
+            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+            Label label = new()
+            {
+                Dock = DockStyle.Fill,
+                Text = caption,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            panel.Controls.Add(label);
+            panel.SetColumn(label, 0);
+            panel.SetRow(label, 0);
+            panel.SetColumnSpan(label, 1);
+            panel.SetRowSpan(label, 1);
+
+            Button btn = new()
+            {
+                Text = "❌",
+                Dock = DockStyle.Fill,
+                Margin = new Padding(0)
+            };
+            panel.Controls.Add(btn);
+            panel.SetColumn(btn, 1);
+            panel.SetRow(btn, 0);
+            panel.SetColumnSpan(btn, 1);
+            panel.SetRowSpan(btn, 1);
+
+            PictureBox pb = new()
+            {
+                Dock = DockStyle.Fill,
+                Margin = new Padding(0)
+            };
+            panel.Controls.Add(pb);
+            panel.SetColumn(pb, 0);
+            panel.SetRow(pb, 1);
+            panel.SetColumnSpan(pb, 2);
+            panel.SetRowSpan(pb, 1);
+            panel.Margin = new Padding(12);
+
+            return (panel, label, btn, pb);
         }
     }
 }
