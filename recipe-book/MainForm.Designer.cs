@@ -204,7 +204,7 @@
             // picUser
             // 
             picUser.Dock = DockStyle.Fill;
-            picUser.Image = Properties.Resources.user_icon;
+            picUser.Image = Properties.Resources.UserIcon;
             picUser.InitialImage = (Image)resources.GetObject("picUser.InitialImage");
             picUser.Location = new Point(3, 3);
             picUser.Name = "picUser";
@@ -212,7 +212,7 @@
             picUser.SizeMode = PictureBoxSizeMode.StretchImage;
             picUser.TabIndex = 1;
             picUser.TabStop = false;
-            picUser.MouseEnter += pnlUser_MouseEnter;
+            picUser.MouseEnter += ShowSlideMenuOnMouseEnter;
             picUser.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
             // lblUser
@@ -226,7 +226,7 @@
             lblUser.TabIndex = 0;
             lblUser.Text = "Пользователь";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
-            lblUser.MouseEnter += pnlUser_MouseEnter;
+            lblUser.MouseEnter += ShowSlideMenuOnMouseEnter;
             lblUser.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
             // tbcMainFormTabs

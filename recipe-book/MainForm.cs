@@ -22,7 +22,13 @@ namespace recipe_book
             );
 
             pnlSlideMenu.BringToFront();
-
+            ActiveControl = btnAddRecipe;
+            cboContentSort.Items.AddRange(new[] { "Дате создания", "Дате изменения", "Рейтингу" });
+            cboContentSort.SelectedIndex = 0;
+            Utils.MakeRound(picUser);
+            Utils.MakeRound(btnAddRecipe);
+            picRecipePhoto.Visible = false;
+            #region
             // Заполнение таблицы рецептов
             int rows = 6;
             int offset = pnlRecipes.Controls.Count;
@@ -53,14 +59,7 @@ namespace recipe_book
                 Button button = new() { Text = $"Тег {i + 1}", AutoSize = true };
                 pnlTags.Controls.Add(button);
             }
-
-            cboContentSort.Items.AddRange(new string[] { "Дате создания", "Дате изменения", "Рейтингу" });
-            cboContentSort.SelectedIndex = 0;
-
-            Utils.MakeRound(picUser);
-            Utils.MakeRound(btnAddRecipe);
-            picRecipePhoto.Visible = false;
-            ActiveControl = btnAddRecipe;
+            #endregion
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -83,7 +82,7 @@ namespace recipe_book
             pnlSlideMenu.Visible = visibility;
         }
 
-        private void pnlUser_MouseEnter(object sender, EventArgs e)
+        private void ShowSlideMenuOnMouseEnter(object sender, EventArgs e)
         {
             ChangeSlideMenuVisibility(true);
         }
@@ -140,6 +139,8 @@ namespace recipe_book
                 try
                 {
                     picRecipePhoto.ImageLocation = dlgLoadRecipePhoto.FileName;
+                    picRecipePhoto.Visible = true;
+                    btnDeleteRecipePhoto.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -149,11 +150,6 @@ namespace recipe_book
                         buttons: MessageBoxButtons.OK,
                         icon: MessageBoxIcon.Error
                     );
-                }
-                finally
-                {
-                    picRecipePhoto.Visible = true;
-                    btnDeleteRecipePhoto.Enabled = true;
                 }
             }
         }
@@ -167,16 +163,17 @@ namespace recipe_book
 
         private void btnSaveRecipe_Click(object sender, EventArgs e)
         {
-            string cookingTime = $"{numWeeks.Value}:{numDays.Value}:{numHours.Value}:{numMinutes.Value}:{numSeconds.Value}";
-
             byte[]? imageData = null;
-            if (picRecipePhoto.Image != null)
+            if (picRecipePhoto.Image is not null)
             {
                 using FileStream fs = new(picRecipePhoto.ImageLocation, FileMode.Open);
                 imageData = new byte[fs.Length];
                 fs.Read(imageData, 0, imageData.Length);
             }
 
+            string cookingTime = string.Join(' ',
+                (numWeeks.Value, numDays.Value, numHours.Value, numMinutes.Value, numSeconds.Value)
+            );
             SQLiteCommand cmd = DbModule.CreateCommand("""
                 INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method)
                 VALUES ($user_id, $name, $rating, $cooking_time, $photo, $cooking_method)
@@ -190,29 +187,29 @@ namespace recipe_book
             );
             cmd.ExecuteNonQuery();
 
-            // Добавление тегов, созданных пользователем
-            foreach(ComboBox cbTags in pnlTagInput.Controls)
+            SQLiteTransaction transaction;
+            SQLiteParameter param;
+            var autoFillingPanels = new[]
             {
-                cmd = DbModule.CreateCommand("""
-                    INSERT INTO Tags (name)
-                    VALUES ($name)
-                    """,
-                    new SQLiteParameter("name", cbTags.Text)
-                );
-                cmd.ExecuteNonQuery();
-            }
-
-            // Добавление ингредиентов, созданных пользователем
-            foreach (ComboBox cbIngredients in pnlIngredientInput.Controls)
-            {
-                cmd = DbModule.CreateCommand("""
-                    INSERT INTO Ingredients (name)
-                    VALUES ($name)
-                    """,
-                    new SQLiteParameter("name", cbIngredients.Text)
-                );
-                cmd.ExecuteNonQuery();
-            }
+                ("Tags", pnlTagInput),
+                ("Ingredients", pnlIngredientInput)
+            };
+            foreach ((string tableName, AutoFillingFlowPanel panel) in autoFillingPanels)
+                using (transaction = DbModule.Conn.BeginTransaction())
+                {
+                    cmd = DbModule.CreateCommand($"""
+                        INSERT INTO {tableName} (name)
+                        VALUES ($name)
+                        """);
+                    param = new SQLiteParameter("name");
+                    cmd.Parameters.Add(param);
+                    foreach (string value in panel.Values)
+                    {
+                        param.Value = value;
+                        cmd.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
         }
 
         public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
