@@ -200,25 +200,37 @@ namespace recipe_book
             cmd.ExecuteNonQuery();
 
             SQLiteCommand cmdGetLastInsertedId = DbModule.CreateCommand("SELECT last_insert_rowid()");
-            SQLiteParameter param;
+            
+            long recipeId = (long)cmdGetLastInsertedId.ExecuteScalar();
+ 
             var autoFillingPanels = new[]
             {
                 ("Tags", pnlTagInput),
                 ("Ingredients", pnlIngredientInput)
             };
             foreach ((string tableName, AutoFillingFlowPanel panel) in autoFillingPanels)
-            {    
-                cmd = DbModule.CreateCommand($"""
-                    INSERT INTO {tableName} (name)
-                    VALUES ($name)
-                    """);
-                param = new SQLiteParameter("name");
-                cmd.Parameters.Add(param);
+            {
                 foreach (string value in panel.Values)
                 {
-                    param.Value = value;
+                    cmd = DbModule.CreateCommand($"""
+                        INSERT INTO {tableName} (name)
+                        VALUES ($name)
+                        """,
+                        new SQLiteParameter("name", value)
+                    );
+
                     cmd.ExecuteNonQuery();
-                    (long)cmdGetLastInsertedId.ExecuteScalar(); // Вот нужный айдишник
+
+                    long lastElementId = (long)cmdGetLastInsertedId.ExecuteScalar();
+
+                    cmd = DbModule.CreateCommand($"""
+                        INSERT INTO {"Recipe" + tableName}
+                        VALUES ($recipe_id, $element_id)
+                        """,
+                        new SQLiteParameter("recipe_id", recipeId),
+                        new SQLiteParameter("element_id", lastElementId)
+                    );
+                    cmd.ExecuteNonQuery();
                 }
             }
             ClearRecipeInputFields();
