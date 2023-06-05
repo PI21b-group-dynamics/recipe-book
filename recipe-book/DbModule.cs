@@ -1,4 +1,5 @@
-﻿using System.Data.SQLite;
+﻿using recipe_book.Properties;
+using System.Data.SQLite;
 
 namespace recipe_book
 {
@@ -17,7 +18,7 @@ namespace recipe_book
             Conn = new SQLiteConnection($"""Data Source = {Path.Combine(dir.FullName, "Database.sqlite")}""");
             Conn.Open();
 
-            SQLiteCommand cmd = CreateCommand(File.ReadAllText(@"..\..\..\InitDB.sql")); 
+            SQLiteCommand cmd = CreateCommand(Resources.InitDB); 
             cmd.ExecuteNonQuery();
         }
 
