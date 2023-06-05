@@ -36,6 +36,7 @@
             btnSave = new Button();
             btnDeleteProfile = new Button();
             picUser = new PictureBox();
+            dlgLoadProfilePic = new OpenFileDialog();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picUser).BeginInit();
             SuspendLayout();
@@ -77,6 +78,7 @@
             txtPassword.Size = new Size(321, 27);
             txtPassword.TabIndex = 1;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.TextChanged += authFields_TextChanged;
             // 
             // txtEmail
             // 
@@ -87,6 +89,7 @@
             txtEmail.PlaceholderText = "E-mail";
             txtEmail.Size = new Size(321, 27);
             txtEmail.TabIndex = 0;
+            txtEmail.TextChanged += authFields_TextChanged;
             // 
             // txtLogin
             // 
@@ -97,6 +100,7 @@
             txtLogin.PlaceholderText = "Логин";
             txtLogin.Size = new Size(321, 27);
             txtLogin.TabIndex = 6;
+            txtLogin.TextChanged += authFields_TextChanged;
             // 
             // btnCancel
             // 
@@ -107,16 +111,19 @@
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
             btnSave.Dock = DockStyle.Fill;
+            btnSave.Enabled = false;
             btnSave.Location = new Point(176, 231);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(158, 29);
             btnSave.TabIndex = 8;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnDeleteProfile
             // 
@@ -130,6 +137,7 @@
             btnDeleteProfile.TabIndex = 9;
             btnDeleteProfile.Text = "Удалить профиль";
             btnDeleteProfile.UseVisualStyleBackColor = true;
+            btnDeleteProfile.Click += btnDeleteProfile_Click;
             // 
             // picUser
             // 
@@ -141,6 +149,14 @@
             picUser.Size = new Size(321, 112);
             picUser.TabIndex = 10;
             picUser.TabStop = false;
+            picUser.Click += picUser_Click;
+            // 
+            // dlgLoadProfilePic
+            // 
+            dlgLoadProfilePic.DefaultExt = "jpg";
+            dlgLoadProfilePic.FileName = "Фото.jpg";
+            dlgLoadProfilePic.Filter = "Изображения|*.jpg;*.png";
+            dlgLoadProfilePic.Title = "Выберите фото профиля";
             // 
             // EditProfileForm
             // 
@@ -166,5 +182,6 @@
         private Button btnSave;
         private Button btnDeleteProfile;
         private PictureBox picUser;
+        private OpenFileDialog dlgLoadProfilePic;
     }
 }

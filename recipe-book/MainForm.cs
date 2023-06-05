@@ -141,7 +141,6 @@ namespace recipe_book
         private void btnLoadRecipePhoto_Click(object sender, EventArgs e)
         {
             if (dlgLoadRecipePhoto.ShowDialog() == DialogResult.OK)
-            {
                 try
                 {
                     picRecipePhoto.ImageLocation = dlgLoadRecipePhoto.FileName;
@@ -157,7 +156,6 @@ namespace recipe_book
                         icon: MessageBoxIcon.Error
                     );
                 }
-            }
         }
 
         private void btnDeleteRecipePhoto_Click(object sender, EventArgs e)
