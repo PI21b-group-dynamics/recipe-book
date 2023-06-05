@@ -10,10 +10,6 @@ namespace recipe_book
         public AuthForm()
         {
             InitializeComponent();
-        }
-
-        private void AuthForm_Load(object sender, EventArgs e)
-        {
             ActiveControl = btnSignIn;
         }
 

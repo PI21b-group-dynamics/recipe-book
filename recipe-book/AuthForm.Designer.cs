@@ -158,7 +158,6 @@ namespace recipe_book
             Name = "AuthForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Авторизация";
-            Load += AuthForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);

@@ -100,7 +100,6 @@ namespace recipe_book
             new EditProfileForm(userId).ShowDialog();
         }
 
-
         private void lblHelp_Click(object sender, EventArgs e)
         {
             _helpForm = new HelpForm();
