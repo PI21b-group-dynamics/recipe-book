@@ -4,6 +4,7 @@ namespace recipe_book
 {
     public sealed partial class AuthForm : Form
     {
+        public long? Id;
         public string Login { get => txtLogin.Text; }
 
         public AuthForm()
@@ -25,19 +26,23 @@ namespace recipe_book
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT login FROM Users
+                SELECT id, password FROM Users
                 WHERE ($login = '' OR login = $login)
                     AND ($email = '' OR email = $email)
-                    AND password = $password
                 LIMIT 1;
                 """,
                 new SQLiteParameter("login", txtLogin.Text),
-                new SQLiteParameter("email", txtEmail.Text),
-                new SQLiteParameter("password", txtPassword.Text)
+                new SQLiteParameter("email", txtEmail.Text)
             );
             using SQLiteDataReader rdr = cmd.ExecuteReader();
-            if (rdr.HasRows)
+            string? message = null;
+            if (!rdr.Read())
+                message = "Пользователь с таким логином или e-mail не найден. Возможно, вы хотели зарегистрироваться?";
+            else if (txtPassword.Text != rdr.GetString(1))
+                message = "Вы ввели неверный пароль от учётной записи. Возможно, вы хотели войти в другой аккаунт?";
+            if (message is null)
             {
+                Id = rdr.GetInt64(0);
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -45,7 +50,7 @@ namespace recipe_book
             {
                 MessageBox.Show(
                     caption: "Ошибка входа",
-                    text: "Учётная запись с такими данными не найдена.",
+                    text: message,
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Error
                 );
@@ -65,20 +70,24 @@ namespace recipe_book
             try
             {
                 cmd.ExecuteNonQuery();
+                cmd = DbModule.CreateCommand("SELECT last_insert_rowid();");
+                Id = (long?)cmd.ExecuteScalar();
+                DialogResult = DialogResult.OK;
+                Close();
             }
             catch (SQLiteException ex)
             {
+                string message;
+                if (ex.ResultCode == SQLiteErrorCode.Constraint)
+                    message = "Пользователь с таким логином или e-mail уже зарегистрирован. Возможно, вы хотели войти в учётную запись?";
+                else
+                    message = ex.Message;
                 MessageBox.Show(
                     caption: "Ошибка регистрации",
-                    text: ex.Message,
+                    text: message,
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Error
                 );
-            }
-            finally
-            {
-                DialogResult = DialogResult.OK;
-                Close();
             }
         }
     }
