@@ -93,6 +93,11 @@ namespace recipe_book
                 ChangeSlideMenuVisibility(false);
         }
 
+        private void lblEditProfile_Click(object sender, EventArgs e)
+        {
+            new EditProfileForm(userId).ShowDialog();
+        }
+
         private void lblExit_Click(object sender, EventArgs e)
         {
             Hide();

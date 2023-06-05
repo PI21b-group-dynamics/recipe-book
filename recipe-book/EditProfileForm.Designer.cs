@@ -32,12 +32,12 @@
             txtPassword = new TextBox();
             txtEmail = new TextBox();
             txtLogin = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            pictureBox1 = new PictureBox();
+            btnCancel = new Button();
+            btnSave = new Button();
+            btnDeleteProfile = new Button();
+            picUser = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picUser).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -48,10 +48,10 @@
             tableLayoutPanel1.Controls.Add(txtPassword, 0, 3);
             tableLayoutPanel1.Controls.Add(txtEmail, 0, 2);
             tableLayoutPanel1.Controls.Add(txtLogin, 0, 1);
-            tableLayoutPanel1.Controls.Add(button1, 0, 4);
-            tableLayoutPanel1.Controls.Add(button2, 1, 4);
-            tableLayoutPanel1.Controls.Add(button3, 0, 6);
-            tableLayoutPanel1.Controls.Add(pictureBox1, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnCancel, 0, 4);
+            tableLayoutPanel1.Controls.Add(btnSave, 1, 4);
+            tableLayoutPanel1.Controls.Add(btnDeleteProfile, 0, 6);
+            tableLayoutPanel1.Controls.Add(picUser, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -98,48 +98,49 @@
             txtLogin.Size = new Size(321, 27);
             txtLogin.TabIndex = 6;
             // 
-            // button1
+            // btnCancel
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(13, 231);
-            button1.Name = "button1";
-            button1.Size = new Size(157, 29);
-            button1.TabIndex = 7;
-            button1.Text = "Отмена";
-            button1.UseVisualStyleBackColor = true;
+            btnCancel.Dock = DockStyle.Fill;
+            btnCancel.Location = new Point(13, 231);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(157, 29);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Отмена";
+            btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSave
             // 
-            button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(176, 231);
-            button2.Name = "button2";
-            button2.Size = new Size(158, 29);
-            button2.TabIndex = 8;
-            button2.Text = "Сохранить";
-            button2.UseVisualStyleBackColor = true;
+            btnSave.Dock = DockStyle.Fill;
+            btnSave.Location = new Point(176, 231);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(158, 29);
+            btnSave.TabIndex = 8;
+            btnSave.Text = "Сохранить";
+            btnSave.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDeleteProfile
             // 
-            button3.AutoSize = true;
-            button3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel1.SetColumnSpan(button3, 2);
-            button3.Dock = DockStyle.Top;
-            button3.Location = new Point(13, 266);
-            button3.Name = "button3";
-            button3.Size = new Size(321, 30);
-            button3.TabIndex = 9;
-            button3.Text = "Удалить профиль";
-            button3.UseVisualStyleBackColor = true;
+            btnDeleteProfile.AutoSize = true;
+            btnDeleteProfile.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.SetColumnSpan(btnDeleteProfile, 2);
+            btnDeleteProfile.Dock = DockStyle.Top;
+            btnDeleteProfile.Location = new Point(13, 266);
+            btnDeleteProfile.Name = "btnDeleteProfile";
+            btnDeleteProfile.Size = new Size(321, 30);
+            btnDeleteProfile.TabIndex = 9;
+            btnDeleteProfile.Text = "Удалить профиль";
+            btnDeleteProfile.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // picUser
             // 
-            tableLayoutPanel1.SetColumnSpan(pictureBox1, 2);
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(13, 14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(321, 112);
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
+            picUser.BackgroundImageLayout = ImageLayout.Zoom;
+            tableLayoutPanel1.SetColumnSpan(picUser, 2);
+            picUser.Dock = DockStyle.Fill;
+            picUser.Location = new Point(13, 14);
+            picUser.Name = "picUser";
+            picUser.Size = new Size(321, 112);
+            picUser.TabIndex = 10;
+            picUser.TabStop = false;
             // 
             // EditProfileForm
             // 
@@ -151,7 +152,7 @@
             Text = "Редактирование профиля";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picUser).EndInit();
             ResumeLayout(false);
         }
 
@@ -161,9 +162,9 @@
         private TextBox txtPassword;
         private TextBox txtEmail;
         private TextBox txtLogin;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private PictureBox pictureBox1;
+        private Button btnCancel;
+        private Button btnSave;
+        private Button btnDeleteProfile;
+        private PictureBox picUser;
     }
 }

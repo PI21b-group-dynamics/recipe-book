@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             pnlSlideMenu = new TableLayoutPanel();
-            lblChangeProfile = new Label();
+            lblEditProfile = new Label();
             lblHelp = new Label();
             lblExit = new Label();
             pnlMainLayout = new TableLayoutPanel();
@@ -102,7 +102,7 @@
             pnlSlideMenu.BackColor = SystemColors.ControlDark;
             pnlSlideMenu.ColumnCount = 1;
             pnlSlideMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            pnlSlideMenu.Controls.Add(lblChangeProfile, 0, 0);
+            pnlSlideMenu.Controls.Add(lblEditProfile, 0, 0);
             pnlSlideMenu.Controls.Add(lblHelp, 0, 1);
             pnlSlideMenu.Controls.Add(lblExit, 0, 2);
             pnlSlideMenu.Location = new Point(3, 57);
@@ -119,17 +119,18 @@
             pnlSlideMenu.Visible = false;
             pnlSlideMenu.MouseLeave += HideSlideMenuOnMouseLeave;
             // 
-            // lblChangeProfile
+            // lblEditProfile
             // 
-            lblChangeProfile.AutoEllipsis = true;
-            lblChangeProfile.Cursor = Cursors.Hand;
-            lblChangeProfile.Dock = DockStyle.Fill;
-            lblChangeProfile.Location = new Point(61, 4);
-            lblChangeProfile.Margin = new Padding(8, 4, 8, 4);
-            lblChangeProfile.Name = "lblChangeProfile";
-            lblChangeProfile.Size = new Size(184, 27);
-            lblChangeProfile.TabIndex = 4;
-            lblChangeProfile.Text = "Редактировать профиль";
+            lblEditProfile.AutoEllipsis = true;
+            lblEditProfile.Cursor = Cursors.Hand;
+            lblEditProfile.Dock = DockStyle.Fill;
+            lblEditProfile.Location = new Point(61, 4);
+            lblEditProfile.Margin = new Padding(8, 4, 8, 4);
+            lblEditProfile.Name = "lblEditProfile";
+            lblEditProfile.Size = new Size(184, 27);
+            lblEditProfile.TabIndex = 4;
+            lblEditProfile.Text = "Редактировать профиль";
+            lblEditProfile.Click += lblEditProfile_Click;
             // 
             // lblHelp
             // 
@@ -763,7 +764,7 @@
 
         #endregion
         private TableLayoutPanel pnlSlideMenu;
-        private Label lblChangeProfile;
+        private Label lblEditProfile;
         private Label lblHelp;
         private Label lblExit;
         private TableLayoutPanel pnlMainLayout;
