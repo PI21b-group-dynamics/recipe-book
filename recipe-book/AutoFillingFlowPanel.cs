@@ -16,7 +16,7 @@ namespace recipe_book
         {
             DropDownStyle = ComboBoxStyle.DropDown;
             TextChanged += AutoFillingFlowPanelComboBox_TextChanged;
-            Validating += _AutoFillingFlowPanelComboBox_Validating;
+            Validating += AutoFillingFlowPanelComboBox_Validating;
         }
 
         private void AutoFillingFlowPanelComboBox_TextChanged(object? sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace recipe_book
                 Parent.EmptyTagBox = new _AutoFillingFlowPanelComboBox();
         }
 
-        private void _AutoFillingFlowPanelComboBox_Validating(object? sender, CancelEventArgs e)
+        private void AutoFillingFlowPanelComboBox_Validating(object? sender, CancelEventArgs e)
         {
             if (Parent is null)
                 throw new NullReferenceException();
