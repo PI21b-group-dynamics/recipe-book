@@ -19,16 +19,6 @@ namespace recipe_book
             Validating += _AutoFillingFlowPanelComboBox_Validating;
         }
 
-        private void _AutoFillingFlowPanelComboBox_Validating(object? sender, CancelEventArgs e)
-        {
-            if (Parent is null)
-                throw new NullReferenceException();
-            Text = Text.Trim();
-            foreach (_AutoFillingFlowPanelComboBox comboBox in Parent.Controls)
-                if (comboBox.Text == Text && comboBox != this)
-                    comboBox.Dispose();
-        }
-
         private void AutoFillingFlowPanelComboBox_TextChanged(object? sender, EventArgs e)
         {
             if (Parent is null)
@@ -37,6 +27,16 @@ namespace recipe_book
                 Parent.EmptyTagBox = this;
             else if (Parent.EmptyTagBox == this)
                 Parent.EmptyTagBox = new _AutoFillingFlowPanelComboBox();
+        }
+
+        private void _AutoFillingFlowPanelComboBox_Validating(object? sender, CancelEventArgs e)
+        {
+            if (Parent is null)
+                throw new NullReferenceException();
+            Text = Text.Trim();
+            foreach (_AutoFillingFlowPanelComboBox comboBox in Parent.Controls)
+                if (comboBox.Text == Text && comboBox != this)
+                    comboBox.Dispose();
         }
     }
 
