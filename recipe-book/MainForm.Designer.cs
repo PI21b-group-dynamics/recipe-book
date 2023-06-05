@@ -142,6 +142,7 @@
             lblHelp.Size = new Size(184, 27);
             lblHelp.TabIndex = 5;
             lblHelp.Text = "Справка";
+            lblHelp.Click += lblHelp_Click;
             // 
             // lblExit
             // 

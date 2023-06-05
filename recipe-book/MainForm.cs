@@ -8,6 +8,7 @@ namespace recipe_book
         private readonly Color UserLayoutPanelOriginalBackColor;
         private readonly List<TableLayoutPanel> recipes = new();
         private readonly Rectangle SlideMenuHoverZone;
+        private HelpForm? _helpForm;
 
         public MainForm()
         {
@@ -73,6 +74,7 @@ namespace recipe_book
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            _helpForm?.Close();
             DbModule.Conn.Dispose();
         }
 
@@ -96,6 +98,13 @@ namespace recipe_book
         private void lblEditProfile_Click(object sender, EventArgs e)
         {
             new EditProfileForm(userId).ShowDialog();
+        }
+
+
+        private void lblHelp_Click(object sender, EventArgs e)
+        {
+            _helpForm = new HelpForm();
+            _helpForm.Show();
         }
 
         private void lblExit_Click(object sender, EventArgs e)
