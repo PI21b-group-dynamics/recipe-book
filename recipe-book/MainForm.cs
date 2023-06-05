@@ -222,12 +222,8 @@ namespace recipe_book
             pnlTagInput.Clear();
             pnlIngredientInput.Clear();
             btnDeleteRecipePhoto_Click(new(), new());
-            numHours.Value = 0;
-            numMinutes.Value = 0;
-            numSeconds.Value = 0;
-            numWeeks.Value = 0;
-            numDays.Value = 0;
-            numRecipeRating.Value = 1;
+            foreach (var numericUpDown in new[] { numHours, numMinutes, numSeconds, numWeeks, numDays, numRecipeRating })
+                numericUpDown.Value = numericUpDown.Minimum;
         }
 
         public (TableLayoutPanel, Label, Button, PictureBox) BuildRecipeControls(string caption)
