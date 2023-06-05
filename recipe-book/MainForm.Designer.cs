@@ -59,7 +59,7 @@
             label7 = new Label();
             txtRecipeName = new TextBox();
             txtCookingMethod = new TextBox();
-            udRecipeRating = new NumericUpDown();
+            numRecipeRating = new NumericUpDown();
             tableLayoutPanel3 = new TableLayoutPanel();
             numHours = new NumericUpDown();
             numSeconds = new NumericUpDown();
@@ -87,7 +87,7 @@
             tableLayoutPanel1.SuspendLayout();
             tabCreateOrEditRecipe.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)udRecipeRating).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numRecipeRating).BeginInit();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numHours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSeconds).BeginInit();
@@ -391,7 +391,7 @@
             tableLayoutPanel2.Controls.Add(label7, 0, 7);
             tableLayoutPanel2.Controls.Add(txtRecipeName, 1, 0);
             tableLayoutPanel2.Controls.Add(txtCookingMethod, 1, 7);
-            tableLayoutPanel2.Controls.Add(udRecipeRating, 1, 4);
+            tableLayoutPanel2.Controls.Add(numRecipeRating, 1, 4);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 3);
             tableLayoutPanel2.Controls.Add(btnSaveRecipe, 3, 8);
             tableLayoutPanel2.Controls.Add(btnCancelCreationOrEdition, 2, 8);
@@ -512,16 +512,16 @@
             txtCookingMethod.Size = new Size(764, 360);
             txtCookingMethod.TabIndex = 8;
             // 
-            // udRecipeRating
+            // numRecipeRating
             // 
-            udRecipeRating.AutoSize = true;
-            udRecipeRating.Location = new Point(184, 476);
-            udRecipeRating.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            udRecipeRating.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            udRecipeRating.Name = "udRecipeRating";
-            udRecipeRating.Size = new Size(45, 27);
-            udRecipeRating.TabIndex = 9;
-            udRecipeRating.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numRecipeRating.AutoSize = true;
+            numRecipeRating.Location = new Point(184, 476);
+            numRecipeRating.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numRecipeRating.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numRecipeRating.Name = "numRecipeRating";
+            numRecipeRating.Size = new Size(45, 27);
+            numRecipeRating.TabIndex = 9;
+            numRecipeRating.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // tableLayoutPanel3
             // 
@@ -554,30 +554,30 @@
             tableLayoutPanel3.Size = new Size(441, 33);
             tableLayoutPanel3.TabIndex = 10;
             // 
-            // udHours
+            // numHours
             // 
             numHours.AutoSize = true;
             numHours.Location = new Point(3, 3);
             numHours.Maximum = new decimal(new int[] { 72, 0, 0, 0 });
-            numHours.Name = "udHours";
+            numHours.Name = "numHours";
             numHours.Size = new Size(45, 27);
             numHours.TabIndex = 0;
             // 
-            // udSeconds
+            // numSeconds
             // 
             numSeconds.AutoSize = true;
             numSeconds.Location = new Point(141, 3);
             numSeconds.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
-            numSeconds.Name = "udSeconds";
+            numSeconds.Name = "numSeconds";
             numSeconds.Size = new Size(45, 27);
             numSeconds.TabIndex = 2;
             // 
-            // udMinutes
+            // numMinutes
             // 
             numMinutes.AutoSize = true;
             numMinutes.Location = new Point(72, 3);
             numMinutes.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
-            numMinutes.Name = "udMinutes";
+            numMinutes.Name = "numMinutes";
             numMinutes.Size = new Size(45, 27);
             numMinutes.TabIndex = 1;
             // 
@@ -603,12 +603,12 @@
             label9.Text = ":";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // udWeeks
+            // numWeeks
             // 
             numWeeks.AutoSize = true;
             numWeeks.Location = new Point(222, 3);
             numWeeks.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
-            numWeeks.Name = "udWeeks";
+            numWeeks.Name = "numWeeks";
             numWeeks.Size = new Size(45, 27);
             numWeeks.TabIndex = 5;
             // 
@@ -623,12 +623,12 @@
             label10.Text = "недель, ";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // udDays
+            // numDays
             // 
             numDays.AutoSize = true;
             numDays.Location = new Point(344, 3);
             numDays.Maximum = new decimal(new int[] { 29, 0, 0, 0 });
-            numDays.Name = "udDays";
+            numDays.Name = "numDays";
             numDays.Size = new Size(45, 27);
             numDays.TabIndex = 7;
             // 
@@ -749,7 +749,7 @@
             tabCreateOrEditRecipe.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)udRecipeRating).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numRecipeRating).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numHours).EndInit();
@@ -792,7 +792,7 @@
         private Label label7;
         private TextBox txtRecipeName;
         private TextBox txtCookingMethod;
-        private NumericUpDown udRecipeRating;
+        private NumericUpDown numRecipeRating;
         private TableLayoutPanel tableLayoutPanel3;
         private NumericUpDown numHours;
         private NumericUpDown numMinutes;
