@@ -124,7 +124,10 @@ namespace recipe_book
 
         private void lblEditProfile_Click(object sender, EventArgs e)
         {
+            Hide();
             new EditProfileForm(userId).ShowDialog();
+            Authorize();
+            Show();
         }
 
         private void lblHelp_Click(object sender, EventArgs e)

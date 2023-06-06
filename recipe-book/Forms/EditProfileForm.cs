@@ -1,4 +1,6 @@
-﻿namespace recipe_book
+﻿using System.Data.SQLite;
+
+namespace recipe_book
 {
     public partial class EditProfileForm : Form
     {
@@ -39,7 +41,15 @@
                     icon: MessageBoxIcon.Error
             ) == DialogResult.No)
                 return;
-            // Код удаления
+
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                DELETE FROM Users
+                WHERE id = $id
+                """,
+               new SQLiteParameter("id", _userId)
+            );
+            cmd.ExecuteNonQuery();
+
             Close();
         }
 
