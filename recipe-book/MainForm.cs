@@ -29,8 +29,27 @@ namespace recipe_book
             Utils.MakeRound(picUser);
             Utils.MakeRound(btnAddRecipe);
             picRecipePhoto.Visible = false;
-            #region
-            // Заполнение таблицы рецептов
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            AuthForm authForm = new();
+            if (authForm.ShowDialog() != DialogResult.OK)
+                Close();
+            lblUser.Text = authForm.Login;
+            userId = authForm.Id;
+            DisplayRecipes();
+            DisplayTags();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _helpForm?.Close();
+            DbModule.Conn.Dispose();
+        }
+
+        private void DisplayRecipes()
+        {
             int rows = 6;
             int offset = pnlRecipes.Controls.Count;
             for (int i = 0; i < rows * pnlRecipes.ColumnCount; ++i)
@@ -54,28 +73,15 @@ namespace recipe_book
             pnlRecipes.RowStyles.Clear();
             for (int i = 0; i < rows; ++i)
                 pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 180));
+        }
 
+        private void DisplayTags()
+        {
             for (int i = 0; i < 24; ++i)
             {
                 Button button = new() { Text = $"Тег {i + 1}", AutoSize = true };
                 pnlTags.Controls.Add(button);
             }
-            #endregion
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            AuthForm authForm = new();
-            if (authForm.ShowDialog() != DialogResult.OK)
-                Close();
-            lblUser.Text = authForm.Login;
-            userId = authForm.Id;
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _helpForm?.Close();
-            DbModule.Conn.Dispose();
         }
 
         private void ChangeSlideMenuVisibility(bool visibility)
