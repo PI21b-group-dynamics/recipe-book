@@ -1,8 +1,14 @@
-﻿namespace recipe_book
+﻿using System.Data.SQLite;
+
+namespace recipe_book
 {
     public partial class EditProfileForm : Form
     {
         private long _userId;
+
+        public string Login { get => txtLogin.Text; }
+
+        public Image? UserImage { get => picUser.Image; }
 
         public EditProfileForm(long userId)
         {
@@ -26,7 +32,28 @@
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Код сохранения изменений
+            byte[]? imageData = null;
+            if (picUser.Image is not null)
+            {
+                using FileStream fs = new(picUser.ImageLocation, FileMode.Open);
+                imageData = new byte[fs.Length];
+                fs.Read(imageData, 0, imageData.Length);
+            }
+
+            SQLiteCommand cmd = DbModule.CreateCommand($"""
+                UPDATE Users
+                SET login = $login, email = $email, password = $password, photo = $photo
+                WHERE id = $id
+                """,
+                new SQLiteParameter("login", txtLogin.Text),
+                new SQLiteParameter("email", txtEmail.Text),
+                new SQLiteParameter("password", txtPassword.Text),
+                new SQLiteParameter("photo", imageData),
+                new SQLiteParameter("id", _userId)
+            );
+            cmd.ExecuteNonQuery();
+
+            DialogResult = DialogResult.OK;
             Close();
         }
 
@@ -39,7 +66,16 @@
                     icon: MessageBoxIcon.Error
             ) == DialogResult.No)
                 return;
-            // Код удаления
+
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                DELETE FROM Users
+                WHERE id = $id
+                """,
+               new SQLiteParameter("id", _userId)
+            );
+            cmd.ExecuteNonQuery();
+
+            DialogResult = DialogResult.Abort;
             Close();
         }
 
@@ -48,7 +84,7 @@
             if (dlgLoadProfilePic.ShowDialog() == DialogResult.OK)
                 try
                 {
-                    picUser.Image = Image.FromFile(dlgLoadProfilePic.FileName);
+                    picUser.ImageLocation = dlgLoadProfilePic.FileName;
                 }
                 catch (Exception ex)
                 {
