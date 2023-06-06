@@ -55,27 +55,29 @@
             tableLayoutPanel1.Controls.Add(picUser, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(10, 11, 10, 11);
+            tableLayoutPanel1.Padding = new Padding(9, 8, 9, 8);
             tableLayoutPanel1.RowCount = 7;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 118F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(347, 309);
+            tableLayoutPanel1.Size = new Size(304, 232);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // txtPassword
             // 
             tableLayoutPanel1.SetColumnSpan(txtPassword, 2);
             txtPassword.Dock = DockStyle.Top;
-            txtPassword.Location = new Point(13, 198);
+            txtPassword.Location = new Point(12, 152);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Пароль";
-            txtPassword.Size = new Size(321, 27);
+            txtPassword.Size = new Size(280, 23);
             txtPassword.TabIndex = 1;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.TextChanged += authFields_TextChanged;
@@ -84,10 +86,11 @@
             // 
             tableLayoutPanel1.SetColumnSpan(txtEmail, 2);
             txtEmail.Dock = DockStyle.Top;
-            txtEmail.Location = new Point(13, 165);
+            txtEmail.Location = new Point(12, 125);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "E-mail";
-            txtEmail.Size = new Size(321, 27);
+            txtEmail.Size = new Size(280, 23);
             txtEmail.TabIndex = 0;
             txtEmail.TextChanged += authFields_TextChanged;
             // 
@@ -95,19 +98,21 @@
             // 
             tableLayoutPanel1.SetColumnSpan(txtLogin, 2);
             txtLogin.Dock = DockStyle.Top;
-            txtLogin.Location = new Point(13, 132);
+            txtLogin.Location = new Point(12, 98);
+            txtLogin.Margin = new Padding(3, 2, 3, 2);
             txtLogin.Name = "txtLogin";
             txtLogin.PlaceholderText = "Логин";
-            txtLogin.Size = new Size(321, 27);
+            txtLogin.Size = new Size(280, 23);
             txtLogin.TabIndex = 6;
             txtLogin.TextChanged += authFields_TextChanged;
             // 
             // btnCancel
             // 
             btnCancel.Dock = DockStyle.Fill;
-            btnCancel.Location = new Point(13, 231);
+            btnCancel.Location = new Point(12, 179);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(157, 29);
+            btnCancel.Size = new Size(137, 22);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
@@ -117,9 +122,10 @@
             // 
             btnSave.Dock = DockStyle.Fill;
             btnSave.Enabled = false;
-            btnSave.Location = new Point(176, 231);
+            btnSave.Location = new Point(155, 179);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(158, 29);
+            btnSave.Size = new Size(137, 22);
             btnSave.TabIndex = 8;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -131,9 +137,10 @@
             btnDeleteProfile.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.SetColumnSpan(btnDeleteProfile, 2);
             btnDeleteProfile.Dock = DockStyle.Top;
-            btnDeleteProfile.Location = new Point(13, 266);
+            btnDeleteProfile.Location = new Point(12, 205);
+            btnDeleteProfile.Margin = new Padding(3, 2, 3, 2);
             btnDeleteProfile.Name = "btnDeleteProfile";
-            btnDeleteProfile.Size = new Size(321, 30);
+            btnDeleteProfile.Size = new Size(280, 25);
             btnDeleteProfile.TabIndex = 9;
             btnDeleteProfile.Text = "Удалить профиль";
             btnDeleteProfile.UseVisualStyleBackColor = true;
@@ -144,9 +151,10 @@
             picUser.BackgroundImageLayout = ImageLayout.Zoom;
             tableLayoutPanel1.SetColumnSpan(picUser, 2);
             picUser.Dock = DockStyle.Fill;
-            picUser.Location = new Point(13, 14);
+            picUser.Location = new Point(12, 10);
+            picUser.Margin = new Padding(3, 2, 3, 2);
             picUser.Name = "picUser";
-            picUser.Size = new Size(321, 112);
+            picUser.Size = new Size(280, 84);
             picUser.TabIndex = 10;
             picUser.TabStop = false;
             picUser.Click += picUser_Click;
@@ -160,12 +168,14 @@
             // 
             // EditProfileForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(347, 309);
+            ClientSize = new Size(304, 232);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EditProfileForm";
             Text = "Редактирование профиля";
+            Load += EditProfileForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picUser).EndInit();

@@ -1,4 +1,6 @@
-﻿using System.Data.SQLite;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using recipe_book.Properties;
+using System.Data.SQLite;
 
 namespace recipe_book
 {
@@ -8,7 +10,7 @@ namespace recipe_book
 
         public string Login { get => txtLogin.Text; }
 
-        public Image? UserImage { get => picUser.Image; }
+        public Image UserImage { get => picUser.Image; }
 
         public EditProfileForm(long userId)
         {
@@ -32,14 +34,6 @@ namespace recipe_book
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            byte[]? imageData = null;
-            if (picUser.Image is not null)
-            {
-                using FileStream fs = new(picUser.ImageLocation, FileMode.Open);
-                imageData = new byte[fs.Length];
-                fs.Read(imageData, 0, imageData.Length);
-            }
-
             SQLiteCommand cmd = DbModule.CreateCommand($"""
                 UPDATE Users
                 SET login = $login, email = $email, password = $password, photo = $photo
@@ -48,7 +42,7 @@ namespace recipe_book
                 new SQLiteParameter("login", txtLogin.Text),
                 new SQLiteParameter("email", txtEmail.Text),
                 new SQLiteParameter("password", txtPassword.Text),
-                new SQLiteParameter("photo", imageData),
+                new SQLiteParameter("photo", UserImage == Resources.UserIcon ? null : UserImage.ToArray()),
                 new SQLiteParameter("id", _userId)
             );
             cmd.ExecuteNonQuery();
@@ -95,6 +89,26 @@ namespace recipe_book
                         icon: MessageBoxIcon.Error
                     );
                 }
+        }
+
+        private void EditProfileForm_Load(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT login, email, password, image
+                FROM Users
+                WHERE id = $id
+                """,
+               new SQLiteParameter("id", _userId)
+           );
+
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            txtLogin.Text = rdr.GetString(1);
+            txtEmail.Text = rdr.GetString(2);
+            txtPassword.Text = rdr.GetString(3);
+            if (rdr.IsDBNull(4))
+                picUser.Image = Resources.UserIcon;
+            else picUser.Image = 
         }
     }
 }
