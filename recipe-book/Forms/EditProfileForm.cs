@@ -94,7 +94,7 @@ namespace recipe_book
         private void EditProfileForm_Load(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT login, email, password, image
+                SELECT login, email, password, photo
                 FROM Users
                 WHERE id = $id
                 """,
@@ -103,12 +103,12 @@ namespace recipe_book
 
             SQLiteDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
-            txtLogin.Text = rdr.GetString(1);
-            txtEmail.Text = rdr.GetString(2);
-            txtPassword.Text = rdr.GetString(3);
-            if (rdr.IsDBNull(4))
+            txtLogin.Text = rdr.GetString(0);
+            txtEmail.Text = rdr.GetString(1);
+            txtPassword.Text = rdr.GetString(2);
+            if (rdr.IsDBNull(3))
                 picUser.Image = Resources.UserIcon;
-            else picUser.Image = 
+            else picUser.Image = ((byte[])rdr.GetValue(3)).ToImage();
         }
     }
 }
