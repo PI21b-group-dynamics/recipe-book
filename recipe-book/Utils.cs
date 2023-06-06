@@ -18,5 +18,11 @@ namespace recipe_book
             img.Save(ms, img.RawFormat);
             return ms.ToArray();
         }
-	}
+
+        public static Image ToImage(this byte[] array)
+        {
+            using MemoryStream ms = new(array);
+            return Image.FromStream(ms);
+        }
+    }
 }
