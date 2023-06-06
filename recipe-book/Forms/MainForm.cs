@@ -78,6 +78,7 @@ namespace recipe_book
 
         private void DisplayTags()
         {
+            pnlTags.Controls.Clear();
             SQLiteCommand cmd = DbModule.CreateCommand("""
                 SELECT * FROM Tags
                 JOIN RecipeTags ON tag_id = Tags.id
@@ -88,8 +89,8 @@ namespace recipe_book
                 new SQLiteParameter("user_id", userId)
             );
             SQLiteDataReader rdr = cmd.ExecuteReader();
+            pnlTags.Visible = rdr.HasRows;
             while (rdr.Read())
-            {
                 pnlTags.Controls.Add(new Button()
                 {
                     Name = $"tag{rdr.GetInt64(0)}",
@@ -97,7 +98,6 @@ namespace recipe_book
                     AutoSize = true,
                     AutoSizeMode = AutoSizeMode.GrowAndShrink
                 });
-            }
         }
 
         private void ChangeSlideMenuVisibility(bool visibility)
@@ -222,9 +222,9 @@ namespace recipe_book
             cmd.ExecuteNonQuery();
 
             SQLiteCommand cmdGetLastInsertedId = DbModule.CreateCommand("SELECT last_insert_rowid()");
-            
+
             long recipeId = (long)cmdGetLastInsertedId.ExecuteScalar();
- 
+
             var autoFillingPanels = new[]
             {
                 ("Tags", pnlTagInput),
