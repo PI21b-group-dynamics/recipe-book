@@ -1,4 +1,6 @@
-﻿namespace recipe_book
+﻿using recipe_book.Controls;
+
+namespace recipe_book
 {
     partial class MainForm
     {

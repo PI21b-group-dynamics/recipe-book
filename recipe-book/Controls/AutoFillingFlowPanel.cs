@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace recipe_book
+namespace recipe_book.Controls
 {
     internal sealed class _AutoFillingFlowPanelComboBox : ComboBox
     {
@@ -68,7 +68,8 @@ namespace recipe_book
         public IEnumerable<string> Values
         {
             get => from _AutoFillingFlowPanelComboBox combobox in Controls
-                   where combobox != EmptyTagBox select combobox.Text;
+                   where combobox != EmptyTagBox
+                   select combobox.Text;
         }
 
         public AutoFillingFlowPanel()

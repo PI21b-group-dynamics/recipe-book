@@ -1,4 +1,4 @@
-﻿namespace recipe_book
+﻿namespace recipe_book.Controls
 {
     internal sealed class SpoilerContainer : TableLayoutPanel
     {
