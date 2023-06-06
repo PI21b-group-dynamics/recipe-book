@@ -7,7 +7,7 @@ namespace recipe_book
     {
         private long userId;
         private readonly Color UserLayoutPanelOriginalBackColor;
-        private readonly List<TableLayoutPanel> recipes = new();
+        private readonly List<TableLayoutPanel> recipes;
         private readonly Rectangle SlideMenuHoverZone;
         private HelpForm? _helpForm;
 
@@ -15,6 +15,7 @@ namespace recipe_book
         {
             InitializeComponent();
             UserLayoutPanelOriginalBackColor = pnlUser.BackColor;
+            recipes = new List<TableLayoutPanel>();
             SlideMenuHoverZone = new(
                 new Point(),
                 new Size(
@@ -22,7 +23,10 @@ namespace recipe_book
                     pnlUser.Height + pnlSlideMenu.Height
                 )
             );
+        }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             pnlSlideMenu.BringToFront();
             ActiveControl = btnAddRecipe;
             cboContentSort.Items.AddRange(new[] { "Дате создания", "Дате изменения", "Рейтингу" });
@@ -30,9 +34,17 @@ namespace recipe_book
             Utils.MakeRound(picUser);
             Utils.MakeRound(btnAddRecipe);
             picRecipePhoto.Visible = false;
+
+            Authorize();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _helpForm?.Close();
+            DbModule.Conn.Dispose();
+        }
+
+        private void Authorize()
         {
             AuthForm authForm = new();
             if (authForm.ShowDialog() != DialogResult.OK)
@@ -41,12 +53,6 @@ namespace recipe_book
             userId = authForm.Id;
             DisplayRecipes();
             DisplayTags();
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _helpForm?.Close();
-            DbModule.Conn.Dispose();
         }
 
         private void DisplayRecipes()
@@ -89,7 +95,6 @@ namespace recipe_book
                 new SQLiteParameter("user_id", userId)
             );
             SQLiteDataReader rdr = cmd.ExecuteReader();
-            pnlTags.Visible = rdr.HasRows;
             while (rdr.Read())
                 pnlTags.Controls.Add(new Button()
                 {

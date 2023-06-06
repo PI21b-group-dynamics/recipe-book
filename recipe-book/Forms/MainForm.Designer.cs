@@ -296,7 +296,7 @@ namespace recipe_book
             // 
             cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
             cboContentSort.FormattingEnabled = true;
-            cboContentSort.Location = new Point(786, 62);
+            cboContentSort.Location = new Point(786, 3);
             cboContentSort.Name = "cboContentSort";
             cboContentSort.Size = new Size(156, 28);
             cboContentSort.TabIndex = 9;
@@ -305,7 +305,7 @@ namespace recipe_book
             // 
             lblSortBy.AutoSize = true;
             lblSortBy.Dock = DockStyle.Fill;
-            lblSortBy.Location = new Point(656, 59);
+            lblSortBy.Location = new Point(656, 0);
             lblSortBy.Name = "lblSortBy";
             lblSortBy.Size = new Size(124, 36);
             lblSortBy.TabIndex = 10;
@@ -315,12 +315,14 @@ namespace recipe_book
             // pnlTags
             // 
             pnlTags.AutoScroll = true;
+            pnlTags.AutoSize = true;
+            pnlTags.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.SetColumnSpan(pnlTags, 4);
             pnlTags.Dock = DockStyle.Fill;
             pnlTags.Location = new Point(0, 0);
             pnlTags.Margin = new Padding(0);
             pnlTags.Name = "pnlTags";
-            pnlTags.Size = new Size(945, 59);
+            pnlTags.Size = new Size(945, 1);
             pnlTags.TabIndex = 4;
             pnlTags.WrapContents = false;
             // 
@@ -328,7 +330,7 @@ namespace recipe_book
             // 
             btnShoppingList.AutoSize = true;
             btnShoppingList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnShoppingList.Location = new Point(3, 62);
+            btnShoppingList.Location = new Point(3, 3);
             btnShoppingList.Name = "btnShoppingList";
             btnShoppingList.Size = new Size(313, 30);
             btnShoppingList.TabIndex = 11;
@@ -346,7 +348,7 @@ namespace recipe_book
             pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.Location = new Point(3, 98);
+            pnlRecipes.Location = new Point(3, 39);
             pnlRecipes.Name = "pnlRecipes";
             pnlRecipes.RowCount = 6;
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
@@ -355,7 +357,7 @@ namespace recipe_book
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
             pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.Size = new Size(939, 323);
+            pnlRecipes.Size = new Size(939, 382);
             pnlRecipes.TabIndex = 12;
             // 
             // tabRecipeView
