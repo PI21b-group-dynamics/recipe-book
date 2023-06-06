@@ -125,8 +125,16 @@ namespace recipe_book
         private void lblEditProfile_Click(object sender, EventArgs e)
         {
             Hide();
-            new EditProfileForm(userId).ShowDialog();
-            Authorize();
+            EditProfileForm editForm = new EditProfileForm(userId);
+            DialogResult result = editForm.ShowDialog();
+            if (result == DialogResult.Abort)
+                Authorize();
+            if (result == DialogResult.OK)
+            {
+                lblUser.Text = editForm.Login;
+                if (editForm.UserImage is not null)
+                    picUser.Image = editForm.UserImage;
+            }
             Show();
         }
 
