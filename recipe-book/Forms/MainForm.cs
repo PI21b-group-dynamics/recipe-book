@@ -78,10 +78,23 @@ namespace recipe_book
 
         private void DisplayTags()
         {
-            for (int i = 0; i < 24; ++i)
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT * FROM Tags
+                JOIN RecipeTags ON tag_id = Tags.id
+                JOIN Recipes ON Recipes.id = recipe_id
+                JOIN Users ON Users.id = user_id
+                """
+            );
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
             {
-                Button button = new() { Text = $"Тег {i + 1}", AutoSize = true };
-                pnlTags.Controls.Add(button);
+                pnlTags.Controls.Add(new Button()
+                {
+                    Name = $"tag{rdr.GetInt64(0)}",
+                    Text = rdr.GetString(1),
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink
+                });
             }
         }
 
@@ -216,7 +229,6 @@ namespace recipe_book
                 ("Ingredients", pnlIngredientInput)
             };
             foreach ((string tableName, AutoFillingFlowPanel panel) in autoFillingPanels)
-            {
                 foreach (string value in panel.Values)
                 {
                     cmd = DbModule.CreateCommand($"""
@@ -239,7 +251,6 @@ namespace recipe_book
                     );
                     cmd.ExecuteNonQuery();
                 }
-            }
             ClearRecipeInputFields();
             tbcMainFormTabs.SelectedTab = tabListOfRecipes;
         }
