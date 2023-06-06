@@ -83,7 +83,9 @@ namespace recipe_book
                 JOIN RecipeTags ON tag_id = Tags.id
                 JOIN Recipes ON Recipes.id = recipe_id
                 JOIN Users ON Users.id = user_id
-                """
+                WHERE user_id = $user_id
+                """,
+                new SQLiteParameter("user_id", userId)
             );
             SQLiteDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
