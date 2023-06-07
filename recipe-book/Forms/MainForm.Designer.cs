@@ -960,8 +960,6 @@ namespace recipe_book
         private PictureBox pictureBox1;
         private Label lblRating;
         private Label lblCookingTime;
-        private FlowLayoutPanel pnlRecipeIngredients;
-        private FlowLayoutPanel pnlRecipeTags;
         private Label lblRecipeCookingMethod;
         private Button btnEditRecipe;
         private Button btnDeleteRecipe;
