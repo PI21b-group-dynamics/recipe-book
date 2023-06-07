@@ -54,7 +54,7 @@ namespace recipe_book
             if (message is null)
             {
                 Id = rdr.GetInt64(0);
-                picUser.Image = ((byte[]?)rdr.GetValue(2))?.ToImage();
+                picUser.Image = (rdr.GetValue(2) as byte[])?.ToImage();
                 DialogResult = DialogResult.OK;
                 Close();
             }
