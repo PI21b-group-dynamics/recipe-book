@@ -78,11 +78,9 @@ namespace recipe_book
                 ColorDepth = ColorDepth.Depth32Bit
             };
             int i = 0;
-            byte[]? assumingImage;
             while (rdr.Read())
             {
-                assumingImage = rdr.GetValue(2) as byte[];
-                imgList.Images.Add(assumingImage?.ToImage() ?? Resources.UserIcon);
+                imgList.Images.Add(rdr.GetImage(2) ?? Resources.UserIcon);
                 item = new ListViewItem(rdr.GetString(1), i++) { Name = rdr.GetInt64(0).ToString() };
                 pnlRecipes.Items.Add(item);
             }
@@ -300,12 +298,9 @@ namespace recipe_book
             SQLiteDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
 
-            byte[]? recipeImage;
-            recipeImage = rdr.GetValue(2) as byte[];
-
             lblCookingTime.Text = rdr.GetString(0);
             lblRating.Text = $"{rdr.GetInt32(1)} / 10";
-            picRecipePhoto.Image = recipeImage?.ToImage() ?? Resources.UserIcon;
+            picRecipePhoto.Image = rdr.GetImage(2) ?? Resources.UserIcon;
             lblRecipeCookingMethod.Text = rdr.GetString(3);
         }
     }

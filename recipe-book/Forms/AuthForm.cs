@@ -92,7 +92,6 @@ namespace recipe_book
             }
         }
 
-
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
@@ -112,7 +111,7 @@ namespace recipe_book
             {
                 Id = rdr.GetInt64(0);
                 txtLoginOrEmail.Text = rdr.GetString(1);
-                picUser.Image = (rdr.GetValue(3) as byte[])?.ToImage();
+                picUser.Image = rdr.GetImage(3) ?? Resources.UserIcon;
                 DialogResult = DialogResult.OK;
                 Close();
             }
