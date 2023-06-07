@@ -1,34 +1,49 @@
-﻿using System.Data.SQLite;
+﻿using recipe_book.Properties;
+using System.Data.SQLite;
 
 namespace recipe_book
 {
     public sealed partial class AuthForm : Form
     {
         public long Id;
-        public string Login { get => txtLogin.Text; }
+        public string Login
+        {
+            get => (tbcAuth.SelectedTab == tabSignIn ? txtLoginOrEmail : txtLogin).Text;
+        }
+
+        public Image? Image
+        {
+            get => picUser.Image == Resources.UserIcon ? null : picUser.Image;
+        }
 
         public AuthForm()
         {
             InitializeComponent();
             ActiveControl = btnSignIn;
+            picUser.MakeRound();
         }
 
-        private void authFields_TextChanged(object sender, EventArgs e)
+        private void signInFields_TextChanged(object sender, EventArgs e)
         {
-            btnSignIn.Enabled = (txtLogin.TextLength > 0 || txtEmail.TextLength > 0) && txtPassword.TextLength > 0;
-            btnSignUp.Enabled = txtLogin.TextLength > 0 && txtEmail.TextLength > 0 && txtPassword.TextLength > 0;
+            btnSignIn.Enabled = txtLoginOrEmail.TextLength > 0
+                && txtPassword.TextLength > 0;
+        }
+
+        private void signUpFields_TextChanged(object sender, EventArgs e)
+        {
+            btnSignUp.Enabled = txtLogin.TextLength > 0
+                && txtEmail.TextLength > 0
+                && txtPassword_.TextLength > 0;
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT id, password FROM Users
-                WHERE ($login = '' OR login = $login)
-                    AND ($email = '' OR email = $email)
+                SELECT id, password, photo FROM Users
+                WHERE $loginOrEmail IN (login, email)
                 LIMIT 1;
                 """,
-                new SQLiteParameter("login", txtLogin.Text),
-                new SQLiteParameter("email", txtEmail.Text)
+                new SQLiteParameter("loginOrEmail", txtLoginOrEmail.Text)
             );
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             string? message = null;
@@ -39,6 +54,7 @@ namespace recipe_book
             if (message is null)
             {
                 Id = rdr.GetInt64(0);
+                picUser.Image = ((byte[]?)rdr.GetValue(2))?.ToImage();
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -56,12 +72,15 @@ namespace recipe_book
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                INSERT INTO Users (login, email, password)
-                VALUES ($login, $email, $password)
+                INSERT INTO Users (login, email, password, photo)
+                VALUES ($login, $email, $password, $photo)
                 """,
                 new SQLiteParameter("login", txtLogin.Text),
                 new SQLiteParameter("email", txtEmail.Text),
-                new SQLiteParameter("password", txtPassword.Text)
+                new SQLiteParameter("password", txtPassword_.Text),
+                new SQLiteParameter("photo",
+                    picUser.Image == Resources.UserIcon ? null : picUser.Image.ToBytes()
+                )
             );
             try
             {
@@ -85,6 +104,24 @@ namespace recipe_book
                     icon: MessageBoxIcon.Error
                 );
             }
+        }
+
+        private void picUser_Click(object sender, EventArgs e)
+        {
+            if (dlgLoadProfilePic.ShowDialog() == DialogResult.OK)
+                try
+                {
+                    picUser.ImageLocation = dlgLoadProfilePic.FileName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        caption: "Ошибка добавления фотографии",
+                        text: ex.Message,
+                        buttons: MessageBoxButtons.OK,
+                        icon: MessageBoxIcon.Error
+                    );
+                }
         }
     }
 }
