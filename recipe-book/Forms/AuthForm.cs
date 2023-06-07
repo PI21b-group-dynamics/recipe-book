@@ -6,6 +6,7 @@ namespace recipe_book
     public sealed partial class AuthForm : Form
     {
         public long Id;
+
         public string Login
         {
             get => (tbcAuth.SelectedTab == tabSignIn ? txtLoginOrEmail : txtLogin).Text;
@@ -95,7 +96,7 @@ namespace recipe_book
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT id, password, photo FROM Users
+                SELECT id, login, password, photo FROM Users
                 WHERE $loginOrEmail IN (login, email)
                 LIMIT 1;
                 """,
@@ -105,12 +106,13 @@ namespace recipe_book
             string? message = null;
             if (!rdr.Read())
                 message = "Пользователь с таким логином или e-mail не найден. Возможно, вы хотели зарегистрироваться?";
-            else if (txtPassword.Text != rdr.GetString(1))
+            else if (txtPassword.Text != rdr.GetString(2))
                 message = "Вы ввели неверный пароль от учётной записи. Возможно, вы хотели войти в другой аккаунт?";
             if (message is null)
             {
                 Id = rdr.GetInt64(0);
-                picUser.Image = (rdr.GetValue(2) as byte[])?.ToImage();
+                txtLoginOrEmail.Text = rdr.GetString(1);
+                picUser.Image = (rdr.GetValue(3) as byte[])?.ToImage();
                 DialogResult = DialogResult.OK;
                 Close();
             }
