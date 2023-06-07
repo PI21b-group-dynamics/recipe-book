@@ -41,7 +41,7 @@ namespace recipe_book
         private void btnSaveRecipe_Click(object sender, EventArgs e)
         {
             string cookingTime = string.Join(' ',
-                (numWeeks.Value, numDays.Value, numHours.Value, numMinutes.Value, numSeconds.Value)
+                numWeeks.Value, numDays.Value, numHours.Value, numMinutes.Value, numSeconds.Value
             );
             SQLiteCommand cmd = DbModule.CreateCommand("""
                 INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method)
