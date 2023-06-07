@@ -58,21 +58,21 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.Padding = new Padding(10, 11, 10, 11);
             tableLayoutPanel1.RowCount = 7;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 118F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(347, 309);
+            tableLayoutPanel1.Size = new Size(347, 328);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // txtPassword
             // 
             tableLayoutPanel1.SetColumnSpan(txtPassword, 2);
             txtPassword.Dock = DockStyle.Top;
-            txtPassword.Location = new Point(13, 198);
+            txtPassword.Location = new Point(13, 216);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Пароль";
             txtPassword.Size = new Size(321, 27);
@@ -84,7 +84,7 @@
             // 
             tableLayoutPanel1.SetColumnSpan(txtEmail, 2);
             txtEmail.Dock = DockStyle.Top;
-            txtEmail.Location = new Point(13, 165);
+            txtEmail.Location = new Point(13, 183);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "E-mail";
             txtEmail.Size = new Size(321, 27);
@@ -95,7 +95,7 @@
             // 
             tableLayoutPanel1.SetColumnSpan(txtLogin, 2);
             txtLogin.Dock = DockStyle.Top;
-            txtLogin.Location = new Point(13, 132);
+            txtLogin.Location = new Point(13, 150);
             txtLogin.Name = "txtLogin";
             txtLogin.PlaceholderText = "Логин";
             txtLogin.Size = new Size(321, 27);
@@ -105,7 +105,7 @@
             // btnCancel
             // 
             btnCancel.Dock = DockStyle.Fill;
-            btnCancel.Location = new Point(13, 231);
+            btnCancel.Location = new Point(13, 249);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(157, 29);
             btnCancel.TabIndex = 7;
@@ -117,7 +117,7 @@
             // 
             btnSave.Dock = DockStyle.Fill;
             btnSave.Enabled = false;
-            btnSave.Location = new Point(176, 231);
+            btnSave.Location = new Point(176, 249);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(158, 29);
             btnSave.TabIndex = 8;
@@ -131,7 +131,7 @@
             btnDeleteProfile.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.SetColumnSpan(btnDeleteProfile, 2);
             btnDeleteProfile.Dock = DockStyle.Top;
-            btnDeleteProfile.Location = new Point(13, 266);
+            btnDeleteProfile.Location = new Point(13, 284);
             btnDeleteProfile.Name = "btnDeleteProfile";
             btnDeleteProfile.Size = new Size(321, 30);
             btnDeleteProfile.TabIndex = 9;
@@ -141,12 +141,13 @@
             // 
             // picUser
             // 
-            picUser.BackgroundImageLayout = ImageLayout.Zoom;
+            picUser.BackgroundImageLayout = ImageLayout.Center;
             tableLayoutPanel1.SetColumnSpan(picUser, 2);
-            picUser.Dock = DockStyle.Fill;
+            picUser.Image = Properties.Resources.UserIcon;
             picUser.Location = new Point(13, 14);
             picUser.Name = "picUser";
-            picUser.Size = new Size(321, 112);
+            picUser.Size = new Size(128, 128);
+            picUser.SizeMode = PictureBoxSizeMode.Zoom;
             picUser.TabIndex = 10;
             picUser.TabStop = false;
             picUser.Click += picUser_Click;
@@ -162,7 +163,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(347, 309);
+            ClientSize = new Size(347, 328);
             Controls.Add(tableLayoutPanel1);
             Name = "EditProfileForm";
             Text = "Редактирование профиля";
