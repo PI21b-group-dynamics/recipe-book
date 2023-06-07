@@ -7,6 +7,10 @@ namespace recipe_book
     {
         private long _userId;
 
+        public string Login { get => txtLogin.Text; }
+        
+        public Image Photo { get => picUser.Image; }
+
         public EditProfileForm(long userId, string login, Image image)
         {
             InitializeComponent();
@@ -16,7 +20,7 @@ namespace recipe_book
             picUser.MakeRound();
             ActiveControl = btnCancel;
         }
-
+        
         private void EditProfileForm_Load(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
