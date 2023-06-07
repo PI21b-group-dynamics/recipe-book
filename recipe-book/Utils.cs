@@ -4,7 +4,7 @@ namespace recipe_book
 {
 	internal static class Utils
 	{
-		public static void MakeRound(Control control)
+		public static void MakeRound(this Control control)
 		{
             using GraphicsPath graphicsPath = new();
 			control.Height = control.Width;
