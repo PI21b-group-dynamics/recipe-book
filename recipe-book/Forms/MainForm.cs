@@ -32,8 +32,8 @@ namespace recipe_book
             ActiveControl = btnAddRecipe;
             cboContentSort.Items.AddRange(new[] { "Дате создания", "Дате изменения", "Рейтингу" });
             cboContentSort.SelectedIndex = 0;
-            Utils.MakeRound(picUser);
-            Utils.MakeRound(btnAddRecipe);
+            picUser.MakeRound();
+            btnAddRecipe.MakeRound();
             picRecipePhoto.Visible = false;
 
             Authorize();
@@ -49,7 +49,10 @@ namespace recipe_book
         {
             AuthForm authForm = new();
             if (authForm.ShowDialog() != DialogResult.OK)
+            {
                 Close();
+                return;
+            }
             lblUser.Text = authForm.Login;
             userId = authForm.Id;
             DisplayRecipes();
