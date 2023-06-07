@@ -11,7 +11,7 @@ namespace recipe_book
             get => (tbcAuth.SelectedTab == tabSignIn ? txtLoginOrEmail : txtLogin).Text;
         }
 
-        public Image? Image
+        public Image? Photo
         {
             get => picUser.Image == Resources.UserIcon ? null : picUser.Image;
         }
