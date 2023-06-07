@@ -36,37 +36,22 @@ namespace recipe_book
                 && txtPassword_.TextLength > 0;
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e)
+        private void picUser_Click(object sender, EventArgs e)
         {
-            SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT id, password, photo FROM Users
-                WHERE $loginOrEmail IN (login, email)
-                LIMIT 1;
-                """,
-                new SQLiteParameter("loginOrEmail", txtLoginOrEmail.Text)
-            );
-            using SQLiteDataReader rdr = cmd.ExecuteReader();
-            string? message = null;
-            if (!rdr.Read())
-                message = "Пользователь с таким логином или e-mail не найден. Возможно, вы хотели зарегистрироваться?";
-            else if (txtPassword.Text != rdr.GetString(1))
-                message = "Вы ввели неверный пароль от учётной записи. Возможно, вы хотели войти в другой аккаунт?";
-            if (message is null)
-            {
-                Id = rdr.GetInt64(0);
-                picUser.Image = (rdr.GetValue(2) as byte[])?.ToImage();
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            else
-            {
-                MessageBox.Show(
-                    caption: "Ошибка входа",
-                    text: message,
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.Error
-                );
-            }
+            if (dlgLoadProfilePic.ShowDialog() == DialogResult.OK)
+                try
+                {
+                    picUser.ImageLocation = dlgLoadProfilePic.FileName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        caption: "Ошибка добавления фотографии",
+                        text: ex.Message,
+                        buttons: MessageBoxButtons.OK,
+                        icon: MessageBoxIcon.Error
+                    );
+                }
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -106,22 +91,38 @@ namespace recipe_book
             }
         }
 
-        private void picUser_Click(object sender, EventArgs e)
+
+        private void btnSignIn_Click(object sender, EventArgs e)
         {
-            if (dlgLoadProfilePic.ShowDialog() == DialogResult.OK)
-                try
-                {
-                    picUser.ImageLocation = dlgLoadProfilePic.FileName;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        caption: "Ошибка добавления фотографии",
-                        text: ex.Message,
-                        buttons: MessageBoxButtons.OK,
-                        icon: MessageBoxIcon.Error
-                    );
-                }
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT id, password, photo FROM Users
+                WHERE $loginOrEmail IN (login, email)
+                LIMIT 1;
+                """,
+                new SQLiteParameter("loginOrEmail", txtLoginOrEmail.Text)
+            );
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            string? message = null;
+            if (!rdr.Read())
+                message = "Пользователь с таким логином или e-mail не найден. Возможно, вы хотели зарегистрироваться?";
+            else if (txtPassword.Text != rdr.GetString(1))
+                message = "Вы ввели неверный пароль от учётной записи. Возможно, вы хотели войти в другой аккаунт?";
+            if (message is null)
+            {
+                Id = rdr.GetInt64(0);
+                picUser.Image = (rdr.GetValue(2) as byte[])?.ToImage();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(
+                    caption: "Ошибка входа",
+                    text: message,
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
         }
     }
 }
