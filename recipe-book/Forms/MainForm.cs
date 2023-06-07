@@ -54,8 +54,8 @@ namespace recipe_book
                 return;
             }
             lblUser.Text = authForm.Login;
-            if (authForm.Image is not null)
-                picUser.Image = authForm.Image;
+            if (authForm.Photo is not null)
+                picUser.Image = authForm.Photo;
             userId = authForm.Id;
             DisplayRecipes();
             DisplayTags();
@@ -78,14 +78,11 @@ namespace recipe_book
                 ColorDepth = ColorDepth.Depth32Bit
             };
             int i = 0;
-            object assumingImage;
+            byte[]? assumingImage;
             while (rdr.Read())
             {
-                assumingImage = rdr.GetValue(2);
-                imgList.Images.Add(
-                    assumingImage is DBNull ?
-                        Resources.UserIcon : ((byte[])assumingImage).ToImage()
-                );
+                assumingImage = rdr.GetValue(2) as byte[];
+                imgList.Images.Add(assumingImage?.ToImage() ?? Resources.UserIcon);
                 item = new ListViewItem(rdr.GetString(1), i++) { Name = rdr.GetInt64(0).ToString() };
                 pnlRecipes.Items.Add(item);
             }
@@ -134,7 +131,18 @@ namespace recipe_book
 
         private void lblEditProfile_Click(object sender, EventArgs e)
         {
-            new EditProfileForm(userId).ShowDialog();
+            EditProfileForm editProfileForm = new(userId, lblUser.Text, picUser.Image);
+            switch (editProfileForm.ShowDialog())
+            {
+                case DialogResult.Abort:
+                    Hide();
+                    Authorize();
+                    break;
+                case DialogResult.OK:
+                    lblUser.Text = editProfileForm.Login;
+                    picUser.Image = editProfileForm.Photo;
+                    break;
+            }
         }
 
         private void lblHelp_Click(object sender, EventArgs e)
@@ -292,12 +300,12 @@ namespace recipe_book
             SQLiteDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
 
-            object recipeImage;
-            recipeImage = rdr.GetValue(2);
+            byte[]? recipeImage;
+            recipeImage = (byte[]?)rdr.GetValue(2);
 
             lblCookingTime.Text = rdr.GetString(0);
-            lblRating.Text = $"{rdr.GetInt32(1)}/10";
-            picRecipePhoto.Image = recipeImage is DBNull ? Resources.UserIcon : ((byte[])recipeImage).ToImage();
+            lblRating.Text = $"{rdr.GetInt32(1)} / 10";
+            picRecipePhoto.Image = recipeImage?.ToImage() ?? Resources.UserIcon;
             lblRecipeCookingMethod.Text = rdr.GetString(3);
         }
     }
