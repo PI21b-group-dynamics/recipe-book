@@ -48,7 +48,7 @@ namespace recipe_book
             lblSortBy = new Label();
             pnlTags = new FlowLayoutPanel();
             btnShoppingList = new Button();
-            pnlRecipes = new TableLayoutPanel();
+            pnlRecipes = new ListView();
             tabRecipeView = new TabPage();
             tabCreateOrEditRecipe = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -262,7 +262,7 @@ namespace recipe_book
             // btnAddRecipe
             // 
             btnAddRecipe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddRecipe.Location = new Point(834, 339);
+            btnAddRecipe.Location = new Point(852, 339);
             btnAddRecipe.Name = "btnAddRecipe";
             btnAddRecipe.Size = new Size(70, 69);
             btnAddRecipe.TabIndex = 9;
@@ -340,25 +340,13 @@ namespace recipe_book
             // 
             // pnlRecipes
             // 
-            pnlRecipes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlRecipes.AutoScroll = true;
-            pnlRecipes.ColumnCount = 4;
             tableLayoutPanel1.SetColumnSpan(pnlRecipes, 4);
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            pnlRecipes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            pnlRecipes.Dock = DockStyle.Fill;
             pnlRecipes.Location = new Point(3, 39);
             pnlRecipes.Name = "pnlRecipes";
-            pnlRecipes.RowCount = 6;
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            pnlRecipes.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
             pnlRecipes.Size = new Size(939, 382);
             pnlRecipes.TabIndex = 12;
+            pnlRecipes.UseCompatibleStateImageBehavior = false;
             // 
             // tabRecipeView
             // 
@@ -786,7 +774,6 @@ namespace recipe_book
         private Label lblSortBy;
         private Button btnShoppingList;
         private Button btnAddRecipe;
-        private TableLayoutPanel pnlRecipes;
         private TabPage tabCreateOrEditRecipe;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label1;
@@ -817,5 +804,6 @@ namespace recipe_book
         private OpenFileDialog dlgLoadRecipePhoto;
         private AutoFillingFlowPanel pnlTagInput;
         private AutoFillingFlowPanel pnlIngredientInput;
+        private ListView pnlRecipes;
     }
 }

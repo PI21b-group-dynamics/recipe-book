@@ -12,7 +12,7 @@ namespace recipe_book
             control.Region = new Region(graphicsPath);
         }
 
-		public static byte[] ToArray(this Image img)
+		public static byte[] ToBytes(this Image img)
 		{
             using MemoryStream ms = new();
             img.Save(ms, img.RawFormat);
