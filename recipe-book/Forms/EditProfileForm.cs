@@ -63,10 +63,26 @@ namespace recipe_book
                 ),
                 new SQLiteParameter("id", _userId)
             );
-            cmd.ExecuteNonQuery();
-
-            DialogResult = DialogResult.OK;
-            Close();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (SQLiteException ex)
+            {
+                string message;
+                if (ex.ResultCode == SQLiteErrorCode.Constraint)
+                    message = "Пользователь с таким логином или e-mail уже зарегистрирован. Попробуйте сменить данные на свободные.";
+                else
+                    message = ex.Message;
+                MessageBox.Show(
+                    caption: "Ошибка регистрации",
+                    text: message,
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
         }
 
         private void btnDeleteProfile_Click(object sender, EventArgs e)
