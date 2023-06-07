@@ -301,7 +301,7 @@ namespace recipe_book
             rdr.Read();
 
             byte[]? recipeImage;
-            recipeImage = (byte[]?)rdr.GetValue(2);
+            recipeImage = rdr.GetValue(2) as byte[];
 
             lblCookingTime.Text = rdr.GetString(0);
             lblRating.Text = $"{rdr.GetInt32(1)} / 10";
