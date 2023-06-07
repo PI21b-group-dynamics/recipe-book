@@ -268,5 +268,32 @@ namespace recipe_book
             foreach (var numericUpDown in new[] { numHours, numMinutes, numSeconds, numWeeks, numDays, numRecipeRating })
                 numericUpDown.Value = numericUpDown.Minimum;
         }
+
+        private void pnlRecipes_DoubleClick(object sender, EventArgs e)
+        {
+            _previousSelectedTab = tabListOfRecipes;
+            tbcMainFormTabs.SelectedTab = tabRecipeView;
+
+            int selectedItemIndex = pnlRecipes.SelectedItems[0].Index;
+            lblRecipeName.Text = pnlRecipes.Items[selectedItemIndex].Text;
+
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT cooking_time, rating, photo, cooking_method
+                FROM Recipes
+                WHERE name = $name
+                """,
+                new SQLiteParameter("name", lblRecipeName.Text)
+            );
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+
+            object recipeImage;
+            recipeImage = rdr.GetValue(2);
+
+            lblCookingTime.Text = rdr.GetString(0);
+            lblRating.Text = $"{rdr.GetInt32(1)}/10";
+            picRecipePhoto.Image = recipeImage is DBNull ? Resources.UserIcon : ((byte[])recipeImage).ToImage();
+            lblRecipeCookingMethod.Text = rdr.GetString(3);
+        }
     }
 }

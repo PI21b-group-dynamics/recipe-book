@@ -42,7 +42,7 @@ namespace recipe_book
                 new SQLiteParameter("login", txtLogin.Text),
                 new SQLiteParameter("email", txtEmail.Text),
                 new SQLiteParameter("password", txtPassword.Text),
-                new SQLiteParameter("photo", UserImage == Resources.UserIcon ? null : UserImage.ToArray()),
+                new SQLiteParameter("photo", UserImage == Resources.UserIcon ? null : UserImage.ToBytes()),
                 new SQLiteParameter("id", _userId)
             );
             cmd.ExecuteNonQuery();
