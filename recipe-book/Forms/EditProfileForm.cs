@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using recipe_book.Properties;
+﻿using recipe_book.Properties;
 using System.Data.SQLite;
 
 namespace recipe_book
@@ -8,17 +7,30 @@ namespace recipe_book
     {
         private long _userId;
 
-        public string Login { get => txtLogin.Text; }
-
-        public Image UserImage { get => picUser.Image; }
-
-        public EditProfileForm(long userId)
+        public EditProfileForm(long userId, string login, Image image)
         {
             InitializeComponent();
             _userId = userId;
+            txtLogin.Text = login;
+            picUser.Image = image;
             picUser.MakeRound();
             ActiveControl = btnCancel;
-            // Здесь напиши селект для загрузки данных из БД по айдишнику юзера
+        }
+
+        private void EditProfileForm_Load(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = DbModule.CreateCommand("""
+                SELECT email, password
+                FROM Users
+                WHERE id = $id
+                """,
+               new SQLiteParameter("id", _userId)
+            );
+
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            txtEmail.Text = rdr.GetString(0);
+            txtPassword.Text = rdr.GetString(1);
         }
 
         private void authFields_TextChanged(object sender, EventArgs e)
@@ -42,7 +54,9 @@ namespace recipe_book
                 new SQLiteParameter("login", txtLogin.Text),
                 new SQLiteParameter("email", txtEmail.Text),
                 new SQLiteParameter("password", txtPassword.Text),
-                new SQLiteParameter("photo", UserImage == Resources.UserIcon ? null : UserImage.ToBytes()),
+                new SQLiteParameter("photo",
+                    picUser.Image == Resources.UserIcon ? null : picUser.Image.ToBytes()
+                ),
                 new SQLiteParameter("id", _userId)
             );
             cmd.ExecuteNonQuery();
@@ -89,26 +103,6 @@ namespace recipe_book
                         icon: MessageBoxIcon.Error
                     );
                 }
-        }
-
-        private void EditProfileForm_Load(object sender, EventArgs e)
-        {
-            SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT login, email, password, photo
-                FROM Users
-                WHERE id = $id
-                """,
-               new SQLiteParameter("id", _userId)
-           );
-
-            SQLiteDataReader rdr = cmd.ExecuteReader();
-            rdr.Read();
-            txtLogin.Text = rdr.GetString(0);
-            txtEmail.Text = rdr.GetString(1);
-            txtPassword.Text = rdr.GetString(2);
-            if (rdr.IsDBNull(3))
-                picUser.Image = Resources.UserIcon;
-            else picUser.Image = ((byte[])rdr.GetValue(3)).ToImage();
         }
     }
 }
