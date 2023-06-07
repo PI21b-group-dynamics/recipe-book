@@ -14,7 +14,7 @@ namespace recipe_book
         {
             InitializeComponent();
             _userId = userId;
-            Utils.MakeRound(picUser);
+            picUser.MakeRound();
             ActiveControl = btnCancel;
             // Здесь напиши селект для загрузки данных из БД по айдишнику юзера
         }
