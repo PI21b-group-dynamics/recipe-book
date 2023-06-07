@@ -1,4 +1,5 @@
-﻿using System.Drawing.Drawing2D;
+﻿using System.Data.SQLite;
+using System.Drawing.Drawing2D;
 
 namespace recipe_book
 {
@@ -19,9 +20,11 @@ namespace recipe_book
             return ms.ToArray();
         }
 
-        public static Image ToImage(this byte[] array)
+        public static Image? GetImage(this SQLiteDataReader rdr, int i)
         {
-            using MemoryStream ms = new(array);
+            if (rdr.GetValue(i) is not byte[] bytes)
+                return null;
+            using MemoryStream ms = new(bytes);
             return Image.FromStream(ms);
         }
     }
