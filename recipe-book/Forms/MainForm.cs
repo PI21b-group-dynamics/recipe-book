@@ -54,6 +54,8 @@ namespace recipe_book
                 return;
             }
             lblUser.Text = authForm.Login;
+            if (authForm.Image is not null)
+                picUser.Image = authForm.Image;
             userId = authForm.Id;
             DisplayRecipes();
             DisplayTags();
