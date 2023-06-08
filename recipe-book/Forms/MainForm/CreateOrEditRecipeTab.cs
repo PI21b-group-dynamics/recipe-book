@@ -53,15 +53,16 @@ namespace recipe_book
         private void btnSaveRecipe_Click(object sender, EventArgs e)
         {
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method)
-                VALUES ($user_id, $name, $rating, $cooking_time, $photo, $cooking_method)
+                INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method, creation_time)
+                VALUES ($user_id, $name, $rating, $cooking_time, $photo, $cooking_method, $creation_time)
                 """,
                 new SQLiteParameter("user_id", userId),
                 new SQLiteParameter("name", txtRecipeName.Text),
                 new SQLiteParameter("rating", numRecipeRating.Value),
                 new SQLiteParameter("cooking_time", CookingTimeAsTimeSpan.Ticks),
                 new SQLiteParameter("photo", picRecipePhoto.Image?.ToBytes()),
-                new SQLiteParameter("cooking_method", txtCookingMethod.Text)
+                new SQLiteParameter("cooking_method", txtCookingMethod.Text),
+                new SQLiteParameter("creation_time", DateTime.Now.Ticks)
             );
             cmd.ExecuteNonQuery();
 

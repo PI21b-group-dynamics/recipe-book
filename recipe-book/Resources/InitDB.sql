@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS Recipes (
 	cooking_time INTEGER NOT NULL,
 	photo BLOB,
 	cooking_method TEXT NOT NULL,
+	creation_time INTEGER NOT NULL,
 	FOREIGN KEY(user_id) REFERENCES Users(id)
 );
 
