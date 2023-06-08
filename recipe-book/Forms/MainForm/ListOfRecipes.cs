@@ -22,6 +22,7 @@ namespace recipe_book
             tbcMainFormTabs.SelectedTab = tabRecipeView;
 
             ListViewItem item = pnlRecipes.SelectedItems[0];
+            SQLiteParameter recipeIdParam = new("id", Convert.ToInt64(item.Name));
             lblRecipeName.Text = item.Text;
             SQLiteCommand cmd = DbModule.CreateCommand("""
                 SELECT cooking_time, rating, photo, cooking_method
@@ -29,7 +30,7 @@ namespace recipe_book
                 WHERE id = $id
                 LIMIT 1
                 """,
-                new SQLiteParameter("id", Convert.ToInt64(item.Name))
+                recipeIdParam
             );
             SQLiteDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
@@ -38,6 +39,40 @@ namespace recipe_book
             lblRating.Text = $"{rdr.GetInt32(1)} / 10";
             picRecipeViewPhoto.Image = rdr.GetImage(2) ?? Resources.UserIcon;
             lblRecipeCookingMethod.Text = rdr.GetString(3);
+
+            cmd = DbModule.CreateCommand("""
+                SELECT Tags.name
+                FROM RecipeTags
+                JOIN Tags ON Tags.id = RecipeTags.tag_id
+                WHERE RecipeTags.recipe_id = $id
+                """,
+                recipeIdParam
+            );
+            rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+                pblRecipeViewTags.Controls.Add(new Button()
+                {
+                    Text = rdr.GetString(0),
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink
+                });
+
+            cmd = DbModule.CreateCommand("""
+                SELECT Ingredients.name
+                FROM RecipeIngredients
+                JOIN Ingredients ON Ingredients.id = RecipeIngredients.ingredient_id
+                WHERE RecipeIngredients.recipe_id = $id
+                """,
+                recipeIdParam
+            );
+            rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+                pnlRecipeViewIngredients.Controls.Add(new Button()
+                {
+                    Text = rdr.GetString(0),
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink
+                });
         }
     }
 }

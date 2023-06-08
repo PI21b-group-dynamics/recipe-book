@@ -31,7 +31,7 @@ namespace recipe_book
         {
             pnlSlideMenu.BringToFront();
             ActiveControl = btnAddRecipe;
-            cboContentSort.Items.AddRange(new[] { "Дате создания", "Дате изменения", "Рейтингу" });
+            cboContentSort.Items.AddRange(new[] { "Дате создания", "Времени готовки", "Рейтингу" });
             cboContentSort.SelectedIndex = 0;
             picUser.MakeRound();
             btnAddRecipe.MakeRound();
