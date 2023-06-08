@@ -65,11 +65,15 @@ namespace recipe_book
         private void DisplayRecipes(string recipeName)
         {
             pnlRecipes.Clear();
+            string[] parametersName = new string[] { "creation_time", "cooking_time", "rating" };
+
             SQLiteCommand cmd = DbModule.CreateCommand($"""
                 SELECT id, name, photo FROM Recipes
                 WHERE user_id = $user_id AND name LIKE '{recipeName}%'
+                ORDER BY $parameter_name
                 """,
-                new SQLiteParameter("user_id", userId)
+                new SQLiteParameter("user_id", userId),
+                new SQLiteParameter("parameter_name", parametersName[cboContentSort.SelectedIndex])
             );
             SQLiteDataReader rdr = cmd.ExecuteReader();
             ListViewItem item;
@@ -126,6 +130,11 @@ namespace recipe_book
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DisplayRecipes(txtSearch.Text);
+        }
+
+        private void cboContentSort_SelectedValueChanged(object sender, EventArgs e)
         {
             DisplayRecipes(txtSearch.Text);
         }
