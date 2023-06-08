@@ -16,9 +16,9 @@ namespace recipe_book
         public static Image Crop(this Image image)
         {
             Bitmap bitmap = (Bitmap)image;
-            int rectSize = int.Min(bitmap.Width, bitmap.Height);
+            int rectSize = int.Min(image.Width, image.Height);
             Rectangle rect = new(0, 0, rectSize, rectSize);
-            int offset = (bitmap.Width - bitmap.Height) / 2;
+            int offset = (image.Width - image.Height) / 2;
             if (offset < 0)
                 rect.Y = offset;
             else
