@@ -8,6 +8,7 @@ namespace recipe_book
         private long userId;
         private readonly Color UserLayoutPanelOriginalBackColor;
         private readonly Rectangle SlideMenuHoverZone;
+        private readonly TimeSpan _minimumCookingTime;
         private HelpForm? _helpForm;
         private TabPage _previousSelectedTab;
 
@@ -22,6 +23,7 @@ namespace recipe_book
                     pnlUser.Height + pnlSlideMenu.Height
                 )
             );
+            _minimumCookingTime = new TimeSpan(0, 3, 0);
             _previousSelectedTab = tabRecipeView;
         }
 

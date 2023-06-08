@@ -677,6 +677,7 @@ namespace recipe_book
             numHours.Name = "numHours";
             numHours.Size = new Size(45, 27);
             numHours.TabIndex = 0;
+            numHours.ValueChanged += RecipeInputFieldsChanged;
             // 
             // numSeconds
             // 
@@ -686,6 +687,7 @@ namespace recipe_book
             numSeconds.Name = "numSeconds";
             numSeconds.Size = new Size(45, 27);
             numSeconds.TabIndex = 2;
+            numSeconds.ValueChanged += RecipeInputFieldsChanged;
             // 
             // numMinutes
             // 
@@ -695,6 +697,7 @@ namespace recipe_book
             numMinutes.Name = "numMinutes";
             numMinutes.Size = new Size(45, 27);
             numMinutes.TabIndex = 1;
+            numMinutes.ValueChanged += RecipeInputFieldsChanged;
             // 
             // label8
             // 
@@ -726,6 +729,7 @@ namespace recipe_book
             numWeeks.Name = "numWeeks";
             numWeeks.Size = new Size(45, 27);
             numWeeks.TabIndex = 5;
+            numWeeks.ValueChanged += RecipeInputFieldsChanged;
             // 
             // label10
             // 
@@ -746,6 +750,7 @@ namespace recipe_book
             numDays.Name = "numDays";
             numDays.Size = new Size(45, 27);
             numDays.TabIndex = 7;
+            numDays.ValueChanged += RecipeInputFieldsChanged;
             // 
             // label11
             // 

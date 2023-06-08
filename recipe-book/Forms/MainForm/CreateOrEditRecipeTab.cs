@@ -102,11 +102,24 @@ namespace recipe_book
                 numericUpDown.Value = numericUpDown.Minimum;
         }
 
+        private TimeSpan CookingTimeToTimeSpan()
+        {
+            return new TimeSpan(
+                7 * (int)(numWeeks.Value + numDays.Value),
+                (int)numHours.Value,
+                (int)numMinutes.Value,
+                (int)numSeconds.Value,
+                0,
+                0
+            );
+        }
+
         private void RecipeInputFieldsChanged(object sender, EventArgs e)
         {
             btnSaveRecipe.Enabled = txtCookingMethod.TextLength > 0
                 && txtRecipeName.TextLength > 0
-                && pnlIngredientInput.Controls.Count > 0;
+                && pnlIngredientInput.Controls.Count > 0
+                && CookingTimeToTimeSpan() > _minimumCookingTime;
         }
     }
 }
