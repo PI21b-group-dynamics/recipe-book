@@ -124,6 +124,7 @@ namespace recipe_book
             txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.Location = new Point(12, 95);
             txtPassword.Margin = new Padding(3, 0, 3, 2);
+            txtPassword.MaxLength = 32;
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Пароль";
             txtPassword.Size = new Size(218, 29);
@@ -137,6 +138,7 @@ namespace recipe_book
             txtLoginOrEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtLoginOrEmail.Location = new Point(12, 55);
             txtLoginOrEmail.Margin = new Padding(3, 0, 3, 11);
+            txtLoginOrEmail.MaxLength = 40;
             txtLoginOrEmail.Name = "txtLoginOrEmail";
             txtLoginOrEmail.PlaceholderText = "Логин / E-mail";
             txtLoginOrEmail.Size = new Size(218, 29);
@@ -199,6 +201,7 @@ namespace recipe_book
             txtPassword_.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword_.Location = new Point(8, 211);
             txtPassword_.Margin = new Padding(3, 2, 3, 2);
+            txtPassword_.MaxLength = 32;
             txtPassword_.Name = "txtPassword_";
             txtPassword_.PlaceholderText = "Пароль";
             txtPassword_.Size = new Size(226, 29);
@@ -212,6 +215,7 @@ namespace recipe_book
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtEmail.Location = new Point(8, 172);
             txtEmail.Margin = new Padding(3, 2, 3, 8);
+            txtEmail.MaxLength = 40;
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "E-mail";
             txtEmail.Size = new Size(226, 29);
@@ -224,6 +228,7 @@ namespace recipe_book
             txtLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtLogin.Location = new Point(8, 133);
             txtLogin.Margin = new Padding(3, 2, 3, 8);
+            txtLogin.MaxLength = 32;
             txtLogin.Name = "txtLogin";
             txtLogin.PlaceholderText = "Логин";
             txtLogin.Size = new Size(226, 29);

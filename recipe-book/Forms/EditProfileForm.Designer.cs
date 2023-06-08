@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProfileForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             txtPassword = new TextBox();
             txtEmail = new TextBox();
@@ -44,15 +45,15 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(txtPassword, 0, 3);
             tableLayoutPanel1.Controls.Add(txtEmail, 0, 2);
             tableLayoutPanel1.Controls.Add(txtLogin, 0, 1);
             tableLayoutPanel1.Controls.Add(btnCancel, 0, 4);
             tableLayoutPanel1.Controls.Add(btnSave, 1, 4);
             tableLayoutPanel1.Controls.Add(btnDeleteProfile, 0, 6);
-            tableLayoutPanel1.Controls.Add(picUser, 0, 0);
+            tableLayoutPanel1.Controls.Add(picUser, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
@@ -66,17 +67,20 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(347, 328);
+            tableLayoutPanel1.Size = new Size(311, 382);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // txtPassword
             // 
             tableLayoutPanel1.SetColumnSpan(txtPassword, 2);
             txtPassword.Dock = DockStyle.Top;
-            txtPassword.Location = new Point(13, 216);
+            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword.Location = new Point(12, 251);
+            txtPassword.Margin = new Padding(3, 3, 3, 8);
+            txtPassword.MaxLength = 32;
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Пароль";
-            txtPassword.Size = new Size(280, 23);
+            txtPassword.Size = new Size(287, 29);
             txtPassword.TabIndex = 1;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.TextChanged += authFields_TextChanged;
@@ -85,10 +89,13 @@
             // 
             tableLayoutPanel1.SetColumnSpan(txtEmail, 2);
             txtEmail.Dock = DockStyle.Top;
-            txtEmail.Location = new Point(13, 183);
+            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Location = new Point(12, 211);
+            txtEmail.Margin = new Padding(3, 3, 3, 8);
+            txtEmail.MaxLength = 40;
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "E-mail";
-            txtEmail.Size = new Size(280, 23);
+            txtEmail.Size = new Size(287, 29);
             txtEmail.TabIndex = 0;
             txtEmail.TextChanged += authFields_TextChanged;
             // 
@@ -96,19 +103,25 @@
             // 
             tableLayoutPanel1.SetColumnSpan(txtLogin, 2);
             txtLogin.Dock = DockStyle.Top;
-            txtLogin.Location = new Point(13, 150);
+            txtLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLogin.Location = new Point(12, 171);
+            txtLogin.Margin = new Padding(3, 3, 3, 8);
+            txtLogin.MaxLength = 32;
             txtLogin.Name = "txtLogin";
             txtLogin.PlaceholderText = "Логин";
-            txtLogin.Size = new Size(280, 23);
+            txtLogin.Size = new Size(287, 29);
             txtLogin.TabIndex = 6;
             txtLogin.TextChanged += authFields_TextChanged;
             // 
             // btnCancel
             // 
+            btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnCancel.Dock = DockStyle.Fill;
-            btnCancel.Location = new Point(13, 249);
+            btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancel.Location = new Point(12, 294);
+            btnCancel.Margin = new Padding(3, 6, 3, 6);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(137, 22);
+            btnCancel.Size = new Size(140, 37);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
@@ -116,11 +129,14 @@
             // 
             // btnSave
             // 
+            btnSave.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnSave.Dock = DockStyle.Fill;
             btnSave.Enabled = false;
-            btnSave.Location = new Point(176, 249);
+            btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSave.Location = new Point(158, 294);
+            btnSave.Margin = new Padding(3, 6, 3, 6);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(137, 22);
+            btnSave.Size = new Size(141, 37);
             btnSave.TabIndex = 8;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -132,9 +148,10 @@
             btnDeleteProfile.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.SetColumnSpan(btnDeleteProfile, 2);
             btnDeleteProfile.Dock = DockStyle.Top;
-            btnDeleteProfile.Location = new Point(13, 284);
+            btnDeleteProfile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteProfile.Location = new Point(12, 340);
             btnDeleteProfile.Name = "btnDeleteProfile";
-            btnDeleteProfile.Size = new Size(280, 25);
+            btnDeleteProfile.Size = new Size(287, 31);
             btnDeleteProfile.TabIndex = 9;
             btnDeleteProfile.Text = "Удалить профиль";
             btnDeleteProfile.UseVisualStyleBackColor = true;
@@ -145,9 +162,10 @@
             picUser.BackgroundImageLayout = ImageLayout.Center;
             tableLayoutPanel1.SetColumnSpan(picUser, 2);
             picUser.Image = Properties.Resources.UserIcon;
-            picUser.Location = new Point(13, 14);
+            picUser.Location = new Point(82, 8);
+            picUser.Margin = new Padding(73, 0, 3, 6);
             picUser.Name = "picUser";
-            picUser.Size = new Size(128, 128);
+            picUser.Size = new Size(147, 154);
             picUser.SizeMode = PictureBoxSizeMode.Zoom;
             picUser.TabIndex = 10;
             picUser.TabStop = false;
@@ -164,8 +182,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(347, 328);
+            ClientSize = new Size(311, 382);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "EditProfileForm";
             Text = "Редактирование профиля";
