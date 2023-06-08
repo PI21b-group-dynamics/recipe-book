@@ -42,7 +42,7 @@ namespace recipe_book
             if (dlgLoadProfilePic.ShowDialog() == DialogResult.OK)
                 try
                 {
-                    picUser.ImageLocation = dlgLoadProfilePic.FileName;
+                    picUser.Image = Image.FromFile(dlgLoadProfilePic.FileName).Crop();
                 }
                 catch (Exception ex)
                 {

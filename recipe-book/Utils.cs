@@ -13,6 +13,19 @@ namespace recipe_book
             control.Region = new Region(graphicsPath);
         }
 
+        public static Image Crop(this Image image)
+        {
+            Bitmap bitmap = (Bitmap)image;
+            int rectSize = int.Min(bitmap.Width, bitmap.Height);
+            Rectangle rect = new(0, 0, rectSize, rectSize);
+            int offset = (bitmap.Width - bitmap.Height) / 2;
+            if (offset < 0)
+                rect.Y = offset;
+            else
+                rect.X = offset;
+            return bitmap.Clone(rect, bitmap.PixelFormat);
+        }
+
 		public static byte[] ToBytes(this Image img)
 		{
             using MemoryStream ms = new();
