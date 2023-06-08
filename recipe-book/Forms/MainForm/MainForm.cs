@@ -58,16 +58,16 @@ namespace recipe_book
             if (authForm.Photo is not null)
                 picUser.Image = authForm.Photo;
             userId = authForm.Id;
-            DisplayRecipes();
+            DisplayRecipes("");
             DisplayTags();
         }
 
-        private void DisplayRecipes()
+        private void DisplayRecipes(string recipeName)
         {
             pnlRecipes.Clear();
-            SQLiteCommand cmd = DbModule.CreateCommand("""
+            SQLiteCommand cmd = DbModule.CreateCommand($"""
                 SELECT id, name, photo FROM Recipes
-                WHERE user_id = $user_id
+                WHERE user_id = $user_id AND name LIKE '{recipeName}%'
                 """,
                 new SQLiteParameter("user_id", userId)
             );
@@ -120,9 +120,14 @@ namespace recipe_book
                 {
                     ClearRecipeInputFields();
                     DisplayTags();
-                    DisplayRecipes();
+                    DisplayRecipes("");
                 }
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DisplayRecipes(txtSearch.Text);
         }
     }
 }
