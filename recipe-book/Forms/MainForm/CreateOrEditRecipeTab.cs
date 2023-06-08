@@ -5,6 +5,18 @@ namespace recipe_book
 {
     public sealed partial class MainForm : Form
     {
+        private TimeSpan CookingTimeAsTimeSpan
+        {
+            get => new TimeSpan(
+                7 * (int)(numWeeks.Value + numDays.Value),
+                (int)numHours.Value,
+                (int)numMinutes.Value,
+                (int)numSeconds.Value,
+                0,
+                0
+            );
+        }
+
         private void btnCancelCreationOrEdition_Click(object sender, EventArgs e)
         {
             tbcMainFormTabs.SelectedTab = tabListOfRecipes;
@@ -40,9 +52,6 @@ namespace recipe_book
 
         private void btnSaveRecipe_Click(object sender, EventArgs e)
         {
-            string cookingTime = string.Join(' ',
-                numWeeks.Value, numDays.Value, numHours.Value, numMinutes.Value, numSeconds.Value
-            );
             SQLiteCommand cmd = DbModule.CreateCommand("""
                 INSERT INTO Recipes (user_id, name, rating, cooking_time, photo, cooking_method)
                 VALUES ($user_id, $name, $rating, $cooking_time, $photo, $cooking_method)
@@ -50,7 +59,7 @@ namespace recipe_book
                 new SQLiteParameter("user_id", userId),
                 new SQLiteParameter("name", txtRecipeName.Text),
                 new SQLiteParameter("rating", numRecipeRating.Value),
-                new SQLiteParameter("cooking_time", cookingTime),
+                new SQLiteParameter("cooking_time", CookingTimeAsTimeSpan.Ticks),
                 new SQLiteParameter("photo", picRecipePhoto.Image?.ToBytes()),
                 new SQLiteParameter("cooking_method", txtCookingMethod.Text)
             );
@@ -102,24 +111,12 @@ namespace recipe_book
                 numericUpDown.Value = numericUpDown.Minimum;
         }
 
-        private TimeSpan CookingTimeToTimeSpan()
-        {
-            return new TimeSpan(
-                7 * (int)(numWeeks.Value + numDays.Value),
-                (int)numHours.Value,
-                (int)numMinutes.Value,
-                (int)numSeconds.Value,
-                0,
-                0
-            );
-        }
-
         private void RecipeInputFieldsChanged(object sender, EventArgs e)
         {
             btnSaveRecipe.Enabled = txtCookingMethod.TextLength > 0
                 && txtRecipeName.TextLength > 0
                 && pnlIngredientInput.Controls.Count > 0
-                && CookingTimeToTimeSpan() > _minimumCookingTime;
+                && CookingTimeAsTimeSpan > _minimumCookingTime;
         }
     }
 }

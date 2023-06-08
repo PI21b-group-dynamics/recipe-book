@@ -33,9 +33,10 @@ namespace recipe_book
             );
             SQLiteDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
-            lblCookingTime.Text = rdr.GetString(0);
+            TimeSpan ts = new(rdr.GetInt64(0));
+            lblCookingTime.Text = $"{ts:hh\\:mm\\:ss}, {ts.Days} дней";
             lblRating.Text = $"{rdr.GetInt32(1)} / 10";
-            picRecipePhoto.Image = rdr.GetImage(2) ?? Resources.UserIcon;
+            picRecipeViewPhoto.Image = rdr.GetImage(2) ?? Resources.UserIcon;
             lblRecipeCookingMethod.Text = rdr.GetString(3);
         }
     }

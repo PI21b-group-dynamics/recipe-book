@@ -54,7 +54,7 @@ namespace recipe_book
             btnDeleteRecipe = new Button();
             btnBackToMain = new Button();
             lblRecipeCookingMethod = new Label();
-            pictureBox1 = new PictureBox();
+            picRecipeViewPhoto = new PictureBox();
             lblRating = new Label();
             lblCookingTime = new Label();
             lblRecipeName = new Label();
@@ -91,6 +91,8 @@ namespace recipe_book
             pnlTagInput = new AutoFillingFlowPanel();
             pnlIngredientInput = new AutoFillingFlowPanel();
             dlgLoadRecipePhoto = new OpenFileDialog();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             pnlSlideMenu.SuspendLayout();
             pnlMainLayout.SuspendLayout();
             pnlUser.SuspendLayout();
@@ -99,7 +101,7 @@ namespace recipe_book
             tabListOfRecipes.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabRecipeView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picRecipeViewPhoto).BeginInit();
             tabCreateOrEditRecipe.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numRecipeRating).BeginInit();
@@ -364,11 +366,13 @@ namespace recipe_book
             // 
             // tabRecipeView
             // 
+            tabRecipeView.Controls.Add(flowLayoutPanel2);
+            tabRecipeView.Controls.Add(flowLayoutPanel1);
             tabRecipeView.Controls.Add(btnEditRecipe);
             tabRecipeView.Controls.Add(btnDeleteRecipe);
             tabRecipeView.Controls.Add(btnBackToMain);
             tabRecipeView.Controls.Add(lblRecipeCookingMethod);
-            tabRecipeView.Controls.Add(pictureBox1);
+            tabRecipeView.Controls.Add(picRecipeViewPhoto);
             tabRecipeView.Controls.Add(lblRating);
             tabRecipeView.Controls.Add(lblCookingTime);
             tabRecipeView.Controls.Add(lblRecipeName);
@@ -385,10 +389,10 @@ namespace recipe_book
             // 
             // btnEditRecipe
             // 
-            btnEditRecipe.Location = new Point(803, 391);
+            btnEditRecipe.Location = new Point(783, 391);
             btnEditRecipe.Margin = new Padding(3, 4, 3, 4);
             btnEditRecipe.Name = "btnEditRecipe";
-            btnEditRecipe.Size = new Size(112, 31);
+            btnEditRecipe.Size = new Size(132, 31);
             btnEditRecipe.TabIndex = 12;
             btnEditRecipe.Text = "Редактировать";
             btnEditRecipe.UseVisualStyleBackColor = true;
@@ -410,8 +414,9 @@ namespace recipe_book
             btnBackToMain.Name = "btnBackToMain";
             btnBackToMain.Size = new Size(86, 31);
             btnBackToMain.TabIndex = 10;
-            btnBackToMain.Text = "Вернуться";
+            btnBackToMain.Text = "Назад";
             btnBackToMain.UseVisualStyleBackColor = true;
+            btnBackToMain.Click += btnBackToMain_Click;
             // 
             // lblRecipeCookingMethod
             // 
@@ -420,14 +425,14 @@ namespace recipe_book
             lblRecipeCookingMethod.Size = new Size(879, 187);
             lblRecipeCookingMethod.TabIndex = 9;
             // 
-            // pictureBox1
+            // picRecipeViewPhoto
             // 
-            pictureBox1.Location = new Point(434, 36);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(158, 108);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
+            picRecipeViewPhoto.Location = new Point(434, 36);
+            picRecipeViewPhoto.Margin = new Padding(3, 4, 3, 4);
+            picRecipeViewPhoto.Name = "picRecipeViewPhoto";
+            picRecipeViewPhoto.Size = new Size(158, 108);
+            picRecipeViewPhoto.TabIndex = 6;
+            picRecipeViewPhoto.TabStop = false;
             // 
             // lblRating
             // 
@@ -849,6 +854,20 @@ namespace recipe_book
             dlgLoadRecipePhoto.Filter = "Изображения|*.jpg;*.png";
             dlgLoadRecipePhoto.Title = "Выберите фотографию блюда";
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(45, 165);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(396, 80);
+            flowLayoutPanel1.TabIndex = 13;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Location = new Point(508, 178);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(408, 83);
+            flowLayoutPanel2.TabIndex = 14;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -871,7 +890,7 @@ namespace recipe_book
             tableLayoutPanel1.PerformLayout();
             tabRecipeView.ResumeLayout(false);
             tabRecipeView.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picRecipeViewPhoto).EndInit();
             tabCreateOrEditRecipe.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -941,12 +960,14 @@ namespace recipe_book
         private Label lbl_2;
         private Label lblRecipeName;
         private Label lbl_3;
-        private PictureBox pictureBox1;
+        private PictureBox picRecipeViewPhoto;
         private Label lblRating;
         private Label lblCookingTime;
         private Label lblRecipeCookingMethod;
         private Button btnEditRecipe;
         private Button btnDeleteRecipe;
         private Button btnBackToMain;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

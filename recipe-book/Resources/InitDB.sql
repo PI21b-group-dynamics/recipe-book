@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Recipes (
 	user_id INTEGER NOT NULL,
 	name TEXT NOT NULL UNIQUE,
 	rating INTEGER NOT NULL,
-	cooking_time TEXT NOT NULL,
+	cooking_time INTEGER NOT NULL,
 	photo BLOB,
 	cooking_method TEXT NOT NULL,
 	FOREIGN KEY(user_id) REFERENCES Users(id)
