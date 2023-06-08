@@ -50,10 +50,13 @@ namespace recipe_book
             btnShoppingList = new Button();
             pnlRecipes = new ListView();
             tabRecipeView = new TabPage();
+            tableLayoutPanel4 = new TableLayoutPanel();
             spoilerContainer1 = new SpoilerContainer();
             lblRecipeCookingMethod = new Label();
-            pblRecipeViewTags = new FlowLayoutPanel();
+            spoilerContainer2 = new SpoilerContainer();
             pnlRecipeViewIngredients = new FlowLayoutPanel();
+            spoilerContainer3 = new SpoilerContainer();
+            pblRecipeViewTags = new FlowLayoutPanel();
             btnEditRecipe = new Button();
             btnDeleteRecipe = new Button();
             btnBackToMain = new Button();
@@ -94,9 +97,6 @@ namespace recipe_book
             pnlTagInput = new AutoFillingFlowPanel();
             pnlIngredientInput = new AutoFillingFlowPanel();
             dlgLoadRecipePhoto = new OpenFileDialog();
-            spoilerContainer2 = new SpoilerContainer();
-            spoilerContainer3 = new SpoilerContainer();
-            tableLayoutPanel4 = new TableLayoutPanel();
             pnlSlideMenu.SuspendLayout();
             pnlMainLayout.SuspendLayout();
             pnlUser.SuspendLayout();
@@ -105,7 +105,10 @@ namespace recipe_book
             tabListOfRecipes.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabRecipeView.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             spoilerContainer1.SuspendLayout();
+            spoilerContainer2.SuspendLayout();
+            spoilerContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picRecipeViewPhoto).BeginInit();
             tabCreateOrEditRecipe.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -117,9 +120,6 @@ namespace recipe_book
             ((System.ComponentModel.ISupportInitialize)numWeeks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDays).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRecipePhoto).BeginInit();
-            spoilerContainer2.SuspendLayout();
-            spoilerContainer3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSlideMenu
@@ -197,17 +197,18 @@ namespace recipe_book
             pnlMainLayout.RowStyles.Add(new RowStyle());
             pnlMainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             pnlMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlMainLayout.Size = new Size(965, 529);
+            pnlMainLayout.Size = new Size(1099, 760);
             pnlMainLayout.TabIndex = 8;
             // 
             // txtSearch
             // 
             txtSearch.Dock = DockStyle.Top;
-            txtSearch.Location = new Point(645, 16);
+            txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.Location = new Point(735, 16);
             txtSearch.Margin = new Padding(3, 16, 3, 3);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "🔍 Найти...";
-            txtSearch.Size = new Size(317, 27);
+            txtSearch.Size = new Size(361, 32);
             txtSearch.TabIndex = 1;
             // 
             // pnlUser
@@ -225,7 +226,7 @@ namespace recipe_book
             pnlUser.RowStyles.Add(new RowStyle());
             pnlUser.RowStyles.Add(new RowStyle());
             pnlUser.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            pnlUser.Size = new Size(253, 54);
+            pnlUser.Size = new Size(261, 54);
             pnlUser.TabIndex = 3;
             // 
             // picUser
@@ -233,10 +234,11 @@ namespace recipe_book
             picUser.Dock = DockStyle.Fill;
             picUser.Image = Properties.Resources.UserIcon;
             picUser.InitialImage = (Image)resources.GetObject("picUser.InitialImage");
-            picUser.Location = new Point(3, 3);
+            picUser.Location = new Point(11, 3);
+            picUser.Margin = new Padding(11, 3, 3, 3);
             picUser.Name = "picUser";
             picUser.Size = new Size(48, 48);
-            picUser.SizeMode = PictureBoxSizeMode.StretchImage;
+            picUser.SizeMode = PictureBoxSizeMode.Zoom;
             picUser.TabIndex = 1;
             picUser.TabStop = false;
             picUser.MouseEnter += ShowSlideMenuOnMouseEnter;
@@ -245,8 +247,8 @@ namespace recipe_book
             // lblUser
             // 
             lblUser.Dock = DockStyle.Left;
-            lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblUser.Location = new Point(59, 0);
+            lblUser.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblUser.Location = new Point(67, 0);
             lblUser.Margin = new Padding(5, 0, 0, 0);
             lblUser.Name = "lblUser";
             lblUser.Size = new Size(194, 54);
@@ -263,10 +265,11 @@ namespace recipe_book
             tbcMainFormTabs.Controls.Add(tabRecipeView);
             tbcMainFormTabs.Controls.Add(tabCreateOrEditRecipe);
             tbcMainFormTabs.Dock = DockStyle.Fill;
+            tbcMainFormTabs.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             tbcMainFormTabs.Location = new Point(3, 63);
             tbcMainFormTabs.Name = "tbcMainFormTabs";
             tbcMainFormTabs.SelectedIndex = 0;
-            tbcMainFormTabs.Size = new Size(959, 463);
+            tbcMainFormTabs.Size = new Size(1093, 694);
             tbcMainFormTabs.TabIndex = 5;
             tbcMainFormTabs.SelectedIndexChanged += tbcMainFormTabs_SelectedIndexChanged;
             // 
@@ -274,10 +277,10 @@ namespace recipe_book
             // 
             tabListOfRecipes.Controls.Add(btnAddRecipe);
             tabListOfRecipes.Controls.Add(tableLayoutPanel1);
-            tabListOfRecipes.Location = new Point(4, 29);
+            tabListOfRecipes.Location = new Point(4, 34);
             tabListOfRecipes.Name = "tabListOfRecipes";
-            tabListOfRecipes.Padding = new Padding(3);
-            tabListOfRecipes.Size = new Size(951, 430);
+            tabListOfRecipes.Padding = new Padding(3, 3, 3, 3);
+            tabListOfRecipes.Size = new Size(1085, 656);
             tabListOfRecipes.TabIndex = 0;
             tabListOfRecipes.Text = "Список";
             tabListOfRecipes.UseVisualStyleBackColor = true;
@@ -285,7 +288,7 @@ namespace recipe_book
             // btnAddRecipe
             // 
             btnAddRecipe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddRecipe.Location = new Point(852, 339);
+            btnAddRecipe.Location = new Point(995, 557);
             btnAddRecipe.Name = "btnAddRecipe";
             btnAddRecipe.Size = new Size(70, 69);
             btnAddRecipe.TabIndex = 9;
@@ -312,25 +315,28 @@ namespace recipe_book
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(945, 424);
+            tableLayoutPanel1.Size = new Size(1079, 650);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // cboContentSort
             // 
             cboContentSort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboContentSort.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboContentSort.FormattingEnabled = true;
-            cboContentSort.Location = new Point(786, 3);
+            cboContentSort.Location = new Point(920, 4);
+            cboContentSort.Margin = new Padding(3, 4, 3, 3);
             cboContentSort.Name = "cboContentSort";
-            cboContentSort.Size = new Size(156, 28);
+            cboContentSort.Size = new Size(156, 33);
             cboContentSort.TabIndex = 9;
             // 
             // lblSortBy
             // 
             lblSortBy.AutoSize = true;
             lblSortBy.Dock = DockStyle.Fill;
-            lblSortBy.Location = new Point(656, 0);
+            lblSortBy.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSortBy.Location = new Point(758, 0);
             lblSortBy.Name = "lblSortBy";
-            lblSortBy.Size = new Size(124, 36);
+            lblSortBy.Size = new Size(156, 41);
             lblSortBy.TabIndex = 10;
             lblSortBy.Text = "Сортировать по:";
             lblSortBy.TextAlign = ContentAlignment.MiddleCenter;
@@ -345,7 +351,7 @@ namespace recipe_book
             pnlTags.Location = new Point(0, 0);
             pnlTags.Margin = new Padding(0);
             pnlTags.Name = "pnlTags";
-            pnlTags.Size = new Size(945, 1);
+            pnlTags.Size = new Size(1079, 1);
             pnlTags.TabIndex = 4;
             pnlTags.WrapContents = false;
             // 
@@ -353,9 +359,10 @@ namespace recipe_book
             // 
             btnShoppingList.AutoSize = true;
             btnShoppingList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnShoppingList.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             btnShoppingList.Location = new Point(3, 3);
             btnShoppingList.Name = "btnShoppingList";
-            btnShoppingList.Size = new Size(313, 30);
+            btnShoppingList.Size = new Size(385, 35);
             btnShoppingList.TabIndex = 11;
             btnShoppingList.Text = "Список покупок по выбранным рецептам";
             btnShoppingList.UseVisualStyleBackColor = true;
@@ -365,9 +372,9 @@ namespace recipe_book
             // 
             tableLayoutPanel1.SetColumnSpan(pnlRecipes, 4);
             pnlRecipes.Dock = DockStyle.Fill;
-            pnlRecipes.Location = new Point(3, 39);
+            pnlRecipes.Location = new Point(3, 44);
             pnlRecipes.Name = "pnlRecipes";
-            pnlRecipes.Size = new Size(939, 382);
+            pnlRecipes.Size = new Size(1073, 603);
             pnlRecipes.TabIndex = 12;
             pnlRecipes.UseCompatibleStateImageBehavior = false;
             pnlRecipes.DoubleClick += pnlRecipes_DoubleClick;
@@ -385,13 +392,33 @@ namespace recipe_book
             tabRecipeView.Controls.Add(lbl_3);
             tabRecipeView.Controls.Add(lbl_2);
             tabRecipeView.Controls.Add(lbl_1);
-            tabRecipeView.Location = new Point(4, 29);
+            tabRecipeView.Location = new Point(4, 34);
             tabRecipeView.Name = "tabRecipeView";
-            tabRecipeView.Padding = new Padding(3);
-            tabRecipeView.Size = new Size(951, 430);
+            tabRecipeView.Padding = new Padding(3, 3, 3, 3);
+            tabRecipeView.Size = new Size(1085, 656);
             tabRecipeView.TabIndex = 1;
             tabRecipeView.Text = "Просмотр";
             tabRecipeView.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(spoilerContainer3, 0, 2);
+            tableLayoutPanel4.Controls.Add(spoilerContainer1, 0, 4);
+            tableLayoutPanel4.Controls.Add(spoilerContainer2, 0, 3);
+            tableLayoutPanel4.Location = new Point(236, 124);
+            tableLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 5;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 108F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 96F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 139F));
+            tableLayoutPanel4.Size = new Size(423, 449);
+            tableLayoutPanel4.TabIndex = 18;
             // 
             // spoilerContainer1
             // 
@@ -399,45 +426,80 @@ namespace recipe_book
             tableLayoutPanel4.SetColumnSpan(spoilerContainer1, 2);
             spoilerContainer1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             spoilerContainer1.Controls.Add(lblRecipeCookingMethod, 0, 1);
-            spoilerContainer1.Location = new Point(3, 236);
+            spoilerContainer1.Location = new Point(3, 314);
+            spoilerContainer1.Margin = new Padding(3, 4, 3, 4);
             spoilerContainer1.Name = "spoilerContainer1";
             spoilerContainer1.RowCount = 2;
             spoilerContainer1.RowStyles.Add(new RowStyle());
             spoilerContainer1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            spoilerContainer1.Size = new Size(250, 98);
+            spoilerContainer1.Size = new Size(286, 131);
             spoilerContainer1.TabIndex = 15;
             spoilerContainer1.Title = "Способ приготовления";
             // 
             // lblRecipeCookingMethod
             // 
             lblRecipeCookingMethod.Dock = DockStyle.Fill;
-            lblRecipeCookingMethod.Location = new Point(3, 36);
+            lblRecipeCookingMethod.Location = new Point(3, 43);
             lblRecipeCookingMethod.Name = "lblRecipeCookingMethod";
-            lblRecipeCookingMethod.Size = new Size(244, 62);
+            lblRecipeCookingMethod.Size = new Size(280, 88);
             lblRecipeCookingMethod.TabIndex = 9;
             // 
-            // flowLayoutPanel2
+            // spoilerContainer2
             // 
-            pblRecipeViewTags.Dock = DockStyle.Fill;
-            pblRecipeViewTags.Location = new Point(3, 39);
-            pblRecipeViewTags.Name = "flowLayoutPanel2";
-            pblRecipeViewTags.Size = new Size(244, 33);
-            pblRecipeViewTags.TabIndex = 14;
+            spoilerContainer2.ColumnCount = 1;
+            tableLayoutPanel4.SetColumnSpan(spoilerContainer2, 2);
+            spoilerContainer2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            spoilerContainer2.Controls.Add(pnlRecipeViewIngredients, 0, 1);
+            spoilerContainer2.Location = new Point(3, 218);
+            spoilerContainer2.Margin = new Padding(3, 4, 3, 4);
+            spoilerContainer2.Name = "spoilerContainer2";
+            spoilerContainer2.RowCount = 2;
+            spoilerContainer2.RowStyles.Add(new RowStyle());
+            spoilerContainer2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            spoilerContainer2.Size = new Size(286, 88);
+            spoilerContainer2.TabIndex = 16;
+            spoilerContainer2.Title = "Ингредиенты";
             // 
-            // flowLayoutPanel1
+            // pnlRecipeViewIngredients
             // 
             pnlRecipeViewIngredients.Dock = DockStyle.Fill;
-            pnlRecipeViewIngredients.Location = new Point(3, 39);
-            pnlRecipeViewIngredients.Name = "flowLayoutPanel1";
-            pnlRecipeViewIngredients.Size = new Size(244, 24);
+            pnlRecipeViewIngredients.Location = new Point(3, 47);
+            pnlRecipeViewIngredients.Margin = new Padding(3, 4, 3, 4);
+            pnlRecipeViewIngredients.Name = "pnlRecipeViewIngredients";
+            pnlRecipeViewIngredients.Size = new Size(280, 37);
             pnlRecipeViewIngredients.TabIndex = 13;
+            // 
+            // spoilerContainer3
+            // 
+            spoilerContainer3.ColumnCount = 1;
+            tableLayoutPanel4.SetColumnSpan(spoilerContainer3, 2);
+            spoilerContainer3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            spoilerContainer3.Controls.Add(pblRecipeViewTags, 0, 1);
+            spoilerContainer3.Location = new Point(3, 110);
+            spoilerContainer3.Margin = new Padding(3, 4, 3, 4);
+            spoilerContainer3.Name = "spoilerContainer3";
+            spoilerContainer3.RowCount = 2;
+            spoilerContainer3.RowStyles.Add(new RowStyle());
+            spoilerContainer3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            spoilerContainer3.Size = new Size(286, 100);
+            spoilerContainer3.TabIndex = 17;
+            spoilerContainer3.Title = "Теги";
+            // 
+            // pblRecipeViewTags
+            // 
+            pblRecipeViewTags.Dock = DockStyle.Fill;
+            pblRecipeViewTags.Location = new Point(3, 47);
+            pblRecipeViewTags.Margin = new Padding(3, 4, 3, 4);
+            pblRecipeViewTags.Name = "pblRecipeViewTags";
+            pblRecipeViewTags.Size = new Size(280, 49);
+            pblRecipeViewTags.TabIndex = 14;
             // 
             // btnEditRecipe
             // 
-            btnEditRecipe.Location = new Point(783, 391);
-            btnEditRecipe.Margin = new Padding(3, 4, 3, 4);
+            btnEditRecipe.Location = new Point(895, 521);
+            btnEditRecipe.Margin = new Padding(3, 5, 3, 5);
             btnEditRecipe.Name = "btnEditRecipe";
-            btnEditRecipe.Size = new Size(132, 31);
+            btnEditRecipe.Size = new Size(151, 41);
             btnEditRecipe.TabIndex = 12;
             btnEditRecipe.Text = "Редактировать";
             btnEditRecipe.UseVisualStyleBackColor = true;
@@ -455,7 +517,7 @@ namespace recipe_book
             // 
             // btnBackToMain
             // 
-            btnBackToMain.Location = new Point(37, 391);
+            btnBackToMain.Location = new Point(63, 526);
             btnBackToMain.Margin = new Padding(3, 4, 3, 4);
             btnBackToMain.Name = "btnBackToMain";
             btnBackToMain.Size = new Size(86, 31);
@@ -466,11 +528,11 @@ namespace recipe_book
             // 
             // picRecipeViewPhoto
             // 
-            picRecipeViewPhoto.Location = new Point(292, 34);
+            picRecipeViewPhoto.Location = new Point(415, 33);
             picRecipeViewPhoto.Margin = new Padding(3, 4, 3, 4);
             picRecipeViewPhoto.Name = "picRecipeViewPhoto";
-            picRecipeViewPhoto.Size = new Size(158, 108);
-            picRecipeViewPhoto.TabIndex = 6;
+            picRecipeViewPhoto.Size = new Size(114, 67);
+            picRecipeViewPhoto.TabIndex = 19;
             picRecipeViewPhoto.TabStop = false;
             // 
             // lblRating
@@ -499,7 +561,7 @@ namespace recipe_book
             lbl_3.AutoSize = true;
             lbl_3.Location = new Point(37, 124);
             lbl_3.Name = "lbl_3";
-            lbl_3.Size = new Size(116, 20);
+            lbl_3.Size = new Size(146, 25);
             lbl_3.TabIndex = 2;
             lbl_3.Text = "Рейтинг блюда:";
             // 
@@ -508,7 +570,7 @@ namespace recipe_book
             lbl_2.AutoSize = true;
             lbl_2.Location = new Point(37, 80);
             lbl_2.Name = "lbl_2";
-            lbl_2.Size = new Size(119, 20);
+            lbl_2.Size = new Size(148, 25);
             lbl_2.TabIndex = 1;
             lbl_2.Text = "Время готовки: ";
             // 
@@ -517,16 +579,16 @@ namespace recipe_book
             lbl_1.AutoSize = true;
             lbl_1.Location = new Point(37, 36);
             lbl_1.Name = "lbl_1";
-            lbl_1.Size = new Size(129, 20);
+            lbl_1.Size = new Size(160, 25);
             lbl_1.TabIndex = 0;
             lbl_1.Text = "Название блюда:";
             // 
             // tabCreateOrEditRecipe
             // 
             tabCreateOrEditRecipe.Controls.Add(tableLayoutPanel2);
-            tabCreateOrEditRecipe.Location = new Point(4, 29);
+            tabCreateOrEditRecipe.Location = new Point(4, 34);
             tabCreateOrEditRecipe.Name = "tabCreateOrEditRecipe";
-            tabCreateOrEditRecipe.Size = new Size(951, 430);
+            tabCreateOrEditRecipe.Size = new Size(1085, 655);
             tabCreateOrEditRecipe.TabIndex = 2;
             tabCreateOrEditRecipe.Text = "Создание и редактирование";
             tabCreateOrEditRecipe.UseVisualStyleBackColor = true;
@@ -570,7 +632,7 @@ namespace recipe_book
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(951, 430);
+            tableLayoutPanel2.Size = new Size(1085, 655);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -579,7 +641,7 @@ namespace recipe_book
             label1.Dock = DockStyle.Fill;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(175, 33);
+            label1.Size = new Size(218, 38);
             label1.TabIndex = 0;
             label1.Text = "Название блюда:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -588,10 +650,10 @@ namespace recipe_book
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
-            label2.Location = new Point(3, 33);
+            label2.Location = new Point(3, 38);
             label2.Name = "label2";
             tableLayoutPanel2.SetRowSpan(label2, 2);
-            label2.Size = new Size(175, 401);
+            label2.Size = new Size(218, 401);
             label2.TabIndex = 1;
             label2.Text = "Фотография:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -600,9 +662,9 @@ namespace recipe_book
             // 
             label3.AutoSize = true;
             label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(3, 434);
+            label3.Location = new Point(3, 439);
             label3.Name = "label3";
-            label3.Size = new Size(175, 39);
+            label3.Size = new Size(218, 44);
             label3.TabIndex = 2;
             label3.Text = "Время готовки:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -611,9 +673,9 @@ namespace recipe_book
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(3, 473);
+            label4.Location = new Point(3, 483);
             label4.Name = "label4";
-            label4.Size = new Size(175, 33);
+            label4.Size = new Size(218, 38);
             label4.TabIndex = 3;
             label4.Text = "Рейтинг:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -622,10 +684,10 @@ namespace recipe_book
             // 
             label5.AutoSize = true;
             label5.Dock = DockStyle.Fill;
-            label5.Location = new Point(3, 506);
+            label5.Location = new Point(3, 521);
             label5.Name = "label5";
             label5.Padding = new Padding(0, 8, 0, 0);
-            label5.Size = new Size(175, 73);
+            label5.Size = new Size(218, 73);
             label5.TabIndex = 4;
             label5.Text = "Теги:";
             // 
@@ -633,10 +695,10 @@ namespace recipe_book
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Fill;
-            label6.Location = new Point(3, 579);
+            label6.Location = new Point(3, 594);
             label6.Name = "label6";
             label6.Padding = new Padding(0, 8, 0, 0);
-            label6.Size = new Size(175, 73);
+            label6.Size = new Size(218, 73);
             label6.TabIndex = 5;
             label6.Text = "Ингредиенты:";
             // 
@@ -644,9 +706,9 @@ namespace recipe_book
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
-            label7.Location = new Point(3, 652);
+            label7.Location = new Point(3, 667);
             label7.Name = "label7";
-            label7.Size = new Size(175, 366);
+            label7.Size = new Size(218, 366);
             label7.TabIndex = 6;
             label7.Text = "Способ приготовления:";
             // 
@@ -654,9 +716,9 @@ namespace recipe_book
             // 
             tableLayoutPanel2.SetColumnSpan(txtRecipeName, 3);
             txtRecipeName.Dock = DockStyle.Top;
-            txtRecipeName.Location = new Point(184, 3);
+            txtRecipeName.Location = new Point(227, 3);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(764, 27);
+            txtRecipeName.Size = new Size(834, 32);
             txtRecipeName.TabIndex = 7;
             txtRecipeName.TextChanged += RecipeInputFieldsChanged;
             // 
@@ -664,21 +726,21 @@ namespace recipe_book
             // 
             tableLayoutPanel2.SetColumnSpan(txtCookingMethod, 3);
             txtCookingMethod.Dock = DockStyle.Fill;
-            txtCookingMethod.Location = new Point(184, 655);
+            txtCookingMethod.Location = new Point(227, 670);
             txtCookingMethod.Multiline = true;
             txtCookingMethod.Name = "txtCookingMethod";
-            txtCookingMethod.Size = new Size(764, 360);
+            txtCookingMethod.Size = new Size(834, 360);
             txtCookingMethod.TabIndex = 8;
             txtCookingMethod.TextChanged += RecipeInputFieldsChanged;
             // 
             // numRecipeRating
             // 
             numRecipeRating.AutoSize = true;
-            numRecipeRating.Location = new Point(184, 476);
+            numRecipeRating.Location = new Point(227, 486);
             numRecipeRating.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             numRecipeRating.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numRecipeRating.Name = "numRecipeRating";
-            numRecipeRating.Size = new Size(45, 27);
+            numRecipeRating.Size = new Size(52, 32);
             numRecipeRating.TabIndex = 9;
             numRecipeRating.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
@@ -706,11 +768,11 @@ namespace recipe_book
             tableLayoutPanel3.Controls.Add(label10, 7, 0);
             tableLayoutPanel3.Controls.Add(numDays, 8, 0);
             tableLayoutPanel3.Controls.Add(label11, 9, 0);
-            tableLayoutPanel3.Location = new Point(184, 437);
+            tableLayoutPanel3.Location = new Point(227, 442);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle());
-            tableLayoutPanel3.Size = new Size(441, 33);
+            tableLayoutPanel3.Size = new Size(512, 38);
             tableLayoutPanel3.TabIndex = 10;
             // 
             // numHours
@@ -719,27 +781,27 @@ namespace recipe_book
             numHours.Location = new Point(3, 3);
             numHours.Maximum = new decimal(new int[] { 72, 0, 0, 0 });
             numHours.Name = "numHours";
-            numHours.Size = new Size(45, 27);
+            numHours.Size = new Size(52, 32);
             numHours.TabIndex = 0;
             numHours.ValueChanged += RecipeInputFieldsChanged;
             // 
             // numSeconds
             // 
             numSeconds.AutoSize = true;
-            numSeconds.Location = new Point(141, 3);
+            numSeconds.Location = new Point(163, 3);
             numSeconds.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
             numSeconds.Name = "numSeconds";
-            numSeconds.Size = new Size(45, 27);
+            numSeconds.Size = new Size(52, 32);
             numSeconds.TabIndex = 2;
             numSeconds.ValueChanged += RecipeInputFieldsChanged;
             // 
             // numMinutes
             // 
             numMinutes.AutoSize = true;
-            numMinutes.Location = new Point(72, 3);
+            numMinutes.Location = new Point(83, 3);
             numMinutes.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
             numMinutes.Name = "numMinutes";
-            numMinutes.Size = new Size(45, 27);
+            numMinutes.Size = new Size(52, 32);
             numMinutes.TabIndex = 1;
             numMinutes.ValueChanged += RecipeInputFieldsChanged;
             // 
@@ -747,9 +809,9 @@ namespace recipe_book
             // 
             label8.AutoSize = true;
             label8.Dock = DockStyle.Fill;
-            label8.Location = new Point(54, 0);
+            label8.Location = new Point(61, 0);
             label8.Name = "label8";
-            label8.Size = new Size(12, 33);
+            label8.Size = new Size(16, 38);
             label8.TabIndex = 3;
             label8.Text = ":";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -758,9 +820,9 @@ namespace recipe_book
             // 
             label9.AutoSize = true;
             label9.Dock = DockStyle.Fill;
-            label9.Location = new Point(123, 0);
+            label9.Location = new Point(141, 0);
             label9.Name = "label9";
-            label9.Size = new Size(12, 33);
+            label9.Size = new Size(16, 38);
             label9.TabIndex = 4;
             label9.Text = ":";
             label9.TextAlign = ContentAlignment.MiddleCenter;
@@ -768,10 +830,10 @@ namespace recipe_book
             // numWeeks
             // 
             numWeeks.AutoSize = true;
-            numWeeks.Location = new Point(222, 3);
+            numWeeks.Location = new Point(251, 3);
             numWeeks.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
             numWeeks.Name = "numWeeks";
-            numWeeks.Size = new Size(45, 27);
+            numWeeks.Size = new Size(52, 32);
             numWeeks.TabIndex = 5;
             numWeeks.ValueChanged += RecipeInputFieldsChanged;
             // 
@@ -779,9 +841,9 @@ namespace recipe_book
             // 
             label10.AutoSize = true;
             label10.Dock = DockStyle.Fill;
-            label10.Location = new Point(273, 0);
+            label10.Location = new Point(309, 0);
             label10.Name = "label10";
-            label10.Size = new Size(65, 33);
+            label10.Size = new Size(82, 38);
             label10.TabIndex = 6;
             label10.Text = "недель, ";
             label10.TextAlign = ContentAlignment.MiddleCenter;
@@ -789,10 +851,10 @@ namespace recipe_book
             // numDays
             // 
             numDays.AutoSize = true;
-            numDays.Location = new Point(344, 3);
+            numDays.Location = new Point(397, 3);
             numDays.Maximum = new decimal(new int[] { 29, 0, 0, 0 });
             numDays.Name = "numDays";
-            numDays.Size = new Size(45, 27);
+            numDays.Size = new Size(52, 32);
             numDays.TabIndex = 7;
             numDays.ValueChanged += RecipeInputFieldsChanged;
             // 
@@ -800,9 +862,9 @@ namespace recipe_book
             // 
             label11.AutoSize = true;
             label11.Dock = DockStyle.Fill;
-            label11.Location = new Point(395, 0);
+            label11.Location = new Point(455, 0);
             label11.Name = "label11";
-            label11.Size = new Size(43, 33);
+            label11.Size = new Size(54, 38);
             label11.TabIndex = 8;
             label11.Text = "дней";
             label11.TextAlign = ContentAlignment.MiddleCenter;
@@ -811,7 +873,7 @@ namespace recipe_book
             // 
             btnSaveRecipe.Dock = DockStyle.Top;
             btnSaveRecipe.Enabled = false;
-            btnSaveRecipe.Location = new Point(834, 1021);
+            btnSaveRecipe.Location = new Point(947, 1036);
             btnSaveRecipe.Name = "btnSaveRecipe";
             btnSaveRecipe.Size = new Size(114, 29);
             btnSaveRecipe.TabIndex = 1;
@@ -822,7 +884,7 @@ namespace recipe_book
             // btnCancelCreationOrEdition
             // 
             btnCancelCreationOrEdition.Dock = DockStyle.Top;
-            btnCancelCreationOrEdition.Location = new Point(714, 1021);
+            btnCancelCreationOrEdition.Location = new Point(827, 1036);
             btnCancelCreationOrEdition.Name = "btnCancelCreationOrEdition";
             btnCancelCreationOrEdition.Size = new Size(114, 29);
             btnCancelCreationOrEdition.TabIndex = 2;
@@ -834,9 +896,9 @@ namespace recipe_book
             // 
             tableLayoutPanel2.SetColumnSpan(picRecipePhoto, 3);
             picRecipePhoto.Dock = DockStyle.Fill;
-            picRecipePhoto.Location = new Point(184, 36);
+            picRecipePhoto.Location = new Point(227, 41);
             picRecipePhoto.Name = "picRecipePhoto";
-            picRecipePhoto.Size = new Size(764, 360);
+            picRecipePhoto.Size = new Size(834, 360);
             picRecipePhoto.SizeMode = PictureBoxSizeMode.Zoom;
             picRecipePhoto.TabIndex = 11;
             picRecipePhoto.TabStop = false;
@@ -844,7 +906,7 @@ namespace recipe_book
             // btnLoadRecipePhoto
             // 
             btnLoadRecipePhoto.Dock = DockStyle.Fill;
-            btnLoadRecipePhoto.Location = new Point(834, 402);
+            btnLoadRecipePhoto.Location = new Point(947, 407);
             btnLoadRecipePhoto.Name = "btnLoadRecipePhoto";
             btnLoadRecipePhoto.Size = new Size(114, 29);
             btnLoadRecipePhoto.TabIndex = 12;
@@ -856,7 +918,7 @@ namespace recipe_book
             // 
             btnDeleteRecipePhoto.Dock = DockStyle.Fill;
             btnDeleteRecipePhoto.Enabled = false;
-            btnDeleteRecipePhoto.Location = new Point(714, 402);
+            btnDeleteRecipePhoto.Location = new Point(827, 407);
             btnDeleteRecipePhoto.Name = "btnDeleteRecipePhoto";
             btnDeleteRecipePhoto.Size = new Size(114, 29);
             btnDeleteRecipePhoto.TabIndex = 13;
@@ -869,9 +931,9 @@ namespace recipe_book
             pnlTagInput.AutoScroll = true;
             tableLayoutPanel2.SetColumnSpan(pnlTagInput, 3);
             pnlTagInput.Dock = DockStyle.Fill;
-            pnlTagInput.Location = new Point(184, 509);
+            pnlTagInput.Location = new Point(227, 524);
             pnlTagInput.Name = "pnlTagInput";
-            pnlTagInput.Size = new Size(764, 67);
+            pnlTagInput.Size = new Size(834, 67);
             pnlTagInput.TabIndex = 14;
             // 
             // pnlIngredientInput
@@ -879,9 +941,9 @@ namespace recipe_book
             pnlIngredientInput.AutoScroll = true;
             tableLayoutPanel2.SetColumnSpan(pnlIngredientInput, 3);
             pnlIngredientInput.Dock = DockStyle.Fill;
-            pnlIngredientInput.Location = new Point(184, 582);
+            pnlIngredientInput.Location = new Point(227, 597);
             pnlIngredientInput.Name = "pnlIngredientInput";
-            pnlIngredientInput.Size = new Size(764, 67);
+            pnlIngredientInput.Size = new Size(834, 67);
             pnlIngredientInput.TabIndex = 15;
             pnlIngredientInput.ControlAdded += RecipeInputFieldsChanged;
             pnlIngredientInput.ControlRemoved += RecipeInputFieldsChanged;
@@ -893,60 +955,11 @@ namespace recipe_book
             dlgLoadRecipePhoto.Filter = "Изображения|*.jpg;*.png";
             dlgLoadRecipePhoto.Title = "Выберите фотографию блюда";
             // 
-            // spoilerContainer2
-            // 
-            spoilerContainer2.ColumnCount = 1;
-            tableLayoutPanel4.SetColumnSpan(spoilerContainer2, 2);
-            spoilerContainer2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            spoilerContainer2.Controls.Add(pnlRecipeViewIngredients, 0, 1);
-            spoilerContainer2.Location = new Point(3, 164);
-            spoilerContainer2.Name = "spoilerContainer2";
-            spoilerContainer2.RowCount = 2;
-            spoilerContainer2.RowStyles.Add(new RowStyle());
-            spoilerContainer2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            spoilerContainer2.Size = new Size(250, 66);
-            spoilerContainer2.TabIndex = 16;
-            spoilerContainer2.Title = "Ингредиенты";
-            // 
-            // spoilerContainer3
-            // 
-            spoilerContainer3.ColumnCount = 1;
-            tableLayoutPanel4.SetColumnSpan(spoilerContainer3, 2);
-            spoilerContainer3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            spoilerContainer3.Controls.Add(pblRecipeViewTags, 0, 1);
-            spoilerContainer3.Location = new Point(3, 83);
-            spoilerContainer3.Name = "spoilerContainer3";
-            spoilerContainer3.RowCount = 2;
-            spoilerContainer3.RowStyles.Add(new RowStyle());
-            spoilerContainer3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            spoilerContainer3.Size = new Size(250, 75);
-            spoilerContainer3.TabIndex = 17;
-            spoilerContainer3.Title = "Теги";
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(spoilerContainer3, 0, 2);
-            tableLayoutPanel4.Controls.Add(spoilerContainer1, 0, 4);
-            tableLayoutPanel4.Controls.Add(spoilerContainer2, 0, 3);
-            tableLayoutPanel4.Location = new Point(523, 34);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 5;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 81F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 104F));
-            tableLayoutPanel4.Size = new Size(370, 337);
-            tableLayoutPanel4.TabIndex = 18;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(965, 531);
+            ClientSize = new Size(1099, 761);
             Controls.Add(pnlMainLayout);
             Controls.Add(pnlSlideMenu);
             Name = "MainForm";
@@ -964,8 +977,13 @@ namespace recipe_book
             tableLayoutPanel1.PerformLayout();
             tabRecipeView.ResumeLayout(false);
             tabRecipeView.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
             spoilerContainer1.ResumeLayout(false);
             spoilerContainer1.PerformLayout();
+            spoilerContainer2.ResumeLayout(false);
+            spoilerContainer2.PerformLayout();
+            spoilerContainer3.ResumeLayout(false);
+            spoilerContainer3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picRecipeViewPhoto).EndInit();
             tabCreateOrEditRecipe.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -979,11 +997,6 @@ namespace recipe_book
             ((System.ComponentModel.ISupportInitialize)numWeeks).EndInit();
             ((System.ComponentModel.ISupportInitialize)numDays).EndInit();
             ((System.ComponentModel.ISupportInitialize)picRecipePhoto).EndInit();
-            spoilerContainer2.ResumeLayout(false);
-            spoilerContainer2.PerformLayout();
-            spoilerContainer3.ResumeLayout(false);
-            spoilerContainer3.PerformLayout();
-            tableLayoutPanel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
