@@ -101,5 +101,12 @@ namespace recipe_book
             foreach (var numericUpDown in new[] { numHours, numMinutes, numSeconds, numWeeks, numDays, numRecipeRating })
                 numericUpDown.Value = numericUpDown.Minimum;
         }
+
+        private void RecipeInputFieldsChanged(object sender, EventArgs e)
+        {
+            btnSaveRecipe.Enabled = txtCookingMethod.TextLength > 0
+                && txtRecipeName.TextLength > 0
+                && pnlIngredientInput.Controls.Count > 0;
+        }
     }
 }
