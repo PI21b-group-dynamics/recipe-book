@@ -120,7 +120,7 @@ namespace recipe_book
             pnlSlideMenu.Controls.Add(lblEditProfile, 0, 0);
             pnlSlideMenu.Controls.Add(lblHelp, 0, 1);
             pnlSlideMenu.Controls.Add(lblExit, 0, 2);
-            pnlSlideMenu.Location = new Point(3, 43);
+            pnlSlideMenu.Location = new Point(4, 45);
             pnlSlideMenu.Margin = new Padding(0);
             pnlSlideMenu.Name = "pnlSlideMenu";
             pnlSlideMenu.Padding = new Padding(46, 0, 0, 0);
@@ -869,8 +869,8 @@ namespace recipe_book
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(844, 398);
-            Controls.Add(pnlMainLayout);
             Controls.Add(pnlSlideMenu);
+            Controls.Add(pnlMainLayout);
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             Text = "Книга рецептов";
