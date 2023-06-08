@@ -26,7 +26,7 @@ namespace recipe_book
             SQLiteCommand cmd = DbModule.CreateCommand("""
                 SELECT cooking_time, rating, photo, cooking_method
                 FROM Recipes
-                WHERE id = id
+                WHERE id = $id
                 LIMIT 1
                 """,
                 new SQLiteParameter("id", Convert.ToInt64(item.Name))
