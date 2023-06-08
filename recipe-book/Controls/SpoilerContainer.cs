@@ -6,22 +6,27 @@
         public string Title
         {
             get => _title ?? "Не задано";
-            set => _title = value;
+            set
+            {
+                _title = value;
+                _btnSpoiler.Text = _title;
+            }
         }
 
-        private readonly Button btnSpoiler;
+        private readonly Button _btnSpoiler;
 
         public SpoilerContainer()
         {
-            btnSpoiler = new()
+            _btnSpoiler = new()
             {
                 Text = Title,
                 TextAlign = ContentAlignment.MiddleLeft,
                 AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
                 Dock = DockStyle.Fill
             };
-            btnSpoiler.Click += btnSpoiler_Click;
-            Controls.Add(btnSpoiler);
+            _btnSpoiler.Click += btnSpoiler_Click;
+            Controls.Add(_btnSpoiler);
         }
 
         private void btnSpoiler_Click(object? sender, EventArgs e)
