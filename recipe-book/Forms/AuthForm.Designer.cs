@@ -32,6 +32,7 @@ namespace recipe_book
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthForm));
             tbcAuth = new TabControl();
             tabSignIn = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -60,21 +61,22 @@ namespace recipe_book
             tbcAuth.Controls.Add(tabSignIn);
             tbcAuth.Controls.Add(tabSignUp);
             tbcAuth.Dock = DockStyle.Fill;
+            tbcAuth.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tbcAuth.Location = new Point(0, 0);
             tbcAuth.Margin = new Padding(3, 2, 3, 2);
             tbcAuth.Name = "tbcAuth";
             tbcAuth.SelectedIndex = 0;
-            tbcAuth.Size = new Size(256, 303);
+            tbcAuth.Size = new Size(256, 342);
             tbcAuth.TabIndex = 0;
             // 
             // tabSignIn
             // 
             tabSignIn.Controls.Add(tableLayoutPanel1);
-            tabSignIn.Location = new Point(4, 24);
+            tabSignIn.Location = new Point(4, 26);
             tabSignIn.Margin = new Padding(3, 2, 3, 2);
             tabSignIn.Name = "tabSignIn";
             tabSignIn.Padding = new Padding(3, 2, 3, 2);
-            tabSignIn.Size = new Size(248, 275);
+            tabSignIn.Size = new Size(248, 312);
             tabSignIn.TabIndex = 0;
             tabSignIn.Text = "Вход";
             tabSignIn.UseVisualStyleBackColor = true;
@@ -99,14 +101,14 @@ namespace recipe_book
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.Size = new Size(242, 271);
+            tableLayoutPanel1.Size = new Size(242, 308);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // btnSignIn
             // 
             btnSignIn.Dock = DockStyle.Top;
             btnSignIn.Enabled = false;
-            btnSignIn.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSignIn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSignIn.Location = new Point(12, 147);
             btnSignIn.Margin = new Padding(3, 6, 3, 2);
             btnSignIn.Name = "btnSignIn";
@@ -145,11 +147,11 @@ namespace recipe_book
             // 
             lblForgotPassword.AutoSize = true;
             lblForgotPassword.Dock = DockStyle.Top;
-            lblForgotPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblForgotPassword.Location = new Point(12, 197);
-            lblForgotPassword.Margin = new Padding(3, 9, 3, 0);
+            lblForgotPassword.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblForgotPassword.Location = new Point(12, 268);
+            lblForgotPassword.Margin = new Padding(3, 80, 3, 0);
             lblForgotPassword.Name = "lblForgotPassword";
-            lblForgotPassword.Size = new Size(218, 21);
+            lblForgotPassword.Size = new Size(218, 19);
             lblForgotPassword.TabIndex = 5;
             lblForgotPassword.TabStop = true;
             lblForgotPassword.Text = "Забыли пароль?";
@@ -158,11 +160,11 @@ namespace recipe_book
             // tabSignUp
             // 
             tabSignUp.Controls.Add(tableLayoutPanel2);
-            tabSignUp.Location = new Point(4, 24);
+            tabSignUp.Location = new Point(4, 26);
             tabSignUp.Margin = new Padding(3, 2, 3, 2);
             tabSignUp.Name = "tabSignUp";
             tabSignUp.Padding = new Padding(3, 2, 3, 2);
-            tabSignUp.Size = new Size(248, 275);
+            tabSignUp.Size = new Size(248, 312);
             tabSignUp.TabIndex = 1;
             tabSignUp.Text = "Регистрация";
             tabSignUp.UseVisualStyleBackColor = true;
@@ -178,7 +180,7 @@ namespace recipe_book
             tableLayoutPanel2.Controls.Add(picUser, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 2);
-            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 5);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.Padding = new Padding(5, 4, 5, 4);
             tableLayoutPanel2.RowCount = 6;
@@ -188,14 +190,14 @@ namespace recipe_book
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(242, 271);
+            tableLayoutPanel2.Size = new Size(242, 308);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // txtPassword_
             // 
             txtPassword_.Dock = DockStyle.Top;
             txtPassword_.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPassword_.Location = new Point(8, 175);
+            txtPassword_.Location = new Point(8, 211);
             txtPassword_.Margin = new Padding(3, 2, 3, 2);
             txtPassword_.Name = "txtPassword_";
             txtPassword_.PlaceholderText = "Пароль";
@@ -208,7 +210,7 @@ namespace recipe_book
             // 
             txtEmail.Dock = DockStyle.Top;
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.Location = new Point(8, 136);
+            txtEmail.Location = new Point(8, 172);
             txtEmail.Margin = new Padding(3, 2, 3, 8);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "E-mail";
@@ -220,7 +222,7 @@ namespace recipe_book
             // 
             txtLogin.Dock = DockStyle.Top;
             txtLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtLogin.Location = new Point(8, 97);
+            txtLogin.Location = new Point(8, 133);
             txtLogin.Margin = new Padding(3, 2, 3, 8);
             txtLogin.Name = "txtLogin";
             txtLogin.PlaceholderText = "Логин";
@@ -232,9 +234,9 @@ namespace recipe_book
             // 
             btnSignUp.Dock = DockStyle.Top;
             btnSignUp.Enabled = false;
-            btnSignUp.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSignUp.Location = new Point(8, 225);
-            btnSignUp.Margin = new Padding(3, 4, 3, 5);
+            btnSignUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSignUp.Location = new Point(8, 261);
+            btnSignUp.Margin = new Padding(3, 4, 3, 6);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.Size = new Size(226, 37);
             btnSignUp.TabIndex = 3;
@@ -245,11 +247,11 @@ namespace recipe_book
             // picUser
             // 
             picUser.BackgroundImageLayout = ImageLayout.Zoom;
-            picUser.Image = Properties.Resources.UserIcon;
-            picUser.Location = new Point(65, 6);
-            picUser.Margin = new Padding(60, 2, 3, 2);
+            picUser.Image = (System.Drawing.Image)resources.GetObject("picUser.Image");
+            picUser.Location = new Point(57, 14);
+            picUser.Margin = new Padding(52, 10, 3, 10);
             picUser.Name = "picUser";
-            picUser.Size = new Size(112, 87);
+            picUser.Size = new Size(128, 103);
             picUser.SizeMode = PictureBoxSizeMode.Zoom;
             picUser.TabIndex = 7;
             picUser.TabStop = false;
@@ -266,9 +268,10 @@ namespace recipe_book
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(256, 303);
+            ClientSize = new Size(256, 342);
             Controls.Add(tbcAuth);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
