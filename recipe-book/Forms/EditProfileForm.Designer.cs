@@ -74,7 +74,7 @@
             tableLayoutPanel1.SetColumnSpan(txtPassword, 2);
             txtPassword.Dock = DockStyle.Top;
             txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPassword.Location = new Point(13, 326);
+            txtPassword.Location = new Point(13, 289);
             txtPassword.Margin = new Padding(3, 4, 3, 11);
             txtPassword.MaxLength = 32;
             txtPassword.Name = "txtPassword";
@@ -89,7 +89,7 @@
             tableLayoutPanel1.SetColumnSpan(txtEmail, 2);
             txtEmail.Dock = DockStyle.Top;
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.Location = new Point(13, 277);
+            txtEmail.Location = new Point(13, 240);
             txtEmail.Margin = new Padding(3, 4, 3, 11);
             txtEmail.MaxLength = 40;
             txtEmail.Name = "txtEmail";
@@ -103,7 +103,7 @@
             tableLayoutPanel1.SetColumnSpan(txtLogin, 2);
             txtLogin.Dock = DockStyle.Top;
             txtLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtLogin.Location = new Point(13, 228);
+            txtLogin.Location = new Point(13, 191);
             txtLogin.Margin = new Padding(3, 4, 3, 11);
             txtLogin.MaxLength = 32;
             txtLogin.Name = "txtLogin";
@@ -118,7 +118,7 @@
             btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnCancel.Dock = DockStyle.Fill;
             btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancel.Location = new Point(13, 379);
+            btnCancel.Location = new Point(13, 342);
             btnCancel.Margin = new Padding(3, 8, 3, 8);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(161, 38);
@@ -134,7 +134,7 @@
             btnSave.Dock = DockStyle.Fill;
             btnSave.Enabled = false;
             btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSave.Location = new Point(180, 379);
+            btnSave.Location = new Point(180, 342);
             btnSave.Margin = new Padding(3, 8, 3, 8);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(162, 38);
@@ -150,7 +150,7 @@
             tableLayoutPanel1.SetColumnSpan(btnDeleteProfile, 2);
             btnDeleteProfile.Dock = DockStyle.Top;
             btnDeleteProfile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDeleteProfile.Location = new Point(10, 425);
+            btnDeleteProfile.Location = new Point(10, 388);
             btnDeleteProfile.Margin = new Padding(0);
             btnDeleteProfile.Name = "btnDeleteProfile";
             btnDeleteProfile.Size = new Size(335, 38);
@@ -167,7 +167,7 @@
             picUser.Location = new Point(93, 11);
             picUser.Margin = new Padding(83, 0, 3, 8);
             picUser.Name = "picUser";
-            picUser.Size = new Size(168, 205);
+            picUser.Size = new Size(168, 168);
             picUser.SizeMode = PictureBoxSizeMode.Zoom;
             picUser.TabIndex = 10;
             picUser.TabStop = false;
