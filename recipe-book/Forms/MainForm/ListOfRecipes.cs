@@ -40,6 +40,9 @@ namespace recipe_book
             picRecipeViewPhoto.Image = rdr.GetImage(2) ?? Resources.UserIcon;
             lblRecipeCookingMethod.Text = rdr.GetString(3);
 
+            pnlRecipeViewTags.Controls.Clear();
+            pnlRecipeViewIngredients.Controls.Clear();
+
             cmd = DbModule.CreateCommand("""
                 SELECT Tags.name
                 FROM RecipeTags
@@ -50,7 +53,7 @@ namespace recipe_book
             );
             rdr = cmd.ExecuteReader();
             while (rdr.Read())
-                pblRecipeViewTags.Controls.Add(new Button()
+                pnlRecipeViewTags.Controls.Add(new Button()
                 {
                     Text = rdr.GetString(0),
                     AutoSize = true,
