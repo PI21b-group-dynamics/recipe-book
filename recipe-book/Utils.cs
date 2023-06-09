@@ -1,5 +1,6 @@
 ﻿using System.Data.SQLite;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace recipe_book
 {
@@ -29,7 +30,7 @@ namespace recipe_book
 		public static byte[] ToBytes(this Image img)
 		{
             using MemoryStream ms = new();
-            img.Save(ms, img.RawFormat);
+            img.Save(ms, ImageFormat.Bmp);
             return ms.ToArray();
         }
 
