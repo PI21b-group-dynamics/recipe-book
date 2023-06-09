@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
             txtHelp = new RichTextBox();
             SuspendLayout();
             // 
@@ -35,20 +36,22 @@
             // 
             txtHelp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txtHelp.BorderStyle = BorderStyle.None;
-            txtHelp.Location = new Point(19, 19);
-            txtHelp.Margin = new Padding(8);
+            txtHelp.Location = new Point(17, 14);
+            txtHelp.Margin = new Padding(7, 6, 7, 6);
             txtHelp.Name = "txtHelp";
             txtHelp.ReadOnly = true;
-            txtHelp.Size = new Size(430, 415);
+            txtHelp.Size = new Size(376, 311);
             txtHelp.TabIndex = 0;
             txtHelp.Text = "";
             // 
             // HelpForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(468, 453);
+            ClientSize = new Size(410, 340);
             Controls.Add(txtHelp);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "HelpForm";
             Text = "Справка";
             ResumeLayout(false);
