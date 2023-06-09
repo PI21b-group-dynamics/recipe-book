@@ -66,7 +66,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(355, 457);
+            tableLayoutPanel1.Size = new Size(355, 435);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // txtPassword
@@ -184,7 +184,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(355, 457);
+            ClientSize = new Size(355, 435);
             Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EditProfileForm";
