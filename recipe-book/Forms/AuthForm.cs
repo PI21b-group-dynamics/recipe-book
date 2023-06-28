@@ -63,7 +63,7 @@ namespace recipe_book
                 """,
                 new SQLiteParameter("login", txtLogin.Text),
                 new SQLiteParameter("email", txtEmail.Text),
-                new SQLiteParameter("password", txtPassword_.Text),
+                new SQLiteParameter("password", Utils.Encrypt(txtPassword_.Text)),
                 new SQLiteParameter("photo",
                     picUser.Image == Resources.UserIcon ? null : picUser.Image.ToBytes()
                 )
@@ -105,7 +105,7 @@ namespace recipe_book
             string? message = null;
             if (!rdr.Read())
                 message = "Пользователь с таким логином или e-mail не найден. Возможно, вы хотели зарегистрироваться?";
-            else if (txtPassword.Text != rdr.GetString(2))
+            else if (Utils.Encrypt(txtPassword.Text) != rdr.GetString(2))
                 message = "Вы ввели неверный пароль от учётной записи. Возможно, вы хотели войти в другой аккаунт?";
             if (message is null)
             {

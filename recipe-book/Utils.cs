@@ -1,11 +1,25 @@
 ﻿using System.Data.SQLite;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Text;
 
 namespace recipe_book
 {
 	internal static class Utils
 	{
+		public static string Encrypt(string data)
+		{
+			var result = new byte[data.Length];
+			var key = (byte)(data.Length + data[0] + data[data.Length - 1]);
+
+			for(int i = 0; i < data.Length; i++)
+			{
+				result[i] = (byte)((byte)(data[i]) ^ key);
+			}
+
+			return ASCIIEncoding.ASCII.GetString(result);
+		}
+
 		public static void MakeRound(this Control control)
 		{
             using GraphicsPath graphicsPath = new();
