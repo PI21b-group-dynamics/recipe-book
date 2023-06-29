@@ -84,7 +84,18 @@ namespace recipe_book
                         """,
                         new SQLiteParameter("name", value)
                     );
-                    cmd.ExecuteNonQuery();
+
+					try
+					{
+						cmd.ExecuteNonQuery();
+					}
+					catch(Exception exception)
+					{
+						// Если ингридиент уже есть в списке,
+						// может возникнуть исключение,
+						// так как ингридиенты имеют уникальное
+						// наименование
+					}
 
                     lastElementId = (long)cmdGetLastInsertedId.ExecuteScalar();
 
