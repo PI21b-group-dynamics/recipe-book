@@ -53,12 +53,12 @@ namespace recipe_book
             );
             rdr = cmd.ExecuteReader();
             while (rdr.Read())
-                pnlRecipeViewTags.Controls.Add(new Button()
-                {
-                    Text = rdr.GetString(0),
-                    AutoSize = true,
-                    AutoSizeMode = AutoSizeMode.GrowAndShrink
-                });
+				pnlRecipeViewTags.Controls.Add(new Button()
+				{
+					Text = rdr.GetString(0),
+					AutoSize = true,
+					AutoSizeMode = AutoSizeMode.GrowAndShrink
+				});
 
             cmd = DbModule.CreateCommand("""
                 SELECT Ingredients.name
