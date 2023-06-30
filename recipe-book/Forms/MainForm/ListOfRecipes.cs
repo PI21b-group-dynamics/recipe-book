@@ -9,7 +9,8 @@ namespace recipe_book
 
         private void btnShoppingList_Click(object sender, EventArgs e)
         {
-            new ShoppingListForm();
+            var form = new ShoppingListForm();
+			form.ShowDialog();
         }
 
         private void btnAddRecipe_Click(object sender, EventArgs e)
