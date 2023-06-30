@@ -213,5 +213,27 @@ namespace recipe_book
 		{
 			DisplayRecipes(txtSearch.Text);
 		}
+
+		private void btnDeleteRecipe_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления",
+				MessageBoxButtons.YesNo);
+
+			if (result == DialogResult.Yes)
+			{
+				SQLiteCommand cmd = DbModule.CreateCommand(
+					"""
+					DELETE FROM Recipes
+					WHERE Recipes.id = $recipe_id
+					""",
+					new SQLiteParameter("recipe_id", recipe_active_index)
+				);
+				cmd.ExecuteNonQuery();
+
+				tbcMainFormTabs.SelectTab(0);
+				DisplayRecipes("");
+				DisplayTags();
+			}
+		}
 	}
 }

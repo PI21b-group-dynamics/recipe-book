@@ -5,6 +5,8 @@ namespace recipe_book
 {
     public sealed partial class MainForm : Form
     {
+		private int recipe_active_index = -1;
+
         private void btnShoppingList_Click(object sender, EventArgs e)
         {
             new ShoppingListForm();
@@ -25,7 +27,7 @@ namespace recipe_book
             SQLiteParameter recipeIdParam = new("id", Convert.ToInt64(item.Name));
             lblRecipeName.Text = item.Text;
             SQLiteCommand cmd = DbModule.CreateCommand("""
-                SELECT cooking_time, rating, photo, cooking_method
+                SELECT cooking_time, rating, photo, cooking_method, id
                 FROM Recipes
                 WHERE id = $id
                 LIMIT 1
@@ -40,7 +42,9 @@ namespace recipe_book
             picRecipeViewPhoto.Image = rdr.GetImage(2) ?? Resources.UserIcon;
             lblRecipeCookingMethod.Text = rdr.GetString(3);
 
-            pnlRecipeViewTags.Controls.Clear();
+			recipe_active_index = rdr.GetInt32(4);
+
+			pnlRecipeViewTags.Controls.Clear();
             pnlRecipeViewIngredients.Controls.Clear();
 
             cmd = DbModule.CreateCommand("""
